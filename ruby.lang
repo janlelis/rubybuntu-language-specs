@@ -954,7 +954,7 @@
       </include>
     </context>
 
-    <context id="rubyonrails" class="no-spell-check">
+    <context id="ruby" class="no-spell-check">
       <include>
         <context ref="def:shebang"/>
         <context ref="def:shell-like-comment"/>
