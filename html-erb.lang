@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+CHANGELOG / AUTHORS
+
+2011-04: Vladimir Prieto
+* modificated for better implementation of the Railscasts theme
+* added helper methods
+
+2011-08: Jan Lelis
+* call it .html.erb, not .rhtml
+* remove rails helpers
+
+-->
+<language id="html-erb" _name="HTML (erb)" version="2.0" _section="Markup">
+  <metadata>
+    <property name="mimetypes">text/x-html-erb</property>
+    <property name="globs">*.html.erb;*.rhtml</property>
+  </metadata>
+  <styles>
+    <style id="comment"  _name="Comment" map-to="xml:comment"/>
+    <style id="javascript-block" _name="JavaScript code"/>
+    <style id="ruby-code" _name="Ruby code"/>
+  </styles>
+  <definitions>
+
+    <context id="comment" style-ref="comment">
+        <start>&lt;%=?\s*#</start>
+        <end>%&gt;</end>
+        <include>
+            <context ref="def:in-comment"/>
+        </include>
+    </context>
+    
+    <!-- JS code inside javascript_tag -->
+    <context id="javascript-block">
+        <start>&lt;%= javascript_tag do %&gt;</start>
+        <end>&lt;% end %&gt;</end>
+        <include>
+            <context ref="js:js"/>
+        </include>
+    </context>
+
+    <context id="erb-block" style-ref="ruby-code" class="no-spell-check">
+      <start>&lt;%</start>
+      <end>%&gt;</end>
+      <include>
+        <context ref="ruby:ruby:*"/>
+      </include>
+    </context>
+
+    <context id="html-erb">
+      <include>
+        <context ref="comment"/>
+        <context ref="javascript-block"/>
+        <context ref="erb-block"/>
+        <context ref="html:html"/>
+      </include>
+    </context>
+
+  </definitions>
+</language>
+
