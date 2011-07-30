@@ -21,7 +21,7 @@ CHANGELOG / AUTHORS
   </metadata>
   <styles>
     <style id="comment"  _name="Comment" map-to="xml:comment"/>
-    <style id="javascript-block" _name="JavaScript code"/>
+    <style id="javascript-block" _name="JavaScript code block"/>
     <style id="ruby-code" _name="Ruby code"/>
   </styles>
   <definitions>
@@ -36,9 +36,11 @@ CHANGELOG / AUTHORS
     
     <!-- JS code inside javascript_tag -->
     <context id="javascript-block">
-        <start>&lt;%= javascript_tag do %&gt;</start>
-        <end>&lt;% end %&gt;</end>
+        <start>&lt;%= javascript_tag (do) %&gt;</start>
+        <end>&lt;% (end) %&gt;</end>
         <include>
+            <context sub-pattern="1" where="start" style-ref="ruby:keyword"/>
+            <context sub-pattern="1" where="end" style-ref="ruby:keyword"/>
             <context ref="js:js"/>
         </include>
     </context>
