@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language id="erb" _name="Embedded Ruby (erb)" version="2.0" _section="Markup">
+    <metadata>
+      <property name="mimetypes">text/erb</property>
+      <property name="globs">*(?&lt;!text).erb</property>
+    </metadata>
+    <definitions>
+        <context id="erb-block">
+            <start>&lt;%</start>
+            <end>%&gt;</end>
+            <include>
+              <context ref="ruby:ruby:*"/>
+            </include>
+        </context>
+        <context id="erb">
+            <include>
+                <context ref="erb-block"/>
+            </include>
+        </context>
+    </definitions>
+</language>
+
