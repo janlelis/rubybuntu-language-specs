@@ -16,6 +16,8 @@ CHANGELOG / AUTHORS
   <metadata>
     <property name="mimetypes">text/x-html-erb</property>
     <property name="globs">*.html.erb;*.rhtml</property>
+    <property name="block-comment-start">&lt;!--</property>
+    <property name="block-comment-end">--&gt;</property>
   </metadata>
   <styles>
     <style id="comment"  _name="Comment" map-to="xml:comment"/>
