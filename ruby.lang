@@ -22,10 +22,10 @@
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 -->
-<language id="rubyonrails" _name="RubyOnRails" version="2.0" _section="Scripts">
+<language id="ruby" _name="Ruby" version="2.0" _section="Scripts">
   <metadata>
     <property name="mimetypes">application/x-ruby;text/x-ruby</property>
-    <property name="globs">*.rb;*.ru</property>
+    <property name="globs">*.rb;*.gemspec;*.rake;*.ru;*thor;Rakefile;Capfile;Gemfile;Thorfile</property>
     <property name="line-comment-start">#</property>
   </metadata>
 
