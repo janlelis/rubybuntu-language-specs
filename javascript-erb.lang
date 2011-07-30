@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<language id="js-erb" _name="JavaScript (erb)" version="2.0" _section="Markup">
+  <metadata>
+    <property name="mimetypes">application/x-javascript-erb;text/x-javascript-erb</property>
+    <property name="globs">*.js.erb</property>
+    <property name="line-comment-start">//</property>
+    <property name="block-comment-start">/*</property>
+    <property name="block-comment-end">*/</property>
+  </metadata>
+  <styles>
+    <style id="comment"  _name="Comment" map-to="xml:comment"/>
+    <style id="ruby-code" _name="Ruby code"/>
+  </styles>
+  <definitions>
+
+    <context id="comment" style-ref="comment">
+        <start>&lt;%=?\s*#</start>
+        <end>%&gt;</end>
+        <include>
+            <context ref="def:in-comment"/>
+        </include>
+    </context>
+
+    <context id="erb-block" style-ref="ruby-code" class="no-spell-check">
+      <start>&lt;%</start>
+      <end>%&gt;</end>
+      <include>
+        <context ref="ruby:ruby:*"/>
+      </include>
+    </context>
+
+    <context id="js-erb">
+      <include>
+        <context ref="comment"/>
+        <context ref="erb-block"/>
+        <context ref="js:js"/>
+      </include>
+    </context>
+
+  </definitions>
+</language>
+
