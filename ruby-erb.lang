@@ -32,7 +32,7 @@
       <include>
         <context ref="comment"/>
         <context ref="erb-block"/>
-        <context ref="rubys:ruby"/>
+        <context ref="ruby:ruby"/>
       </include>
     </context>
 
