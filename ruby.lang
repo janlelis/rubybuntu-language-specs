@@ -64,8 +64,6 @@
     <style id="module-name"           _name="Ruby Inherited Class"  map-to="def:identifier"/>
     <style id="block-parameter"       _name="Parameters in blocks"  map-to="def:identifier"/>
     <style id="support-constant"     _name="Ruby Support Constants" map-to="def:builtin"/>
-
-    <style id="rails"                 _name="Rails constants"       map-to="def:identifier"/>
   </styles>
 
   <definitions>
@@ -1024,134 +1022,8 @@
         <context ref="simple-interpolation"/>
         <context ref="complex-interpolation"/>
         <context ref="operator"/>
-        <!-- Include Rails Style -->
-        <context ref="keywords-rails"/>
       </include>
     </context>
-    <!-- Rails Keywords -->
-    <context id="keywords-rails" style-ref="rails">
-      <keyword>before_filter</keyword>
-      <keyword>skip_before_filter</keyword>
-      <keyword>skip_after_filter</keyword>
-      <keyword>after_filter</keyword>
-      <keyword>around_filter</keyword>
-      <keyword>filter</keyword>
-      <keyword>filter_parameter_logging</keyword>
-      <keyword>protect_from_forgery</keyword>
-      <keyword>layout</keyword>
-      <keyword>require_dependency</keyword>
-      <keyword>render</keyword>
-      <keyword>render_action</keyword>
-      <keyword>render_text</keyword>
-      <keyword>render_file</keyword>
-      <keyword>render_template</keyword>
-      <keyword>render_nothing</keyword>
-      <keyword>render_component</keyword>
-      <keyword>render_without_layout</keyword>
-      <keyword>url_for</keyword>
-      <keyword>content_for</keyword>
-      <keyword>redirect_to</keyword>
-      <keyword>redirect_to_path</keyword>
-      <keyword>redirect_to_url</keyword>
-      <keyword>link_to</keyword>
-      <keyword>link_to_remote</keyword>
-      <keyword>link_to_function</keyword>
-      <keyword>link_to_if</keyword>
-      <keyword>link_to_current</keyword>
-      <keyword>link_to_unless_current</keyword>
-      <keyword>helper</keyword>
-      <keyword>helper_method</keyword>
-      <keyword>model</keyword>
-      <keyword>service</keyword>
-      <keyword>observer</keyword>
-      <keyword>serialize</keyword>
-      <keyword>scaffold</keyword>
-      <keyword>verify</keyword>
-      <keyword>hide_action</keyword>
-      <!-- Rails Keywords MISC -->
-      <keyword>accepts_nested_attributes_for</keyword>
-      <keyword>acts_as_list</keyword>
-      <keyword>acts_as_tree</keyword>
-      <keyword>after_create</keyword>
-      <keyword>after_destroy</keyword>
-      <keyword>after_save</keyword>
-      <keyword>after_update</keyword>
-      <keyword>after_validation</keyword>
-      <keyword>after_validation_on_create</keyword>
-      <keyword>after_validation_on_update</keyword>
-      <keyword>before_create</keyword>
-      <keyword>before_destroy</keyword>
-      <keyword>before_save</keyword>
-      <keyword>before_update</keyword>
-      <keyword>before_validation</keyword>
-      <keyword>before_validation_on_create</keyword>
-      <keyword>before_validation_on_update</keyword>
-      <keyword>composed_of</keyword>
-      <keyword>belongs_to</keyword>
-      <keyword>has_one</keyword>
-      <keyword>has_many</keyword>
-      <keyword>has_and_belongs_to_many</keyword>
-      <keyword>helper</keyword>
-      <keyword>helper_method</keyword>
-      <keyword>validate</keyword>
-      <keyword>validate_on_create</keyword>
-      <keyword>validates_numericality_of</keyword>
-      <keyword>validate_on_update</keyword>
-      <keyword>validates_acceptance_of</keyword>
-      <keyword>validates_associated</keyword>
-      <keyword>validates_confirmation_of</keyword>
-      <keyword>validates_each</keyword>
-      <keyword>validates_format_of</keyword>
-      <keyword>validates_inclusion_of</keyword>
-      <keyword>validates_length_of</keyword>
-      <keyword>validates_presence_of</keyword>
-      <keyword>validates_exclusion_of</keyword>
-      <keyword>validates_size_of</keyword>
-      <keyword>validates_uniqueness_of</keyword>
-      <keyword>attr_protected</keyword>
-      <keyword>attr_accessible</keyword>
-      <keyword>attr_readonly</keyword>
-      <keyword>with_scope</keyword>
-      <keyword>named_scope</keyword>
-      <keyword>memoize</keyword>
-      <keyword>with_options</keyword>
-      <keyword>alias_method_chain</keyword>
-      <keyword>alias_attribute</keyword>
-      <keyword>delegate</keyword>
-      <keyword>cattr_accessor</keyword>
-      <keyword>cattr_reader</keyword>
-      <keyword>cattr_writer</keyword>
-      <keyword>mattr_accessor</keyword>
-      <keyword>mattr_reader</keyword>
-      <keyword>mattr_writer</keyword>
-      <keyword>returning</keyword>
-      <!-- plugins or tests -->
-      <keyword>validates_cpf_of</keyword>
-      <keyword>validates_cnpj_of</keyword>
-      <keyword>validates_cpf_cpnj_of</keyword>
-      <keyword>integrate_views</keyword>
-      <keyword>have_text</keyword>
-      <keyword>have_tag</keyword>
-      <keyword>with_tag</keyword>
-      <keyword>without_tag</keyword>
-      <keyword>has_no_table</keyword>
-      <!-- BaseApp Styles -->
-      <keyword>link_to_action</keyword>
-      <keyword>link_to_new</keyword>
-      <keyword>link_to_edit</keyword>
-      <keyword>link_to_go</keyword>
-      <keyword>link_to_destroy</keyword>
-      <keyword>link_to_show</keyword>
-      <keyword>link_to_action</keyword>
-      <keyword>link_to_back</keyword>
-      <keyword>link_to_search</keyword>
-      <keyword>link_to_ext</keyword>
-      <keyword>secure_mail_to</keyword>
-      <keyword>tab_to</keyword>
-      <keyword>yield_or_default</keyword>
-    </context>
-
-    <!-- End Keywords -->
-  </definitions>
+ </definitions>
 </language>
 
