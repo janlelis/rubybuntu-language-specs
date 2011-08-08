@@ -1,17 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-
-CHANGELOG / AUTHORS
-
-2011-04: Vladimir Prieto
-* modificated for better implementation of the Railscasts theme
-* added helper methods
-
-2011-08: Jan Lelis
-* call it .html.erb, not .rhtml
-* remove rails helpers
-
--->
 <language id="html-erb" _name="HTML (erb)" version="2.0" _section="Markup">
   <metadata>
     <property name="mimetypes">text/x-html-erb</property>
@@ -52,6 +39,8 @@ CHANGELOG / AUTHORS
         <context ref="ruby:ruby:*"/>
       </include>
     </context>
+
+    <replace id="html:embedded-lang-hook" ref="erb-block"/>
 
     <context id="html-erb">
       <include>
