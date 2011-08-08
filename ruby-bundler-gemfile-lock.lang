@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Copyright (C) 2011 Jan Lelis <mail@janlelis.de>
+
+ This library is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<language id="ruby-bundler-gemfile-lock" _name="Bundler Gemfile.lock" version="2.0" _section="Others">
+  <metadata>
+    <property name="mimetypes">application/x-ruby-bundler-gemfile-lock;text/x-ruby-bundler-gemfile-lock</property>
+    <property name="globs">Gemfile.lock</property>
+  </metadata>
+
+  <styles>
+    <style id="gem_name"                      _name="Gem Name"               map-to="def:identifier"/>
+    <style id="gem_dependency_type"           _name="Gem Dependency Type"    map-to="def:type"/><!-- TODO/maybe: not via regex (multiple dependencies) -->
+    <style id="gem_dependency_version"        _name="Gem Dependency Version" map-to="def:type"/>
+    <style id="heading"                       _name="Heading"                map-to="def:comment"/>
+    <style id="key"                           _name="Key"                    map-to="def:keyword"/>
+    <style id="value"                         _name="Value"                  map-to="def:string"/>
+    <style id="important"                     _name="Exclamation Mark"       map-to="def:type"/>
+  </styles>
+
+  <definitions>
+    <context id="ruby-bundler-gemfile-lock">
+      <include>
+        <context ref="types"/>
+        <context ref="values"/>
+        <context ref="specs"/>
+        <context ref="dependency_block"/>
+        <context ref="platform_block"/>
+      </include>
+    </context>
+  
+
+    <context id="types" style-ref="heading">
+      <keyword>GIT</keyword>
+      <keyword>GEM</keyword>
+      <keyword>PATH</keyword>
+    </context>
+
+    <context id="values" end-at-line-end="true">
+      <start>^  ([a-zA-Z0-9_]+:) (.*)$</start>
+      <include>
+        <context sub-pattern="1" where="start" style-ref="key"/>
+        <context sub-pattern="2" where="start" style-ref="value"/>
+      </include>
+    </context>
+
+    <context id="specs">
+      <start>  specs:</start>
+      <end>^$</end>
+      <include>
+        <context sub-pattern="0" where="start" style-ref="key"/>
+        <context ref="dependencies"/>
+      </include>
+    </context>
+
+    <context id="dependency_block">
+      <start>DEPENDENCIES</start>
+      <end>^$</end>
+      <include>
+        <context sub-pattern="0" where="start" style-ref="heading"/>
+        <context ref="dependencies"/>
+      </include>
+    </context>
+
+    <context id="dependencies" end-at-line-end="true">
+      <start>^ +(?! )(.*?)(?: \(([^\s\w]*)([^-]*)(?:-(.*))?\))?(!)?$</start><!-- see lib/bundler/lockfile_parser.rb ^ {2}(?! )(.*?)(?: \(([^-]*)(?:-(.*))?\))?'(!)?$ -->
+      <include>
+        <context sub-pattern="1" where="start" style-ref="gem_name"/>
+        <context sub-pattern="2" where="start" style-ref="gem_dependency_type"/>
+        <context sub-pattern="3" where="start" style-ref="gem_dependency_version"/>
+        <context sub-pattern="5" where="start" style-ref="important"/>
+      </include>
+    </context>
+
+
+    <context id="platform_block" style-ref="value">
+      <start>PLATFORMS</start>
+      <end>^$</end>
+      <include>
+        <context sub-pattern="0" where="start" style-ref="heading"/>
+      </include>
+    </context>
+
+  </definitions>
+</language>
