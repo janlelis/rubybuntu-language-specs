@@ -525,9 +525,9 @@
     <context id="complex-interpolation" style-ref="complex-interpolation">
       <start>#{</start>
       <end>}</end>
-      <!--include>
+      <include>
         <context ref="ruby:*"/>
-      </include-->
+      </include>
     </context>
 
     <!-- ruby strings do not end at line end,
