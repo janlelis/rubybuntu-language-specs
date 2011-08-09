@@ -76,7 +76,6 @@
       <start>^=begin</start>
       <end>^=end</end>
       <include>
-        <context ref="escape"/>
         <context ref="def:in-comment"/>
       </include>
     </context>
