@@ -1,1 +1,11 @@
 Ruby/Rails/Web related gedit language definitions.
+
+TODO - add/import
+* SASS / SCSS
+* COFFEE
+* HAML
+* SLIM
+* YAML
+* CUCUMBER
+
+Meanwhile, use the ones in gmate.
