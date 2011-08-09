@@ -33,16 +33,15 @@
     <style id="escape"                _name="Escaped Character"     map-to="def:special-char"/>
     <style id="comment"               _name="Comment"               map-to="def:comment"/>
     <style id="attribute-definition"  _name="Attribute Definition"  map-to="def:statement"/>
-    <style id="module-handler"        _name="Module handler"        map-to="def:preprocessor"/>
+    <style id="important-method"      _name="Important methods"     map-to="def:preprocessor"/>
     <style id="keyword"               _name="Keyword"               map-to="def:keyword"/>
-    <style id="nil-value"             _name="Nil Constant"          map-to="def:special-constant"/>
-    <style id="boolean"               _name="Boolean value"         map-to="def:boolean"/>
+    <style id="special-value"         _name="nil, false, true"      map-to="def:special-constant"/>
     <style id="floating-point"        _name="Floating point number" map-to="def:floating-point"/>
     <style id="decimal"               _name="Decimal number"        map-to="def:decimal"/>
     <style id="base-n-integer"        _name="Base-N number"         map-to="def:base-n-integer"/>
     <style id="numeric-literal"       _name="Numeric literal"       map-to="def:base-n-integer"/>
     <style id="string"                _name="String"                map-to="def:string"/>
-    <style id="builtin"               _name="Builtin"               map-to="def:type"/>
+    <style id="important-constant"    _name="Important constant"    map-to="def:type"/>
     <style id="constant"              _name="Constant"              map-to="def:type"/>
     <style id="symbol"                _name="Symbol"                map-to="def:string"/>
     <style id="operators"             _name="Operators"             map-to="def:keyword"/>
@@ -51,7 +50,6 @@
     <style id="class-variable"        _name="Class Variable"        map-to="def:identifier"/>
     <style id="simple-interpolation"  _name="Simple Interpolation"  map-to="def:string"/>
     <style id="complex-interpolation" _name="Complex Interpolation" map-to="def:string"/>
-    <style id="special-variable"      _name="Special Variable"      map-to="def:identifier"/>
     <style id="predefined-variable"   _name="Predefined Variable"   map-to="def:identifier"/>
     <style id="variable"              _name="Variable"              map-to="def:identifier"/>
     <style id="here-doc"              _name="Heredoc"               map-to="def:string" />
@@ -80,40 +78,107 @@
       </include>
     </context>
 
-    <context id="attribute-definitions" style-ref="attribute-definition">
+    <context id="important-methods" style-ref="important-method">
+      <keyword>included</keyword>
+      <keyword>extended</keyword>
+      <keyword>method_added</keyword>
+      <keyword>method_removed</keyword>
+      <keyword>method_undefined</keyword>
+      <keyword>initialize_copy</keyword>
       <keyword>attr</keyword>
-      <keyword>attr_writer</keyword>
       <keyword>attr_reader</keyword>
+      <keyword>attr_writer</keyword>
       <keyword>attr_accessor</keyword>
-    </context>
-
-    <context id="definitions" style-ref="keyword">
-      <!-- do not highlight the .class method -->
-      <prefix>(?&lt;![\w\.])</prefix>
-      <keyword>alias</keyword>
-      <keyword>class</keyword>
-      <keyword>module</keyword>
-      <keyword>def</keyword>
-      <keyword>undef</keyword>
-    </context>
-
-    <context id="module-handlers" style-ref="module-handler">
-      <keyword>require</keyword>
-      <keyword>gem</keyword>
+      <keyword>initialize</keyword>
+      <keyword>remove_const</keyword>
+      <keyword>append_features</keyword>
+      <keyword>extend_object</keyword>
       <keyword>include</keyword>
+      <keyword>remove_method</keyword>
+      <keyword>undef_method</keyword>
+      <keyword>alias_method</keyword>
+      <keyword>public</keyword>
+      <keyword>protected</keyword>
+      <keyword>private</keyword>
+      <keyword>module_function</keyword>
+      <keyword>define_method</keyword>
+      <keyword>default_src_encoding</keyword>
+      <keyword>irb_binding</keyword>
+      <keyword>remove_instance_variable</keyword>
+      <keyword>sprintf</keyword>
+      <keyword>format</keyword>
+      <keyword>warn</keyword>
+      <keyword>raise</keyword>
+      <keyword>fail</keyword>
+      <keyword>global_variables</keyword>
+      <keyword>__method__</keyword>
+      <keyword>__callee__</keyword>
+      <keyword>eval</keyword>
+      <keyword>local_variables</keyword>
+      <keyword>iterator?</keyword>
+      <keyword>block_given?</keyword>
+      <keyword>catch</keyword>
+      <keyword>throw</keyword>
+      <keyword>loop</keyword>
+      <keyword>caller</keyword>
+      <keyword>trace_var</keyword>
+      <keyword>untrace_var</keyword>
+      <keyword>at_exit</keyword>
+      <keyword>syscall</keyword>
+      <keyword>open</keyword>
+      <keyword>printf</keyword>
+      <keyword>print</keyword>
+      <keyword>putc</keyword>
+      <keyword>puts</keyword>
+      <keyword>gets</keyword>
+      <keyword>readline</keyword>
+      <keyword>select</keyword>
+      <keyword>readlines</keyword>
+      <keyword>p</keyword>
+      <keyword>test</keyword>
+      <keyword>srand</keyword>
+      <keyword>rand</keyword>
+      <keyword>trap</keyword>
+      <keyword>exec</keyword>
+      <keyword>fork</keyword>
+      <keyword>exit!</keyword>
+      <keyword>system</keyword>
+      <keyword>spawn</keyword>
+      <keyword>sleep</keyword>
+      <keyword>exit</keyword>
+      <keyword>abort</keyword>
       <keyword>load</keyword>
-      <keyword>extend</keyword>
+      <keyword>require_relative</keyword>
+      <keyword>proc</keyword>
+      <keyword>lambda</keyword>
+      <keyword>binding</keyword>
+      <keyword>set_trace_func</keyword>
+      <keyword>gem_original_require</keyword>
+      <keyword>gem</keyword>
+      <keyword>require</keyword>
+      <keyword>singleton_method_added</keyword>
+      <keyword>singleton_method_removed</keyword>
+      <keyword>singleton_method_undefined</keyword>
+      <keyword>method_missing</keyword>
+      <keyword>autoload</keyword>
+      <keyword>autoload?</keyword>
     </context>
 
     <context id="keywords" style-ref="keyword">
-      <keyword>new</keyword>
+      <!-- do not highlight methods like .class -->
+      <prefix>(?&lt;![\w\.])</prefix>
+      <keyword>__ENCODING__</keyword>
+      <keyword>__LINE__</keyword>
+      <keyword>__FILE__</keyword>
       <keyword>BEGIN</keyword>
       <keyword>END</keyword>
+      <keyword>alias</keyword>
       <keyword>and</keyword>
       <keyword>begin</keyword>
       <keyword>break</keyword>
       <keyword>case</keyword>
-      <keyword>catch</keyword>
+      <keyword>class</keyword>
+      <keyword>def</keyword>
       <keyword>defined?</keyword>
       <keyword>do</keyword>
       <keyword>else</keyword>
@@ -123,18 +188,18 @@
       <keyword>for</keyword>
       <keyword>if</keyword>
       <keyword>in</keyword>
+      <keyword>module</keyword>
       <keyword>next</keyword>
       <keyword>not</keyword>
       <keyword>or</keyword>
-      <keyword>private</keyword>
-      <keyword>protected</keyword>
-      <keyword>public</keyword>
       <keyword>redo</keyword>
       <keyword>rescue</keyword>
       <keyword>retry</keyword>
       <keyword>return</keyword>
+      <keyword>self</keyword>
+      <keyword>super</keyword>
       <keyword>then</keyword>
-      <keyword>throw</keyword>
+      <keyword>undef</keyword>
       <keyword>unless</keyword>
       <keyword>until</keyword>
       <keyword>when</keyword>
@@ -142,206 +207,116 @@
       <keyword>yield</keyword>
     </context>
 
-    <context id="builtins" style-ref="builtin">
-      <keyword>ARGF</keyword>
-      <keyword>ARGV</keyword>
-      <keyword>Abbrev</keyword>
-      <keyword>ArgumentError</keyword>
-      <keyword>Array</keyword>
-      <keyword>Base64</keyword>
-      <keyword>Benchmark::Tms</keyword>
-      <keyword>Benchmark</keyword>
-      <keyword>Bignum</keyword>
-      <keyword>Binding</keyword>
-      <keyword>CGI::Cookie</keyword>
-      <keyword>CGI::HtmlExtension</keyword>
-      <keyword>CGI::QueryExtension</keyword>
-      <keyword>CGI::Session::FileStore</keyword>
-      <keyword>CGI::Session::MemoryStore</keyword>
-      <keyword>CGI::Session</keyword>
-      <keyword>CGI</keyword>
+    <context id="important-constants" style-ref="important-constant">
+      <keyword>Object</keyword>
+      <keyword>Module</keyword>
       <keyword>Class</keyword>
-      <keyword>Comparable</keyword>
-      <keyword>Complex</keyword>
-      <keyword>ConditionVariable</keyword>
-      <keyword>Continuation</keyword>
-      <keyword>DATA</keyword>
+      <keyword>Kernel</keyword>
+      <keyword>NilClass</keyword>
+      <keyword>NIL</keyword>
       <keyword>Data</keyword>
-      <keyword>Date</keyword>
-      <keyword>DateTime</keyword>
-      <keyword>Delegator</keyword>
-      <keyword>Dir</keyword>
-      <keyword>ENV</keyword>
-      <keyword>EOFError</keyword>
-      <keyword>ERB::Util</keyword>
-      <keyword>ERB</keyword>
-      <keyword>Enumerable::Enumerator</keyword>
-      <keyword>Enumerable</keyword>
-      <keyword>Errno</keyword>
-      <keyword>Exception</keyword>
+      <keyword>TrueClass</keyword>
+      <keyword>TRUE</keyword>
       <keyword>FalseClass</keyword>
-      <keyword>File::Constants</keyword>
-      <keyword>File::Stat</keyword>
-      <keyword>File</keyword>
-      <keyword>FileTest</keyword>
-      <keyword>FileUtils::DryRun</keyword>
-      <keyword>FileUtils::NoWrite</keyword>
-      <keyword>FileUtils::StreamUtils</keyword>
-      <keyword>FileUtils::Verbose</keyword>
-      <keyword>FileUtils</keyword>
-      <keyword>Find</keyword>
+      <keyword>FALSE</keyword>
+      <keyword>Encoding</keyword>
+      <keyword>Comparable</keyword>
+      <keyword>Enumerable</keyword>
+      <keyword>String</keyword>
+      <keyword>Symbol</keyword>
+      <keyword>Exception</keyword>
+      <keyword>SystemExit</keyword>
+      <keyword>SignalException</keyword>
+      <keyword>Interrupt</keyword>
+      <keyword>StandardError</keyword>
+      <keyword>TypeError</keyword>
+      <keyword>ArgumentError</keyword>
+      <keyword>IndexError</keyword>
+      <keyword>KeyError</keyword>
+      <keyword>RangeError</keyword>
+      <keyword>ScriptError</keyword>
+      <keyword>SyntaxError</keyword>
+      <keyword>LoadError</keyword>
+      <keyword>NotImplementedError</keyword>
+      <keyword>NameError</keyword>
+      <keyword>NoMethodError</keyword>
+      <keyword>RuntimeError</keyword>
+      <keyword>SecurityError</keyword>
+      <keyword>NoMemoryError</keyword>
+      <keyword>EncodingError</keyword>
+      <keyword>SystemCallError</keyword>
+      <keyword>Errno</keyword>
+      <keyword>ZeroDivisionError</keyword>
+      <keyword>FloatDomainError</keyword>
+      <keyword>Numeric</keyword>
+      <keyword>Integer</keyword>
       <keyword>Fixnum</keyword>
       <keyword>Float</keyword>
-      <keyword>FloatDomainError</keyword>
-      <keyword>Forwardable</keyword>
-      <keyword>GC</keyword>
-      <keyword>Generator</keyword>
+      <keyword>Bignum</keyword>
+      <keyword>Array</keyword>
       <keyword>Hash</keyword>
-      <keyword>IO</keyword>
-      <keyword>IOError</keyword>
-      <keyword>Iconv::BrokenLibrary</keyword>
-      <keyword>Iconv::Failure</keyword>
-      <keyword>Iconv::IllegalSequence</keyword>
-      <keyword>Iconv::InvalidCharacter</keyword>
-      <keyword>Iconv::InvalidEncoding</keyword>
-      <keyword>Iconv::OutOfRange</keyword>
-      <keyword>Iconv</keyword>
-      <keyword>IndexError</keyword>
-      <keyword>Integer</keyword>
-      <keyword>Interrupt</keyword>
-      <keyword>Kernel</keyword>
-      <keyword>LoadError</keyword>
-      <keyword>LocalJumpError</keyword>
-      <keyword>Logger::Application</keyword>
-      <keyword>Logger::Error</keyword>
-      <keyword>Logger::Formatter</keyword>
-      <keyword>Logger::LogDevice::LogDeviceMutex</keyword>
-      <keyword>Logger::LogDevice</keyword>
-      <keyword>Logger::Severity</keyword>
-      <keyword>Logger::ShiftingError</keyword>
-      <keyword>Logger</keyword>
-      <keyword>Marshal</keyword>
-      <keyword>MatchData</keyword>
-      <keyword>Math</keyword>
-      <keyword>Matrix</keyword>
-      <keyword>Method</keyword>
-      <keyword>Module</keyword>
-      <keyword>Mutex</keyword>
-      <keyword>NameError::message</keyword>
-      <keyword>NameError</keyword>
-      <keyword>NilClass</keyword>
-      <keyword>NoMemoryError</keyword>
-      <keyword>NoMethodError</keyword>
-      <keyword>NotImplementedError</keyword>
-      <keyword>Numeric</keyword>
-      <keyword>Object</keyword>
-      <keyword>ObjectSpace</keyword>
-      <keyword>Observable</keyword>
-      <keyword>PStore::Error</keyword>
-      <keyword>PStore</keyword>
-      <keyword>Pathname</keyword>
-      <keyword>Precision</keyword>
-      <keyword>Proc</keyword>
-      <keyword>Process::GID</keyword>
-      <keyword>Process::Status</keyword>
-      <keyword>Process::Sys</keyword>
-      <keyword>Process::UID</keyword>
-      <keyword>Process</keyword>
-      <keyword>Queue</keyword>
-      <keyword>RUBY_PLATFORM</keyword>
-      <keyword>RUBY_RELEASE_DATE</keyword>
-      <keyword>RUBY_VERSION</keyword>
-      <keyword>Range</keyword>
-      <keyword>RangeError</keyword>
-      <keyword>Rational</keyword>
-      <keyword>Regexp</keyword>
+      <keyword>ENV</keyword>
+      <keyword>Struct</keyword>
       <keyword>RegexpError</keyword>
-      <keyword>RuntimeError</keyword>
-      <keyword>STDERR</keyword>
+      <keyword>Regexp</keyword>
+      <keyword>MatchData</keyword>
+      <keyword>Marshal</keyword>
+      <keyword>Range</keyword>
+      <keyword>IOError</keyword>
+      <keyword>EOFError</keyword>
+      <keyword>IO</keyword>
       <keyword>STDIN</keyword>
       <keyword>STDOUT</keyword>
-      <keyword>ScriptError</keyword>
-      <keyword>SecurityError</keyword>
-      <keyword>Set</keyword>
-      <keyword>Shellwords</keyword>
-      <keyword>Signal</keyword>
-      <keyword>SignalException</keyword>
-      <keyword>SimpleDelegator</keyword>
-      <keyword>SingleForwardable</keyword>
-      <keyword>Singleton</keyword>
-      <keyword>SingletonClassMethods</keyword>
-      <keyword>SizedQueue</keyword>
-      <keyword>SortedSet</keyword>
-      <keyword>StandardError</keyword>
-      <keyword>String</keyword>
-      <keyword>StringIO</keyword>
-      <keyword>StringScanner::Error</keyword>
-      <keyword>StringScanner</keyword>
-      <keyword>Struct::Tms</keyword>
-      <keyword>Struct</keyword>
-      <keyword>Symbol</keyword>
-      <keyword>SyncEnumerator</keyword>
-      <keyword>SyntaxError</keyword>
-      <keyword>SystemCallError</keyword>
-      <keyword>SystemExit</keyword>
-      <keyword>SystemStackError</keyword>
-      <keyword>Tempfile</keyword>
-      <keyword>Test::Unit</keyword>
-      <keyword>Test</keyword>
-      <keyword>Thread</keyword>
-      <keyword>ThreadError</keyword>
-      <keyword>ThreadGroup</keyword>
-      <keyword>ThreadsWait</keyword>
+      <keyword>STDERR</keyword>
+      <keyword>ARGF</keyword>
+      <keyword>FileTest</keyword>
+      <keyword>File</keyword>
+      <keyword>Dir</keyword>
       <keyword>Time</keyword>
-      <keyword>Timeout::Error</keyword>
-      <keyword>Timeout</keyword>
-      <keyword>TrueClass</keyword>
-      <keyword>TypeError</keyword>
-      <keyword>URI::BadURIError</keyword>
-      <keyword>URI::Error</keyword>
-      <keyword>URI::Escape</keyword>
-      <keyword>URI::FTP</keyword>
-      <keyword>URI::Generic</keyword>
-      <keyword>URI::HTTP</keyword>
-      <keyword>URI::HTTPS</keyword>
-      <keyword>URI::InvalidComponentError</keyword>
-      <keyword>URI::InvalidURIError</keyword>
-      <keyword>URI::LDAP</keyword>
-      <keyword>URI::MailTo</keyword>
-      <keyword>URI::REGEXP::PATTERN</keyword>
-      <keyword>URI::REGEXP</keyword>
-      <keyword>URI</keyword>
+      <keyword>Random</keyword>
+      <keyword>Signal</keyword>
+      <keyword>Process</keyword>
+      <keyword>Proc</keyword>
+      <keyword>LocalJumpError</keyword>
+      <keyword>SystemStackError</keyword>
+      <keyword>Method</keyword>
       <keyword>UnboundMethod</keyword>
-      <keyword>Vector</keyword>
-      <keyword>YAML</keyword>
-      <keyword>ZeroDivisionError</keyword>
-      <keyword>Zlib::BufError</keyword>
-      <keyword>Zlib::DataError</keyword>
-      <keyword>Zlib::Deflate</keyword>
-      <keyword>Zlib::Error</keyword>
-      <keyword>Zlib::GzipFile::CRCError</keyword>
-      <keyword>Zlib::GzipFile::Error</keyword>
-      <keyword>Zlib::GzipFile::LengthError</keyword>
-      <keyword>Zlib::GzipFile::NoFooter</keyword>
-      <keyword>Zlib::GzipFile</keyword>
-      <keyword>Zlib::GzipReader</keyword>
-      <keyword>Zlib::GzipWriter</keyword>
-      <keyword>Zlib::Inflate</keyword>
-      <keyword>Zlib::MemError</keyword>
-      <keyword>Zlib::NeedDict</keyword>
-      <keyword>Zlib::StreamEnd</keyword>
-      <keyword>Zlib::StreamError</keyword>
-      <keyword>Zlib::VersionError</keyword>
-      <keyword>Zlib::ZStream</keyword>
-      <keyword>Zlib</keyword>
-      <keyword>fatal</keyword>
-    </context>
-
-    <context id="special-variables" style-ref="special-variable">
-      <keyword>self</keyword>
-      <keyword>super</keyword>
-      <keyword>__FILE__</keyword>
-      <keyword>__LINE__</keyword>
+      <keyword>Binding</keyword>
+      <keyword>Math</keyword>
+      <keyword>GC</keyword>
+      <keyword>ObjectSpace</keyword>
+      <keyword>Enumerator</keyword>
+      <keyword>StopIteration</keyword>
+      <keyword>RubyVM</keyword>
+      <keyword>Thread</keyword>
+      <keyword>TOPLEVEL_BINDING</keyword>
+      <keyword>ThreadGroup</keyword>
+      <keyword>Mutex</keyword>
+      <keyword>ThreadError</keyword>
+      <keyword>Fiber</keyword>
+      <keyword>FiberError</keyword>
+      <keyword>Rational</keyword>
+      <keyword>Complex</keyword>
+      <keyword>RUBY_VERSION</keyword>
+      <keyword>RUBY_RELEASE_DATE</keyword>
+      <keyword>RUBY_PLATFORM</keyword>
+      <keyword>RUBY_PATCHLEVEL</keyword>
+      <keyword>RUBY_REVISION</keyword>
+      <keyword>RUBY_DESCRIPTION</keyword>
+      <keyword>RUBY_COPYRIGHT</keyword>
+      <keyword>RUBY_ENGINE</keyword>
+      <keyword>ARGV</keyword>
+      <keyword>Gem</keyword>
+      <keyword>Exception2MessageMapper</keyword>
+      <keyword>IRB</keyword>
+      <keyword>RubyToken</keyword>
+      <keyword>RubyLex</keyword>
+      <keyword>Readline</keyword>
+      <keyword>TSort</keyword>
+      <keyword>Deprecate</keyword>
+      <keyword>RbConfig</keyword>
+      <keyword>Date</keyword>
+      <keyword>BasicObject</keyword>
     </context>
 
     <context id="predefined-variables" style-ref="predefined-variable">
@@ -426,20 +401,14 @@
         </include>
     </context>
 
-    <context id="nil-value" style-ref="nil-value">
-      <keyword>NIL</keyword>
-      <keyword>nil</keyword>
-    </context>
-
     <context id="operator" style-ref="operators">
       <match>&lt;=&gt;|(?&lt;!%)=(?!&gt;)|~|&lt;|&amp;|(?&lt;!=)&gt;|\*|/|\+|-|\||!</match>
     </context>
 
-    <context id="boolean" style-ref="boolean">
-      <keyword>FALSE</keyword>
-      <keyword>TRUE</keyword>
+    <context id="special-value" style-ref="special-value">
       <keyword>false</keyword>
       <keyword>true</keyword>
+      <keyword>nil</keyword>
     </context>
 
     <define-regex id="underscore_num">\d(_?\d)*</define-regex>
@@ -481,12 +450,11 @@
         <context ref="instance-variables"/>
         <context ref="global-variables"/>
         <context ref="keywords"/>
-        <context ref="builtins"/>
+        <context ref="important-constants"/>
         <context ref="symbols"/>
         <context ref="symbols-single-quoted"/>
         <context ref="symbols-double-quoted"/>
-        <context ref="nil-value"/>
-        <context ref="boolean"/>
+        <context ref="special-value"/>
         <context ref="constants"/>
         <context ref="double-quoted-string"/>
         <context ref="single-quoted-string"/>
@@ -987,17 +955,14 @@
         <context ref="string-array-simple4"/>
         <context ref="string-array-simple5"/>
         <context ref="backtick-quoted-string"/>
-        <context ref="attribute-definitions"/>
         <context ref="class-definition"/>
         <context ref="module-definition"/>
         <context ref="function-definition"/>
         <context ref="block-parameters"/>
-        <context ref="definitions"/>
-        <context ref="module-handlers"/>
+        <context ref="important-methods"/>
         <context ref="keywords"/>
-        <context ref="builtins"/>
+        <context ref="important-constants"/>
         <context ref="support-constants"/>
-        <context ref="special-variables"/>
         <context ref="predefined-variables"/>
         <context ref="global-variables"/>
         <context ref="class-variables"/>
@@ -1006,8 +971,7 @@
         <context ref="symbols-single-quoted"/>
         <context ref="symbols-double-quoted"/>
         <context ref="regexp-variables"/>
-        <context ref="nil-value"/>
-        <context ref="boolean"/>
+        <context ref="special-value"/>
         <context ref="constants"/>
         <context ref="float"/>
         <context ref="decimal"/>

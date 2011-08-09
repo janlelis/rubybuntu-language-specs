@@ -1,6 +1,9 @@
 Ruby/Rails/Web related gedit language definitions.
 
-TODO - add/import
+== Features
+Contains various language specs needed by Ruby developers, e.g. Gemfile.lock highlighting and .js.erb handling.
+
+== TODO - add/import
 * SASS / SCSS
 * COFFEE
 * HAML
@@ -9,3 +12,12 @@ TODO - add/import
 * CUCUMBER
 
 Meanwhile, use the ones in gmate.
+
+== erb stuff
+...
+
+== ruby
+
+Improvements/Changes (see git log for more details)
+* Simplify/refactor/update keyword and builtin detection
+* ...
