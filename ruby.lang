@@ -367,10 +367,6 @@
       <end>"</end>
     </context>
 
-    <context id="regexp-variables" style-ref="regex">
-      <match>\$[1-9][0-9]*</match>
-    </context>
-
     <context id="constants" style-ref="constant">
       <match>\b[A-Z][A-Za-z0-9_]\w*\b</match>
     </context>
@@ -980,7 +976,6 @@
         <context ref="symbols"/>
         <context ref="symbols-single-quoted"/>
         <context ref="symbols-double-quoted"/>
-        <context ref="regexp-variables"/>
         <context ref="special-values"/>
         <context ref="constants"/>
         <context ref="float"/>
