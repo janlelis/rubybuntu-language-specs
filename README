@@ -1,9 +1,34 @@
-Ruby/Rails/Web related gedit language definitions.
+= Ruby/Rails/Web related gedit language definitions.
 
 == Features
-Contains various language specs needed by Ruby developers, e.g. Gemfile.lock highlighting and .js.erb handling.
+Contains various language specs needed by Ruby/Rails/Web developers, e.g. Gemfile.lock highlighting and .js.erb handling and a different (more ruby- and gedit-like) ruby syntax highlighting.
 
-== TODO - add/import
+[...]
+
+== Setup
+[explain]
+
+== erb stuff
+[explain]
+
+== ruby
+
+Improvements/Changes
+* Use 1.9 as reference implementation
+* No Rails keywords, no extra language for Rails (Rails methods are not highlighted differently, that's a feature)
+* Better support for advanced literals (e.g. %x[], %r<>, ...)
+* Simplify/refactor/update keyword and builtin detection
+* More logical style mappings
+* ... more (see git log for more details)
+
+=== TODO - ruby
+* 1.9.2 hash syntax
+* Fix wrong heredocs (pretty often)
+* Yard highlighting
+* Add some erroneous constructs
+* Create a nice style
+
+== TODO - languages to add/import
 * SASS / SCSS
 * COFFEE
 * HAML
@@ -13,19 +38,3 @@ Contains various language specs needed by Ruby developers, e.g. Gemfile.lock hig
 
 Meanwhile, use the ones in gmate.
 
-== erb stuff
-...
-
-== ruby
-
-Improvements/Changes (see git log for more details)
-* Use 1.9 as reference implementation
-* Simplify/refactor/update keyword and builtin detection
-* Better support for advanced literals (e.g. %x[], %r<>, ...)
-* More logical style mappings
-
-=== TODO - ruby
-* 1.9.2 hash syntax
-* Fix wrong heredocs (pretty often)
-* Yard highlighting
-* Add some erroneous constructs
