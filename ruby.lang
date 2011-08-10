@@ -48,8 +48,6 @@
     <style id="special-variable"      _name="Special Variable"      map-to="def:identifier"/>
     <style id="global-variable"       _name="Global Variable"       map-to="def:identifier"/>
     <style id="class-variable"        _name="Class Variable"        map-to="def:identifier"/>
-    <style id="simple-interpolation"  _name="Simple Interpolation"  map-to="def:string"/>
-    <style id="complex-interpolation" _name="Complex Interpolation" map-to="def:string"/>
     <style id="variable"              _name="Variable"              map-to="def:identifier"/>
     <style id="here-doc"              _name="Heredoc"               map-to="def:string" />
     <style id="here-doc-bound"        _name="Heredoc Bound"         map-to="def:string"/>
@@ -442,19 +440,6 @@
       </include>
     </context>
 
-    <!-- in double quotes and backticks
-         XXX: Removed original interpolation since it's not work properly
-         instead, exposed the complex-interpolation so it can be colored.
-    -->
-    <context id="simple-interpolation" style-ref="simple-interpolation">
-      <start>#(?=[@$])</start> <!-- need assertion to not highlight single # -->
-      <end></end>
-      <!--include>
-        <context ref="class-variables"/>
-        <context ref="instance-variables"/>
-        <context ref="global-variables"/>
-      </include-->
-    </context>
 
     <!-- in double quotes and backticks
          FIXME: really would like for the syntax highlight to go back
@@ -462,7 +447,7 @@
          XXX: Removed original interpolation since it's not work properly
          instead, exposed the complex-interpolation so it can be colored.
     -->
-    <context id="complex-interpolation" style-ref="complex-interpolation">
+    <context id="interpolation">
       <start>#{</start>
       <end>}</end>
       <include>
@@ -479,8 +464,7 @@
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
       </include>
     </context>
 
@@ -505,8 +489,7 @@
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
       </include>
     </context>
 
@@ -517,8 +500,7 @@
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
       </include>
     </context>
 
@@ -529,8 +511,7 @@
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
       </include>
     </context>
 
@@ -541,8 +522,7 @@
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
       </include>
     </context>
 
@@ -556,8 +536,7 @@
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
       </include>
     </context>
 
@@ -625,8 +604,7 @@
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
       </include>
     </context>
 
@@ -637,8 +615,7 @@
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
       </include>
     </context>
 
@@ -649,8 +626,7 @@
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
       </include>
     </context>
 
@@ -661,8 +637,7 @@
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
       </include>
     </context>
 
@@ -675,8 +650,7 @@
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
       </include>
     </context>
 
@@ -743,8 +717,7 @@
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
       </include>
     </context>
 
@@ -754,8 +727,7 @@
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
       </include>
     </context>
 
@@ -765,8 +737,7 @@
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
       </include>
     </context>
 
@@ -787,8 +758,7 @@
         <context sub-pattern="0" where="end" style-ref="here-doc-bound"/>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
       </include>
     </context>
     
@@ -800,8 +770,7 @@
         <context sub-pattern="0" where="end" style-ref="here-doc-bound"/>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
       </include>
     </context>
     
@@ -822,8 +791,7 @@
         <context sub-pattern="0" where="end" style-ref="here-doc-bound"/>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
       </include>
     </context>
     
@@ -835,8 +803,7 @@
         <context sub-pattern="0" where="end" style-ref="here-doc-bound"/>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
       </include>
     </context>
     
@@ -853,8 +820,7 @@
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
         <context ref="regex-bracketed"/>
        </include>
      </context>
@@ -865,8 +831,7 @@
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
         <context ref="regex-bracketed"/>
        </include>
      </context>
@@ -886,8 +851,7 @@
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
-        <context ref="complex-interpolation"/>
-        <context ref="simple-interpolation"/>
+        <context ref="interpolation"/>
         <context ref="regex-bracketed"/>
       </include>
     </context>
@@ -951,8 +915,7 @@
         <context ref="regex-alt-form"/>
         <context ref="regex-alt-form2"/>
         <context ref="regex-simple"/>
-        <context ref="simple-interpolation"/>
-        <context ref="complex-interpolation"/>
+        <context ref="interpolation"/>
         <context ref="operator"/>
       </include>
     </context>
