@@ -35,34 +35,33 @@
 
     <style id="comment"               _name="Comment"               map-to="def:comment"/>
 
-    <style id="important-method"      _name="Important methods"     map-to="def:preprocessor"/>
+    <style id="important-method"      _name="Important methods"     map-to="def:builtin"/>
     <style id="keyword"               _name="Keyword"               map-to="def:keyword"/>
+    <style id="special-value"         _name="nil, false, true"      map-to="def:boolean"/>
 
-    <style id="special-value"         _name="nil, false, true"      map-to="def:special-constant"/>
     <style id="floating-point"        _name="Floating point number" map-to="def:floating-point"/>
     <style id="decimal"               _name="Decimal number"        map-to="def:decimal"/>
     <style id="base-n-integer"        _name="Base-N number"         map-to="def:base-n-integer"/>
-    <style id="character"             _name="Character in question mark notation"   map-to="def:character"/>
 
     <style id="string"                _name="String"                map-to="def:string"/>
+    <style id="character"             _name="Character in question mark notation"   map-to="def:character"/>
     <style id="symbol"                _name="Symbol"                map-to="def:string"/>
     <style id="regex"                 _name="Regular Expression"    map-to="def:string"/>
     <style id="here-doc"              _name="Heredoc"               map-to="def:string"/>
     <style id="here-doc-bound"        _name="Heredoc Bound"         map-to="def:string"/>
 
-    <style id="important-constant"    _name="Important constant"    map-to="def:builtin"/>
-    <style id="constant"              _name="Constant"              map-to="def:type"/>
+    <style id="important-constant"    _name="Important constant"    map-to="def:special-constant"/>
+    <style id="constant"              _name="Constant"              map-to="def:constant"/>
 
     <style id="instance-variable"     _name="Instance Variable"     map-to="def:identifier"/>
     <style id="special-variable"      _name="Special Variable"      map-to="def:identifier"/>
     <style id="global-variable"       _name="Global Variable"       map-to="def:identifier"/>
     <style id="class-variable"        _name="Class Variable"        map-to="def:identifier"/>
+    <style id="block-parameter"       _name="Parameters in blocks"  map-to="def:identifier"/>
 
-    <style id="operators"             _name="Operators"             map-to="def:keyword"/>
+    <style id="operator"              _name="Operators"             map-to="def:operator"/>
 
     <style id="function-definition"   _name="Function Definition"   map-to="def:function"/>
-
-    <style id="block-parameter"       _name="Parameters in blocks"  map-to="def:identifier"/>
   </styles>
 
   <definitions>
@@ -366,7 +365,7 @@
       </include>
     </context>
 
-    <context id="operator" style-ref="operators">
+    <context id="operators" style-ref="operator">
       <match>&lt;=&gt;|(?&lt;!%)=(?!&gt;)|~|&lt;|&amp;|(?&lt;!=)&gt;|\*|/|\+|-|\||!</match>
     </context>
 
@@ -1033,7 +1032,7 @@
         <context ref="octal"/>
         <context ref="binary"/>
 
-        <context ref="operator"/>
+        <context ref="operators"/>
       </include>
     </context>
  </definitions>
