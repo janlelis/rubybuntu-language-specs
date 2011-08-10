@@ -343,22 +343,6 @@
       <match>@[a-zA-Z_][a-zA-Z0-9_]*</match>
     </context>
 
-    <context id="symbols" style-ref="symbol">
-      <match>(?&lt;!:):[a-zA-Z0-9_]+(!|\?)?</match>
-    </context>
-
-
-    <context id="symbols-single-quoted" style-ref="symbol">
-      <start>:'</start>
-      <end>'</end>
-    </context>
-
-
-    <context id="symbols-double-quoted" style-ref="symbol">
-      <start>:"</start>
-      <end>"</end>
-    </context>
-
     <context id="constants" style-ref="constant">
       <match>\b[A-Z][A-Za-z0-9_]*\b</match>
     </context>
@@ -453,6 +437,32 @@
       </include>
     </context>
 
+
+    <context id="symbols" style-ref="symbol">
+      <match>(?&lt;!:):[a-zA-Z0-9_]+(!|\?)?</match>
+    </context>
+
+    <context id="symbols-single-quoted" style-ref="symbol">
+      <start>:'</start>
+      <end>'</end>
+      <include>
+        <context style-ref="escape">
+          <match>\\['\\]</match>
+        </context>
+      </include>
+    </context>
+
+    <context id="symbols-double-quoted" style-ref="symbol">
+      <start>:"</start>
+      <end>"</end>
+      <include>
+        <context ref="escape"/>
+        <context ref="def:line-continue"/>
+        <context ref="interpolation"/>
+      </include>
+    </context>
+
+
     <!-- ruby strings do not end at line end,
          so we cannot use def:string
          (parts lifted from perl.lang) -->
@@ -476,11 +486,8 @@
       </include>
     </context>
 
-    <!-- The following 4 contexts should be easyer. if we have a way to match
-         the closing bracket directly we could predict the closing by openning
-         and put all in one context. If someone have knownledge about this
-         please contribute.
-         %Q{Hello world} %{Hello world} -->
+
+    <!--  %Q{Hello world} %{Hello world} -->
     <context id="double-quoted-string-curly" style-ref="string">
       <start>%Q?\{</start>
       <end>\}</end>
@@ -952,6 +959,10 @@
         <context ref="here-doc-double-quoted-indented-string"/>
         <context ref="here-doc-backtick-quoted-indented-string"/>
 
+        <context ref="symbols"/>
+        <context ref="symbols-single-quoted"/>
+        <context ref="symbols-double-quoted"/>
+
         <context ref="double-quoted-string"/>
         <context ref="double-quoted-string-curly"/>
         <context ref="double-quoted-string-normal"/>
@@ -992,24 +1003,27 @@
 
         <context ref="function-definition"/>
         <context ref="block-parameters"/>
+
         <context ref="important-methods"/>
         <context ref="keywords"/>
         <context ref="special-values"/>
+
         <context ref="important-constants"/>
+        <context ref="constants"/>
+
         <context ref="special-variables"/>
         <context ref="global-variables"/>
+
         <context ref="class-variables"/>
         <context ref="instance-variables"/>
-        <context ref="symbols"/>
-        <context ref="symbols-single-quoted"/>
-        <context ref="symbols-double-quoted"/>
-        <context ref="constants"/>
+
         <context ref="float"/>
         <context ref="decimal"/>
         <context ref="hex"/>
         <context ref="octal"/>
         <context ref="binary"/>
         <context ref="numeric-literal"/>
+
         <context ref="operator"/>
       </include>
     </context>
