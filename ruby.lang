@@ -435,7 +435,7 @@
         <context ref="octal"/>
         <context ref="binary"/>
         <context ref="numeric-literal"/>
-        <context ref="regex-simple"/>
+        <context ref="regex"/>
         <!-- context ref="operator"/ -->
       </include>
     </context>
@@ -444,8 +444,6 @@
     <!-- in double quotes and backticks
          FIXME: really would like for the syntax highlight to go back
          to none here, as any ruby code could go here
-         XXX: Removed original interpolation since it's not work properly
-         instead, exposed the complex-interpolation so it can be colored.
     -->
     <context id="interpolation">
       <start>#{</start>
@@ -483,9 +481,9 @@
          and put all in one context. If someone have knownledge about this
          please contribute.
          %Q{Hello world} %{Hello world} -->
-    <context id="query-string1" style-ref="string">
-      <start>%Q?{</start>
-      <end>}</end>
+    <context id="double-quoted-string-curly" style-ref="string">
+      <start>%Q?\{</start>
+      <end>\}</end>
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
@@ -494,7 +492,7 @@
     </context>
 
     <!-- %Q(Hello world) %(Hello world) -->
-    <context id="query-string2" style-ref="string">
+    <context id="double-quoted-string-normal" style-ref="string">
       <start>%Q?\(</start>
       <end>\)</end>
       <include>
@@ -505,7 +503,7 @@
     </context>
 
     <!-- %Q[Hello world] %[Hello world] -->
-    <context id="query-string3" style-ref="string">
+    <context id="double-quoted-string-square" style-ref="string">
       <start>%Q?\[</start>
       <end>\]</end>
       <include>
@@ -516,7 +514,7 @@
     </context>
 
     <!-- %Q<Hello world> %<Hello world> -->
-    <context id="query-string4" style-ref="string">
+    <context id="double-quoted-string-angle" style-ref="string">
       <start>%Q?&lt;</start>
       <end>&gt;</end>
       <include>
@@ -530,8 +528,8 @@
          %>some text> is still valid, but is not included to avoid conflicts
          when using with erb tags inside rhtml documents.
     -->
-    <context id="query-string5" style-ref="string">
-      <start>%Q([^[:alpha:]&gt;])</start>
+    <context id="double-quoted-string-generic" style-ref="string">
+      <start>%Q?([^[:alpha:]&gt;])</start>
       <end>\%{1@start}</end>
       <include>
         <context ref="escape"/>
@@ -542,9 +540,9 @@
 
     <!-- Basicly same as above but with no support for interpolations
          %q{Hello world} -->
-    <context id="query-string-simple1" style-ref="string">
-      <start>%q{</start>
-      <end>}</end>
+    <context id="single-quoted-string-curly" style-ref="string">
+      <start>%q\{</start>
+      <end>\}</end>
       <include>
         <context style-ref="escape">
           <match>\\['\\]</match>
@@ -553,7 +551,7 @@
     </context>
 
     <!-- %q(Hello world) -->
-    <context id="query-string-simple2" style-ref="string">
+    <context id="single-quoted-string-normal" style-ref="string">
       <start>%q\(</start>
       <end>\)</end>
       <include>
@@ -564,7 +562,7 @@
     </context>
 
     <!-- %q[Hello world] -->
-    <context id="query-string-simple3" style-ref="string">
+    <context id="single-quoted-string-square" style-ref="string">
       <start>%q\[</start>
       <end>\]</end>
       <include>
@@ -575,7 +573,7 @@
     </context>
 
     <!-- %q<Hello world> -->
-    <context id="query-string-simple4" style-ref="string">
+    <context id="single-quoted-string-angle" style-ref="string">
       <start>%q&lt;</start>
       <end>&gt;</end>
       <include>
@@ -586,7 +584,7 @@
     </context>
 
     <!-- %q-Hello world- %q+Hello world+ %q*Hello world* and so on... -->
-    <context id="query-string-simple5" style-ref="string">
+    <context id="single-quoted-string-generic" style-ref="string">
       <start>%q([^[:alpha:]&gt;])</start>
       <end>\%{1@start}</end>
       <include>
@@ -598,9 +596,9 @@
 
     <!-- Arrays of strings
          %W{Array of #{interpolated} strings} -->
-    <context id="string-array1" style-ref="string">
-      <start>%W{</start>
-      <end>}</end>
+    <context id="double-quoted-word-array-curly" style-ref="string">
+      <start>%W\{</start>
+      <end>\}</end>
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
@@ -609,7 +607,7 @@
     </context>
 
     <!-- %W(Array of #{interpolated} strings) -->
-    <context id="string-array2" style-ref="string">
+    <context id="double-quoted-word-array-normal" style-ref="string">
       <start>%W\(</start>
       <end>\)</end>
       <include>
@@ -620,7 +618,7 @@
     </context>
 
     <!-- %W[Array of #{interpolated} strings] -->
-    <context id="string-array3" style-ref="string">
+    <context id="double-quoted-word-array-square" style-ref="string">
       <start>%W\[</start>
       <end>\]</end>
       <include>
@@ -631,7 +629,7 @@
     </context>
 
     <!-- %W<Array of #{interpolated} strings> -->
-    <context id="string-array4" style-ref="string">
+    <context id="double-quoted-word-array-angle" style-ref="string">
       <start>%W&lt;</start>
       <end>&gt;</end>
       <include>
@@ -644,7 +642,7 @@
     <!-- %W-Array of #{interpolated} strings-
          %W+Array of #{interpolated} strings+
          y%W*Array of #{interpolated} strings* and so on... -->
-    <context id="string-array5" style-ref="string">
+    <context id="double-quoted-word-array-generic" style-ref="string">
       <start>%W([^[:alpha:]\s])</start>
       <end>\%{1@start}</end>
       <include>
@@ -656,9 +654,9 @@
 
     <!-- Basicly same as above but with no support for interpolations -->
     <!-- %w{Array of strings} -->
-    <context id="string-array-simple1" style-ref="string">
-      <start>%w{</start>
-      <end>}</end>
+    <context id="single-quoted-word-array-curly" style-ref="string">
+      <start>%w\{</start>
+      <end>\}</end>
       <include>
         <context style-ref="escape">
           <match>\\['\\]</match>
@@ -667,7 +665,7 @@
     </context>
 
     <!-- %w(Array of strings) -->
-    <context id="string-array-simple2" style-ref="string">
+    <context id="single-quoted-word-array-normal" style-ref="string">
       <start>%w\(</start>
       <end>\)</end>
       <include>
@@ -678,7 +676,7 @@
     </context>
 
     <!-- %w[Array of strings] -->
-    <context id="string-array-simple3" style-ref="string">
+    <context id="single-quoted-word-array-square" style-ref="string">
       <start>%w\[</start>
       <end>\]</end>
       <include>
@@ -689,7 +687,7 @@
     </context>
 
     <!-- %w<Array of strings> -->
-    <context id="string-array-simple4" style-ref="string">
+    <context id="single-quoted-word-array-angle" style-ref="string">
       <start>%w&lt;</start>
       <end>&gt;</end>
       <include>
@@ -700,7 +698,7 @@
     </context>
 
     <!-- %w-Array of strings- %w+Array of strings+ %w*Array of strings* and so on... -->
-    <context id="string-array-simple5" style-ref="string">
+    <context id="single-quoted-word-array-generic" style-ref="string">
       <start>%w([^[:alpha:]\s])</start>
       <end>\%{1@start}</end>
       <include>
@@ -714,6 +712,56 @@
     <context id="backtick-quoted-string" style-ref="string">
       <start>`</start>
       <end>`</end>
+      <include>
+        <context ref="escape"/>
+        <context ref="def:line-continue"/>
+        <context ref="interpolation"/>
+      </include>
+    </context>
+
+    <context id="backtick-quoted-string-curly" style-ref="string">
+      <start>%x\{</start>
+      <end>\}</end>
+      <include>
+        <context ref="escape"/>
+        <context ref="def:line-continue"/>
+        <context ref="interpolation"/>
+      </include>
+    </context>
+
+    <context id="backtick-quoted-string-normal" style-ref="string">
+      <start>%x\(</start>
+      <end>\)</end>
+      <include>
+        <context ref="escape"/>
+        <context ref="def:line-continue"/>
+        <context ref="interpolation"/>
+      </include>
+    </context>
+
+    <context id="backtick-quoted-string-square" style-ref="string">
+      <start>%x\[</start>
+      <end>\]</end>
+      <include>
+        <context ref="escape"/>
+        <context ref="def:line-continue"/>
+        <context ref="interpolation"/>
+      </include>
+    </context>
+
+    <context id="backtick-quoted-string-angle" style-ref="string">
+      <start>%x&lt;</start>
+      <end>&gt;</end>
+      <include>
+        <context ref="escape"/>
+        <context ref="def:line-continue"/>
+        <context ref="interpolation"/>
+      </include>
+    </context>
+
+    <context id="backtick-quoted-string-generic" style-ref="string">
+      <start>%x([^[:alpha:]\s])</start>
+      <end>\%{1@start}</end>
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
@@ -814,9 +862,53 @@
       <end>(?&lt;!\\)]</end>
     </context>
 
-    <context id="regex-alt-form" style-ref="regex">
-      <start>\%r\|</start>
-      <end>\|\%{regex-opts}</end>
+    <context id="regex-curly" style-ref="regex">
+      <start>%r\{</start>
+      <end>\}%{regex-opts}</end>
+      <include>
+        <context ref="escape"/>
+        <context ref="def:line-continue"/>
+        <context ref="interpolation"/>
+        <context ref="regex-bracketed"/>
+      </include>
+    </context>
+
+    <context id="regex-normal" style-ref="regex">
+      <start>%r\(</start>
+      <end>\)%{regex-opts}</end>
+      <include>
+        <context ref="escape"/>
+        <context ref="def:line-continue"/>
+        <context ref="interpolation"/>
+        <context ref="regex-bracketed"/>
+      </include>
+    </context>
+
+    <context id="regex-square" style-ref="regex">
+      <start>%r\[</start>
+      <end>\]%{regex-opts}</end>
+      <include>
+        <context ref="escape"/>
+        <context ref="def:line-continue"/>
+        <context ref="interpolation"/>
+        <context ref="regex-bracketed"/>
+      </include>
+    </context>
+
+    <context id="regex-angle" style-ref="regex">
+      <start>%r&lt;</start>
+      <end>&gt;\%{regex-opts}</end>
+      <include>
+        <context ref="escape"/>
+        <context ref="def:line-continue"/>
+        <context ref="interpolation"/>
+        <context ref="regex-bracketed"/>
+      </include>
+    </context>
+
+    <context id="regex-generic" style-ref="regex">
+      <start>%r([^[:alpha:]\s])</start>
+      <end>\%{1@start}\%{regex-opts}</end>
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
@@ -825,18 +917,7 @@
        </include>
      </context>
 
-    <context id="regex-alt-form2" style-ref="regex">
-      <start>\%r\{</start>
-      <end>\}\%{regex-opts}</end>
-      <include>
-        <context ref="escape"/>
-        <context ref="def:line-continue"/>
-        <context ref="interpolation"/>
-        <context ref="regex-bracketed"/>
-       </include>
-     </context>
-
-    <context id="regex-simple" style-ref="regex">
+    <context id="regex" style-ref="regex">
       <start extended="true">
         ((?&lt;=([(]|\s))|^)
         \/
@@ -861,6 +942,7 @@
         <context ref="def:shebang"/>
         <context ref="def:shell-like-comment"/>
         <context ref="multiline-comment"/>
+
         <context ref="here-doc-string"/>
         <context ref="here-doc-single-quoted-string"/>
         <context ref="here-doc-double-quoted-string"/>
@@ -869,29 +951,45 @@
         <context ref="here-doc-single-quoted-indented-string"/>
         <context ref="here-doc-double-quoted-indented-string"/>
         <context ref="here-doc-backtick-quoted-indented-string"/>
+
         <context ref="double-quoted-string"/>
+        <context ref="double-quoted-string-curly"/>
+        <context ref="double-quoted-string-normal"/>
+        <context ref="double-quoted-string-square"/>
+        <context ref="double-quoted-string-angle"/>
+        <context ref="double-quoted-string-generic"/>
         <context ref="single-quoted-string"/>
-        <context ref="query-string1"/>
-        <context ref="query-string2"/>
-        <context ref="query-string3"/>
-        <context ref="query-string4"/>
-        <context ref="query-string5"/>
-        <context ref="query-string-simple1"/>
-        <context ref="query-string-simple2"/>
-        <context ref="query-string-simple3"/>
-        <context ref="query-string-simple4"/>
-        <context ref="query-string-simple5"/>
-        <context ref="string-array1"/>
-        <context ref="string-array2"/>
-        <context ref="string-array3"/>
-        <context ref="string-array4"/>
-        <context ref="string-array5"/>
-        <context ref="string-array-simple1"/>
-        <context ref="string-array-simple2"/>
-        <context ref="string-array-simple3"/>
-        <context ref="string-array-simple4"/>
-        <context ref="string-array-simple5"/>
+        <context ref="single-quoted-string-curly"/>
+        <context ref="single-quoted-string-normal"/>
+        <context ref="single-quoted-string-square"/>
+        <context ref="single-quoted-string-angle"/>
+        <context ref="single-quoted-string-generic"/>
+
+        <context ref="double-quoted-word-array-curly"/>
+        <context ref="double-quoted-word-array-normal"/>
+        <context ref="double-quoted-word-array-square"/>
+        <context ref="double-quoted-word-array-angle"/>
+        <context ref="double-quoted-word-array-generic"/>
+        <context ref="single-quoted-word-array-curly"/>
+        <context ref="single-quoted-word-array-normal"/>
+        <context ref="single-quoted-word-array-square"/>
+        <context ref="single-quoted-word-array-angle"/>
+        <context ref="single-quoted-word-array-generic"/>
+
+        <context ref="regex"/>
+        <context ref="regex-curly"/>
+        <context ref="regex-normal"/>
+        <context ref="regex-square"/>
+        <context ref="regex-angle"/>
+        <context ref="regex-generic"/>
+
         <context ref="backtick-quoted-string"/>
+        <context ref="backtick-quoted-string-curly"/>
+        <context ref="backtick-quoted-string-normal"/>
+        <context ref="backtick-quoted-string-square"/>
+        <context ref="backtick-quoted-string-angle"/>
+        <context ref="backtick-quoted-string-generic"/>
+
         <context ref="function-definition"/>
         <context ref="block-parameters"/>
         <context ref="important-methods"/>
@@ -912,10 +1010,6 @@
         <context ref="octal"/>
         <context ref="binary"/>
         <context ref="numeric-literal"/>
-        <context ref="regex-alt-form"/>
-        <context ref="regex-alt-form2"/>
-        <context ref="regex-simple"/>
-        <context ref="interpolation"/>
         <context ref="operator"/>
       </include>
     </context>
