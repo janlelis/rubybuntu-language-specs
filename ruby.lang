@@ -54,11 +54,7 @@
     <style id="here-doc"              _name="Heredoc"               map-to="def:string" />
     <style id="here-doc-bound"        _name="Heredoc Bound"         map-to="def:string"/>
     <style id="regex"                 _name="Regular Expression"    map-to="def:identifier"/>
-    <style id="class-definition"      _name="Class Definition"      map-to="def:identifier"/>
     <style id="function-definition"   _name="Function Definition"   map-to="def:function"/>
-    <style id="class-name"            _name="Ruby Class Name"       map-to="def:identifier"/>
-    <style id="class-inherit"         _name="Ruby Inherited Class"  map-to="def:identifier"/>
-    <style id="module-name"           _name="Ruby Inherited Class"  map-to="def:identifier"/>
     <style id="block-parameter"       _name="Parameters in blocks"  map-to="def:identifier"/>
   </styles>
 
@@ -367,29 +363,6 @@
 
     <context id="constants" style-ref="constant">
       <match>\b[A-Z][A-Za-z0-9_]*\b</match>
-    </context>
-
-    <context id="class-name" style-ref="class-name"><match/></context>
-    <context id="class-inherit" style-ref="class-inherit"><match/></context>
-
-    <context id="class-definition">
-        <match>^\s*(class)\s+(\b[A-Za-z_:]*\b)(\s+(&lt;)\s+(\b[A-Za-z_:]*\b))?</match>
-        <include>
-            <context sub-pattern="1" style-ref="keyword"/>
-            <context sub-pattern="2" style-ref="class-name"/>
-            <context sub-pattern="4" style-ref="operators"/>
-            <context sub-pattern="5" style-ref="class-inherit"/>
-        </include>
-    </context>
-
-    <context id="module-name" style-ref="module-name"><match/></context>
-
-    <context id="module-definition">
-        <match>^\s*(module)\s+(\b[A-Za-z_:]*\b)</match>
-        <include>
-            <context sub-pattern="1" style-ref="keyword"/>
-            <context sub-pattern="2" style-ref="module-name"/>
-        </include>
     </context>
 
     <context id="function-definition">
@@ -955,8 +928,6 @@
         <context ref="string-array-simple4"/>
         <context ref="string-array-simple5"/>
         <context ref="backtick-quoted-string"/>
-        <context ref="class-definition"/>
-        <context ref="module-definition"/>
         <context ref="function-definition"/>
         <context ref="block-parameters"/>
         <context ref="important-methods"/>
