@@ -50,7 +50,7 @@
     <style id="class-variable"        _name="Class Variable"        map-to="def:identifier"/>
     <style id="simple-interpolation"  _name="Simple Interpolation"  map-to="def:string"/>
     <style id="complex-interpolation" _name="Complex Interpolation" map-to="def:string"/>
-    <style id="predefined-variable"   _name="Predefined Variable"   map-to="def:identifier"/>
+    <style id="special-variable"      _name="Special Variable"      map-to="def:identifier"/>
     <style id="variable"              _name="Variable"              map-to="def:identifier"/>
     <style id="here-doc"              _name="Heredoc"               map-to="def:string" />
     <style id="here-doc-bound"        _name="Heredoc Bound"         map-to="def:string"/>
@@ -161,7 +161,7 @@
       <keyword>singleton_method_undefined</keyword>
       <keyword>method_missing</keyword>
       <keyword>autoload</keyword>
-      <keyword>autoload?</keyword>
+      <keyword>autoload\?</keyword>
     </context>
 
     <context id="keywords" style-ref="keyword">
@@ -319,14 +319,24 @@
       <keyword>BasicObject</keyword>
     </context>
 
-    <context id="predefined-variables" style-ref="predefined-variable">
+    <context id="special-variables" style-ref="special-variable">
       <match extended="true">
-        \$([!$&amp;"'*+,./0:;&lt;=&gt;?@\`~1-9]|
-           -[0FIKadilpvw]|
-           (deferr|defout|stderr|stdin|stdout|
-            DEBUG|FILENAME|KCODE|LOADED_FEATURES|LOAD_PATH|
-            PROGRAM_NAME|SAFE|VERBOSE)\b)
+        \$([;@!~&amp;`'+=,/\\_&gt;&lt;.*?$:"0-9]|
+           -[FK0iIvwWdpla]|
+           SAFE|
+           KCODE|
+           FILENAME|
+           LOAD_PATH|
+           LOADED_FEATURES|
+           VERBOSE|
+           DEBUG|
+           PROGRAM_NAME|
+           stdin|
+           stdout|
+           stderr|
+           binding)
       </match>
+
     </context>
 
     <context id="global-variables" style-ref="global-variable">
@@ -405,7 +415,7 @@
       <match>&lt;=&gt;|(?&lt;!%)=(?!&gt;)|~|&lt;|&amp;|(?&lt;!=)&gt;|\*|/|\+|-|\||!</match>
     </context>
 
-    <context id="special-value" style-ref="special-value">
+    <context id="special-values" style-ref="special-value">
       <keyword>false</keyword>
       <keyword>true</keyword>
       <keyword>nil</keyword>
@@ -454,7 +464,7 @@
         <context ref="symbols"/>
         <context ref="symbols-single-quoted"/>
         <context ref="symbols-double-quoted"/>
-        <context ref="special-value"/>
+        <context ref="special-values"/>
         <context ref="constants"/>
         <context ref="double-quoted-string"/>
         <context ref="single-quoted-string"/>
@@ -963,7 +973,7 @@
         <context ref="keywords"/>
         <context ref="important-constants"/>
         <context ref="support-constants"/>
-        <context ref="predefined-variables"/>
+        <context ref="special-variables"/>
         <context ref="global-variables"/>
         <context ref="class-variables"/>
         <context ref="instance-variables"/>
@@ -971,7 +981,7 @@
         <context ref="symbols-single-quoted"/>
         <context ref="symbols-double-quoted"/>
         <context ref="regexp-variables"/>
-        <context ref="special-value"/>
+        <context ref="special-values"/>
         <context ref="constants"/>
         <context ref="float"/>
         <context ref="decimal"/>
