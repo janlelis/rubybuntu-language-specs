@@ -28,6 +28,8 @@
     <property name="mimetypes">application/x-ruby;text/x-ruby</property>
     <property name="globs">*.rb;*.gemspec;*.rake;*.ru;*thor;Rakefile;Capfile;Gemfile;Thorfile;.irbrc</property>
     <property name="line-comment-start">#</property>
+    <property name="block-comment-start">=begin</property>
+    <property name="block-comment-end">=end</property>
   </metadata>
 
   <styles>
