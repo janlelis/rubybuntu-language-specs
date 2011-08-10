@@ -26,7 +26,7 @@
 <language id="ruby" _name="Ruby" version="2.0" _section="Scripts">
   <metadata>
     <property name="mimetypes">application/x-ruby;text/x-ruby</property>
-    <property name="globs">*.rb;*.gemspec;*.rake;*.ru;*thor;Rakefile;Capfile;Gemfile;Thorfile</property>
+    <property name="globs">*.rb;*.gemspec;*.rake;*.ru;*thor;Rakefile;Capfile;Gemfile;Thorfile;.irbrc</property>
     <property name="line-comment-start">#</property>
   </metadata>
 
