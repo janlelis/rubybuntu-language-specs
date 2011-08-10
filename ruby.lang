@@ -366,7 +366,7 @@
     </context>
 
     <context id="constants" style-ref="constant">
-      <match>\b[A-Z][A-Za-z0-9_]\w*\b</match>
+      <match>\b[A-Z][A-Za-z0-9_]*\b</match>
     </context>
 
     <context id="class-name" style-ref="class-name"><match/></context>
