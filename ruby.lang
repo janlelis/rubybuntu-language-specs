@@ -32,28 +32,36 @@
 
   <styles>
     <style id="escape"                _name="Escaped Character"     map-to="def:special-char"/>
+
     <style id="comment"               _name="Comment"               map-to="def:comment"/>
+
     <style id="important-method"      _name="Important methods"     map-to="def:preprocessor"/>
     <style id="keyword"               _name="Keyword"               map-to="def:keyword"/>
+
     <style id="special-value"         _name="nil, false, true"      map-to="def:special-constant"/>
     <style id="floating-point"        _name="Floating point number" map-to="def:floating-point"/>
     <style id="decimal"               _name="Decimal number"        map-to="def:decimal"/>
     <style id="base-n-integer"        _name="Base-N number"         map-to="def:base-n-integer"/>
-    <style id="numeric-literal"       _name="Numeric literal"       map-to="def:base-n-integer"/>
+    <style id="character"             _name="Character in question mark notation"   map-to="def:character"/>
+
     <style id="string"                _name="String"                map-to="def:string"/>
-    <style id="important-constant"    _name="Important constant"    map-to="def:type"/>
-    <style id="constant"              _name="Constant"              map-to="def:type"/>
     <style id="symbol"                _name="Symbol"                map-to="def:string"/>
-    <style id="operators"             _name="Operators"             map-to="def:keyword"/>
+    <style id="regex"                 _name="Regular Expression"    map-to="def:string"/>
+    <style id="here-doc"              _name="Heredoc"               map-to="def:string"/>
+    <style id="here-doc-bound"        _name="Heredoc Bound"         map-to="def:string"/>
+
+    <style id="important-constant"    _name="Important constant"    map-to="def:builtin"/>
+    <style id="constant"              _name="Constant"              map-to="def:type"/>
+
     <style id="instance-variable"     _name="Instance Variable"     map-to="def:identifier"/>
     <style id="special-variable"      _name="Special Variable"      map-to="def:identifier"/>
     <style id="global-variable"       _name="Global Variable"       map-to="def:identifier"/>
     <style id="class-variable"        _name="Class Variable"        map-to="def:identifier"/>
-    <style id="variable"              _name="Variable"              map-to="def:identifier"/>
-    <style id="here-doc"              _name="Heredoc"               map-to="def:string" />
-    <style id="here-doc-bound"        _name="Heredoc Bound"         map-to="def:string"/>
-    <style id="regex"                 _name="Regular Expression"    map-to="def:identifier"/>
+
+    <style id="operators"             _name="Operators"             map-to="def:keyword"/>
+
     <style id="function-definition"   _name="Function Definition"   map-to="def:function"/>
+
     <style id="block-parameter"       _name="Parameters in blocks"  map-to="def:identifier"/>
   </styles>
 
@@ -395,10 +403,6 @@
       <match>(?&lt;![\w\.])0[bB][01](_?[01])*(?![\w\.])</match>
     </context>
 
-    <context id="numeric-literal" style-ref="numeric-literal">
-      <match>(?&lt;![\w\.])\?((\\[MC]-){1,2}|\\?)\S</match>
-    </context>
-
     <context id="block-parameters" style-ref="block-parameter">
       <start>(?&lt;=do|\{)(\s*)?\|</start>
       <end>\|</end>
@@ -415,12 +419,12 @@
         <context ref="constants"/>
         <context ref="double-quoted-string"/>
         <context ref="single-quoted-string"/>
+        <context ref="question-mark-string"/>
         <context ref="float"/>
         <context ref="decimal"/>
         <context ref="hex"/>
         <context ref="octal"/>
         <context ref="binary"/>
-        <context ref="numeric-literal"/>
         <context ref="regex"/>
         <!-- context ref="operator"/ -->
       </include>
@@ -717,6 +721,9 @@
       </include>
     </context>
 
+    <context id="question-mark-string" style-ref="character">
+      <match>(?&lt;![\w\.])\?((\\[MC]-){1,2}|\\?)\S</match>
+    </context>
 
     <context id="backtick-quoted-string" style-ref="string">
       <start>`</start>
@@ -977,6 +984,7 @@
         <context ref="single-quoted-string-square"/>
         <context ref="single-quoted-string-angle"/>
         <context ref="single-quoted-string-generic"/>
+        <context ref="question-mark-string"/>
 
         <context ref="double-quoted-word-array-curly"/>
         <context ref="double-quoted-word-array-normal"/>
@@ -1024,7 +1032,6 @@
         <context ref="hex"/>
         <context ref="octal"/>
         <context ref="binary"/>
-        <context ref="numeric-literal"/>
 
         <context ref="operator"/>
       </include>
