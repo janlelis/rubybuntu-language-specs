@@ -32,7 +32,6 @@
   <styles>
     <style id="escape"                _name="Escaped Character"     map-to="def:special-char"/>
     <style id="comment"               _name="Comment"               map-to="def:comment"/>
-    <style id="attribute-definition"  _name="Attribute Definition"  map-to="def:statement"/>
     <style id="important-method"      _name="Important methods"     map-to="def:preprocessor"/>
     <style id="keyword"               _name="Keyword"               map-to="def:keyword"/>
     <style id="special-value"         _name="nil, false, true"      map-to="def:special-constant"/>
@@ -46,11 +45,11 @@
     <style id="symbol"                _name="Symbol"                map-to="def:string"/>
     <style id="operators"             _name="Operators"             map-to="def:keyword"/>
     <style id="instance-variable"     _name="Instance Variable"     map-to="def:identifier"/>
+    <style id="special-variable"      _name="Special Variable"      map-to="def:identifier"/>
     <style id="global-variable"       _name="Global Variable"       map-to="def:identifier"/>
     <style id="class-variable"        _name="Class Variable"        map-to="def:identifier"/>
     <style id="simple-interpolation"  _name="Simple Interpolation"  map-to="def:string"/>
     <style id="complex-interpolation" _name="Complex Interpolation" map-to="def:string"/>
-    <style id="special-variable"      _name="Special Variable"      map-to="def:identifier"/>
     <style id="variable"              _name="Variable"              map-to="def:identifier"/>
     <style id="here-doc"              _name="Heredoc"               map-to="def:string" />
     <style id="here-doc-bound"        _name="Heredoc Bound"         map-to="def:string"/>
@@ -61,7 +60,6 @@
     <style id="class-inherit"         _name="Ruby Inherited Class"  map-to="def:identifier"/>
     <style id="module-name"           _name="Ruby Inherited Class"  map-to="def:identifier"/>
     <style id="block-parameter"       _name="Parameters in blocks"  map-to="def:identifier"/>
-    <style id="support-constant"     _name="Ruby Support Constants" map-to="def:builtin"/>
   </styles>
 
   <definitions>
@@ -369,10 +367,6 @@
 
     <context id="constants" style-ref="constant">
       <match>\b[A-Z][A-Za-z0-9_]\w*\b</match>
-    </context>
-
-    <context id="support-constants" style-ref="support-constant">
-      <match>\b[A-Z][A-Za-z0-9_]\w*\b\.</match>
     </context>
 
     <context id="class-name" style-ref="class-name"><match/></context>
@@ -967,8 +961,8 @@
         <context ref="block-parameters"/>
         <context ref="important-methods"/>
         <context ref="keywords"/>
+        <context ref="special-values"/>
         <context ref="important-constants"/>
-        <context ref="support-constants"/>
         <context ref="special-variables"/>
         <context ref="global-variables"/>
         <context ref="class-variables"/>
@@ -976,7 +970,6 @@
         <context ref="symbols"/>
         <context ref="symbols-single-quoted"/>
         <context ref="symbols-double-quoted"/>
-        <context ref="special-values"/>
         <context ref="constants"/>
         <context ref="float"/>
         <context ref="decimal"/>
