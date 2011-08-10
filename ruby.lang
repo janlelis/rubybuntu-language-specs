@@ -348,12 +348,13 @@
     </context>
 
     <context id="function-definition">
-        <match>(?=def\b)(def)\s+([A-Za-z_]\w*\.)?([A-Za-z_]\w*[\?!=]?|===?|&gt;[&gt;=]?|&lt;=&gt;|&lt;[&lt;=]?|[%&amp;`/\|]|\*\*?|=?~|[-+]@?|\[\]=?)</match>
-        <include>
-            <context sub-pattern="1" style-ref="keyword"/>
-            <context sub-pattern="2" style-ref="function-definition"/>
-            <context sub-pattern="3" style-ref="function-definition"/>
-        </include>
+      <start>(?=def)(def)</start>
+      <end>([^.]+?)(?:[\s(]|$)</end>
+      <include>
+        <context where="start" sub-pattern="0" style-ref="keyword"/>
+        <context where="end"   sub-pattern="1" style-ref="function-definition"/>
+        <context ref="ruby:*"/>
+      </include>
     </context>
 
     <context id="operator" style-ref="operators">
