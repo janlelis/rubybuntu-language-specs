@@ -59,6 +59,7 @@
     <style id="instance-variable"     _name="Instance Variable"     map-to="def:identifier"/>
     <style id="special-variable"      _name="Special Variable"      map-to="def:identifier"/>
     <style id="global-variable"       _name="Global Variable"       map-to="def:identifier"/>
+    <style id="method"                _name="Method or local variable"       map-to="def:type"/>
     <style id="class-variable"        _name="Class Variable"        map-to="def:identifier"/>
     <style id="block-parameter"       _name="Parameters in blocks"  map-to="def:identifier"/>
 
@@ -338,19 +339,24 @@
            stderr|
            binding)
       </match>
+    </context>
 
+    <define-regex id="variable">[a-zA-Z_][a-zA-Z0-9_]*</define-regex>
+
+    <context id="methods" style-ref="method">
+      <match>\%{variable}</match>
     </context>
 
     <context id="global-variables" style-ref="global-variable">
-      <match>\$[a-zA-Z_][a-zA-Z0-9_]*</match>
+      <match>\$\%{variable}</match>
     </context>
 
     <context id="class-variables" style-ref="class-variable">
-      <match>@@[a-zA-Z_][a-zA-Z0-9_]*</match>
+      <match>@@\%{variable}</match>
     </context>
 
     <context id="instance-variables" style-ref="instance-variable">
-      <match>@[a-zA-Z_][a-zA-Z0-9_]*</match>
+      <match>@\%{variable}</match>
     </context>
 
     <context id="constants" style-ref="constant">
@@ -416,6 +422,7 @@
 
         <context ref="special-variables"/>
         <context ref="global-variables"/>
+        <context ref="methods"/>
 
         <context ref="class-variables"/>
         <context ref="instance-variables"/>
@@ -1055,6 +1062,7 @@
 
         <context ref="special-variables"/>
         <context ref="global-variables"/>
+        <context ref="methods"/>
 
         <context ref="class-variables"/>
         <context ref="instance-variables"/>
