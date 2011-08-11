@@ -51,7 +51,7 @@
     <style id="regex"                 _name="Regular Expression"    map-to="def:string"/>
     <style id="here-doc"              _name="Heredoc"               map-to="def:string"/>
     <style id="here-doc-bound"        _name="Heredoc Bound"         map-to="def:string"/>
-    <style id="collection"            _name="Collection (Arrays, Hashs, ...)"   map-to="def:function"/>
+    <style id="collection"            _name="Collection (Arrays, Hashes)"   map-to="def:function"/>
 
     <style id="important-constant"    _name="Important constant"    map-to="def:special-constant"/>
     <style id="constant"              _name="Constant"              map-to="def:constant"/>
@@ -458,6 +458,23 @@
         <context ref="def:line-continue"/>
         <context ref="interpolation"/>
       </include>
+    </context>
+
+    <context id="hash-symbols" style-ref="symbol">
+      <match>[a-zA-Z0-9_]+(!|\?)?:</match>
+    </context>
+
+    <context id="hash-strings" style-ref="string">
+      <match>\:</match>
+    </context>
+
+    <context id="hash-syntaxes" style-ref="collection">
+      <keyword>=></keyword>
+      <keyword>,</keyword>
+    </context>
+
+    <context id="array-syntaxes" style-ref="collection">
+      <keyword>,</keyword>
     </context>
 
 
@@ -945,19 +962,27 @@
       </include>
     </context>
 
-    <context id="hash" style-ref="collection">
+    <context id="hash">
       <start>\{</start>
       <end>\}</end>
       <include>
+        <context where="start" sub-pattern="0" style-ref="collection"/>
+        <context where="end" sub-pattern="0" style-ref="collection"/>
         <context ref="ruby:*"/>
+        <context ref="hash-symbols"/>
+        <context ref="hash-strings"/>
+        <context ref="hash-syntaxes"/>
       </include>
     </context>
 
-    <context id="array" style-ref="collection">
+    <context id="array">
       <start>\[</start>
       <end>\]</end>
       <include>
+        <context where="start" sub-pattern="0" style-ref="collection"/>
+        <context where="end" sub-pattern="0" style-ref="collection"/>
         <context ref="ruby:*"/>
+        <context ref="array-syntaxes"/>
       </include>
     </context>
 
