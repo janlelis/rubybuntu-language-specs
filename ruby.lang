@@ -51,6 +51,7 @@
     <style id="regex"                 _name="Regular Expression"    map-to="def:string"/>
     <style id="here-doc"              _name="Heredoc"               map-to="def:string"/>
     <style id="here-doc-bound"        _name="Heredoc Bound"         map-to="def:string"/>
+    <style id="collection"            _name="Collection (Arrays, Hashs, ...)"   map-to="def:function"/>
 
     <style id="important-constant"    _name="Important constant"    map-to="def:special-constant"/>
     <style id="constant"              _name="Constant"              map-to="def:constant"/>
@@ -409,7 +410,7 @@
       <end>\|</end>
       <include>
         <context sub-pattern="0" where="start" style-ref="keyword"/>
-        <context sub-pattern="0" where="end" style-ref="keyword"/>
+        <context sub-pattern="0" where="end"   style-ref="keyword"/>
 
         <context ref="important-constants"/>
         <context ref="constants"/>
@@ -945,6 +946,22 @@
       </include>
     </context>
 
+    <context id="hash" style-ref="collection">
+      <start>\{</start>
+      <end>\}</end>
+      <include>
+        <context ref="ruby:*"/>
+      </include>
+    </context>
+
+    <context id="array" style-ref="collection">
+      <start>\[</start>
+      <end>\]</end>
+      <include>
+        <context ref="ruby:*"/>
+      </include>
+    </context>
+
     <context id="ruby" class="no-spell-check">
       <include>
         <context ref="def:shebang"/>
@@ -1017,6 +1034,10 @@
 
         <context ref="class-variables"/>
         <context ref="instance-variables"/>
+
+        <context ref="block-parameters"/>
+        <context ref="hash"/>
+        <context ref="array"/>
 
         <context ref="float"/>
         <context ref="decimal"/>
