@@ -181,7 +181,6 @@
       <keyword>break</keyword>
       <keyword>case</keyword>
       <keyword>class</keyword>
-      <keyword>def</keyword>
       <keyword>defined?</keyword>
       <keyword>do</keyword>
       <keyword>else</keyword>
@@ -359,7 +358,7 @@
     </context>
 
     <context id="function-definition">
-      <start>(?=def)(def)</start>
+      <start>(?&lt;![\w\.])(?=def)\b(def)\b</start>
       <end>([^.]+?)(?:[\s(]|$)</end>
       <include>
         <context where="start" sub-pattern="0" style-ref="keyword"/>
