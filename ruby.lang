@@ -40,6 +40,9 @@
     <style id="important-method"      _name="Important methods"     map-to="def:builtin"/>
     <style id="keyword"               _name="Keyword"               map-to="def:keyword"/>
     <style id="special-value"         _name="nil, false, true"      map-to="def:boolean"/>
+    <style id="true"                  _name="true"                  map-to="def:boolean"/>
+    <style id="false"                 _name="false"                 map-to="def:boolean"/>
+    <style id="nil"                   _name="nil"                   map-to="def:boolean"/>
 
     <style id="floating-point"        _name="Floating point number" map-to="def:floating-point"/>
     <style id="decimal"               _name="Integer number"        map-to="def:decimal"/>
@@ -65,8 +68,6 @@
     <style id="operator"              _name="Operators"             map-to="def:operator"/>
 
     <style id="function"              _name="Function Definition"   map-to="def:function"/>
-
-    <style id="base"                  _name="Base color"            map-to="def:statement"/>
   </styles>
 
   <definitions>
@@ -378,12 +379,6 @@
       <match>&lt;=&gt;|(?&lt;!%)=(?!&gt;)|~|&lt;|&amp;|(?&lt;!=)&gt;|\*|/|\+|-|\||!</match>
     </context>
 
-    <context id="special-values" style-ref="special-value">
-      <keyword>false</keyword>
-      <keyword>true</keyword>
-      <keyword>nil</keyword>
-    </context>
-
     <define-regex id="n">\d(_?\d)*</define-regex>
     <define-regex id="n_pre">(?&lt;![\w\.])</define-regex>
     <define-regex id="n_suf">(?!\w)</define-regex>
@@ -406,6 +401,26 @@
 
     <context id="binary" style-ref="base-n-integer">
       <match>\%{n_pre}0[bB][01](_?[01])*\%{n_suf}</match>
+    </context>
+
+    <context id="special-values">
+      <include>
+        <context ref="false"/>
+        <context ref="true"/>
+        <context ref="nil"/>
+      </include>
+    </context>
+
+    <context id="false" style-ref="false">
+      <match>false\%{n_suf}</match>
+    </context>
+
+    <context id="true" style-ref="true">
+      <match>true\%{n_suf}</match>
+    </context>
+
+    <context id="nil" style-ref="nil">
+      <match>nil\%{n_suf}</match>
     </context>
 
     <context id="block-parameters">
