@@ -51,7 +51,7 @@
     <style id="regex"                 _name="Regular Expression"    map-to="def:string"/>
     <style id="here-doc"              _name="Heredoc"               map-to="def:string"/>
     <style id="here-doc-bound"        _name="Heredoc Bound"         map-to="def:string"/>
-    <style id="collection"            _name="Collection (Arrays, Hashes)"   map-to="def:function"/>
+    <style id="collection"            _name="Collection (Arrays, Hashes)"   map-to="def:type"/>
 
     <style id="important-constant"    _name="Important constant"    map-to="def:special-constant"/>
     <style id="constant"              _name="Constant"              map-to="def:constant"/>
@@ -61,11 +61,10 @@
     <style id="global-variable"       _name="Global Variable"       map-to="def:identifier"/>
     <style id="method"                _name="Method or local variable"       map-to="def:type"/>
     <style id="class-variable"        _name="Class Variable"        map-to="def:identifier"/>
-    <style id="block-parameter"       _name="Parameters in blocks"  map-to="def:identifier"/>
 
     <style id="operator"              _name="Operators"             map-to="def:operator"/>
 
-    <style id="function-definition"   _name="Function Definition"   map-to="def:function"/>
+    <style id="function"              _name="Function Definition"   map-to="def:function"/>
 
     <style id="base"                  _name="Base color"            map-to="def:statement"/>
   </styles>
@@ -365,12 +364,12 @@
       <match>\b[A-Z][A-Za-z0-9_]*\b</match>
     </context>
 
-    <context id="function-definition">
+    <context id="function">
       <start>(?&lt;![\w\.])(?=def)\b(def)\b</start>
       <end>([^.]+?)(?:[\s(]|$)</end>
       <include>
         <context where="start" sub-pattern="0" style-ref="keyword"/>
-        <context where="end"   sub-pattern="1" style-ref="function-definition"/>
+        <context where="end"   sub-pattern="1" style-ref="function"/>
         <context ref="ruby:*"/>
       </include>
     </context>
@@ -412,7 +411,7 @@
       <match>(?&lt;![\w\.])0[bB][01](_?[01])*(?!\w)</match>
     </context>
 
-    <context id="block-parameters" style-ref="block-parameter">
+    <context id="block-parameters">
       <start>(?&lt;=do|\{)\s*(\|)</start>
       <end>\|</end>
       <include>
@@ -1052,7 +1051,7 @@
         <context ref="backtick-quoted-string-angle"/>
         <context ref="backtick-quoted-string-generic"/>
 
-        <context ref="function-definition"/>
+        <context ref="function"/>
 
         <context ref="important-methods"/>
         <context ref="keywords"/>

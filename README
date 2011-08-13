@@ -23,7 +23,6 @@ Improvements/Changes
 * ... more (see git log for more details)
 
 === TODO - ruby
-* 1.9.2 hash syntax
 * Fix wrong heredocs (pretty often)
 * Yard highlighting
 * Add some erroneous constructs
