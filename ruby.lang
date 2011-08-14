@@ -379,7 +379,7 @@
     </context>
 
     <define-regex id="n">\d(_?\d)*</define-regex>
-    <define-regex id="n_pre">(?&lt;![\w\.])</define-regex>
+    <define-regex id="n_pre">(?&lt;!\w)</define-regex>
     <define-regex id="n_suf">(?!\w)</define-regex>
 
     <context id="float" style-ref="floating-point">
@@ -488,7 +488,7 @@
     </context>
 
     <context id="syntax-chars" style-ref="collection">
-      <match>(?:=&gt;|,)</match>
+      <match>(?:=&gt;|,|\.\.\.?)</match>
     </context>
 
 
