@@ -19,16 +19,20 @@ Improvements/Changes
 * Better support for advanced literals (e.g. %x[], %r<>, ...)
 * Simplify/refactor/update keyword and builtin detection
 * More logical style mappings
-* Support Arrays & Hashs (inclusive 1.9 symbol syntax)
+* Support Arrays & Hashes (inclusive 1.9 symbol syntax)
 * ... more (see git log for more details)
 
 === TODO - ruby
-* Fix wrong heredocs (pretty often)
 * Yard highlighting
 * Add some erroneous constructs
 * Create a nice style
+* Add range support
+* Add rational support
+* 
 
 == TODO - languages to add/import
+* HTML
+* CSS
 * SASS / SCSS
 * COFFEE
 * HAML
@@ -36,5 +40,5 @@ Improvements/Changes
 * YAML
 * CUCUMBER
 
-Meanwhile, use the ones in gmate.
+Meanwhile, you can use the ones in gmate.
 

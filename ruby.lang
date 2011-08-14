@@ -40,9 +40,9 @@
     <style id="important-method"      _name="Important methods"     map-to="def:builtin"/>
     <style id="keyword"               _name="Keyword"               map-to="def:keyword"/>
     <style id="special-value"         _name="nil, false, true"      map-to="def:boolean"/>
-    <style id="true"                  _name="true"                  map-to="def:boolean"/>
-    <style id="false"                 _name="false"                 map-to="def:boolean"/>
-    <style id="nil"                   _name="nil"                   map-to="def:boolean"/>
+    <style id="true"                  _name="true"                  map-to="ruby:special-value"/>
+    <style id="false"                 _name="false"                 map-to="ruby:special-value"/>
+    <style id="nil"                   _name="nil"                   map-to="ruby:special-value"/>
 
     <style id="floating-point"        _name="Floating point number" map-to="def:floating-point"/>
     <style id="decimal"               _name="Integer number"        map-to="def:decimal"/>
@@ -50,20 +50,19 @@
 
     <style id="string"                _name="String"                map-to="def:string"/>
     <style id="character"             _name="Character in question mark notation"   map-to="def:character"/>
-    <style id="symbol"                _name="Symbol"                map-to="def:string"/>
-    <style id="regex"                 _name="Regular Expression"    map-to="def:string"/>
-    <style id="here-doc"              _name="Heredoc"               map-to="def:string"/>
-    <style id="here-doc-bound"        _name="Heredoc Bound"         map-to="def:string"/>
+    <style id="symbol"                _name="Symbol"                map-to="ruby:string"/>
+    <style id="regex"                 _name="Regular expression"    map-to="ruby:string"/>
+    <style id="heredoc"               _name="Heredoc"               map-to="ruby:string"/>
     <style id="collection"            _name="Collection (Arrays, Hashes)"   map-to="def:type"/>
 
     <style id="important-constant"    _name="Important constant"    map-to="def:special-constant"/>
     <style id="constant"              _name="Constant"              map-to="def:constant"/>
 
     <style id="instance-variable"     _name="Instance Variable"     map-to="def:identifier"/>
-    <style id="special-variable"      _name="Special Variable"      map-to="def:identifier"/>
-    <style id="global-variable"       _name="Global Variable"       map-to="def:identifier"/>
-    <style id="method"                _name="Method or local variable"       map-to="def:type"/>
     <style id="class-variable"        _name="Class Variable"        map-to="def:identifier"/>
+    <style id="global-variable"       _name="Global Variable"       map-to="def:identifier"/>
+    <style id="special-variable"      _name="Special Variable"      map-to="ruby:global-variable"/>
+    <style id="method"                _name="Method or local variable"       map-to="def:type"/>
 
     <style id="operator"              _name="Operators"             map-to="def:operator"/>
 
@@ -346,7 +345,7 @@
     <define-regex id="variable">[a-zA-Z_][a-zA-Z0-9_]*</define-regex>
 
     <context id="methods" style-ref="method">
-      <match>\%{variable}[!?=]?</match>
+      <match>\%{variable}[!?]?</match>
     </context>
 
     <context id="global-variables" style-ref="global-variable">
@@ -447,7 +446,7 @@
          FIXME: really would like for the syntax highlight to go back
          to none here, as any ruby code could go here
     -->
-    <context id="interpolation">
+    <context id="interpolation" style-ref="text">
       <start>#{</start>
       <end>}</end>
       <include>
@@ -485,14 +484,10 @@
     </context>
 
     <context id="hash-strings" style-ref="string">
-      <match>\:</match>
+      <match>(?&lt;!\s)\:</match>
     </context>
 
-    <context id="array-syntaxes" style-ref="collection">
-      <match>,</match>
-    </context>
-
-    <context id="hash-syntaxes" style-ref="collection">
+    <context id="syntax-chars" style-ref="collection">
       <match>(?:=&gt;|,)</match>
     </context>
 
@@ -813,93 +808,91 @@
       </include>
     </context>
 
-    <context id="here-doc-string" style-ref="here-doc" style-inside="true">
-      <start>&lt;&lt;(\w+)</start>
-      <end>^\%{1@start}</end>
+    <define-regex id="start-heredoc">([^a-zA-Z0-9\s])\s*&lt;&lt;</define-regex>
+
+    <context id="heredoc-string" style-ref="heredoc" style-inside="true">
+      <start>\%{start-heredoc}(\w+)</start>
+      <end>^\%{2@start}</end>
       <include>
+        <context where="start" sub-pattern="1" style-ref="operator"/>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
         <context ref="interpolation"/>
       </include>
     </context>
 
-    <context id="here-doc-indented-string" style-ref="here-doc" style-inside="true">
-      <start>&lt;&lt;-(\w+)</start>
-      <end>^\s*\%{1@start}</end>
+    <context id="heredoc-indented-string" style-ref="heredoc" style-inside="true">
+      <start>\%{start-heredoc}-(\w+)</start>
+      <end>^\s*\%{2@start}</end>
       <include>
+        <context where="start" sub-pattern="1" style-ref="operator"/>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
         <context ref="interpolation"/>
       </include>
     </context>
 
-    <context id="here-doc-single-quoted-string" style-ref="here-doc" style-inside="true">
-      <start>&lt;&lt;'(\w+)'</start>
-      <end>^\%{1@start}</end>
+    <context id="heredoc-single-quoted-string" style-ref="heredoc" style-inside="true">
+      <start>\%{start-heredoc}'(\w+)'</start>
+      <end>^\%{2@start}</end>
       <include>
-        <context sub-pattern="0" where="start" style-ref="here-doc-bound"/>
-        <context sub-pattern="0" where="end" style-ref="here-doc-bound"/>
+        <context where="start" sub-pattern="1" style-ref="operator"/>
       </include>
     </context>
 
-    <context id="here-doc-double-quoted-string" style-ref="here-doc" style-inside="true">
-      <start>&lt;&lt;"(\w+)"</start>
-      <end>^\%{1@start}</end>
+    <context id="heredoc-double-quoted-string" style-ref="heredoc" style-inside="true">
+      <start>\%{start-heredoc}"(\w+)"</start>
+      <end>^\%{2@start}</end>
       <include>
-        <context sub-pattern="0" where="start" style-ref="here-doc-bound"/>
-        <context sub-pattern="0" where="end" style-ref="here-doc-bound"/>
+        <context where="start" sub-pattern="1" style-ref="operator"/>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
         <context ref="interpolation"/>
       </include>
     </context>
     
-    <context id="here-doc-backtick-quoted-string" style-ref="here-doc" style-inside="true">
-      <start>&lt;&lt;`(\w+)`</start>
-      <end>^\%{1@start}</end>
+    <context id="heredoc-backtick-quoted-string" style-ref="heredoc" style-inside="true">
+      <start>\%{start-heredoc}`(\w+)`</start>
+      <end>^\%{2@start}</end>
       <include>
-        <context sub-pattern="0" where="start" style-ref="here-doc-bound"/>
-        <context sub-pattern="0" where="end" style-ref="here-doc-bound"/>
+        <context where="start" sub-pattern="1" style-ref="operator"/>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
         <context ref="interpolation"/>
       </include>
     </context>
     
-    <context id="here-doc-single-quoted-indented-string" style-ref="here-doc" style-inside="true">
-      <start>&lt;&lt;-'(\w+)'</start>
-      <end>^\s*\%{1@start}</end>
+    <context id="heredoc-single-quoted-indented-string" style-ref="heredoc" style-inside="true">
+      <start>\%{start-heredoc}-'(\w+)'</start>
+      <end>^\s*\%{2@start}</end>
       <include>
-        <context sub-pattern="0" where="start" style-ref="here-doc-bound"/>
-        <context sub-pattern="0" where="end" style-ref="here-doc-bound"/>
+        <context where="start" sub-pattern="1" style-ref="operator"/>
       </include>
     </context>
 
-    <context id="here-doc-double-quoted-indented-string" style-ref="here-doc" style-inside="true">
-      <start>&lt;&lt;-"(\w+)"</start>
-      <end>^\s*\%{1@start}</end>
+    <context id="heredoc-double-quoted-indented-string" style-ref="heredoc" style-inside="true">
+      <start>\%{start-heredoc}-"(\w+)"</start>
+      <end>^\s*\%{2@start}</end>
       <include>
-        <context sub-pattern="0" where="start" style-ref="here-doc-bound"/>
-        <context sub-pattern="0" where="end" style-ref="here-doc-bound"/>
+        <context where="start" sub-pattern="1" style-ref="operator"/>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
         <context ref="interpolation"/>
       </include>
     </context>
     
-    <context id="here-doc-backtick-quoted-indented-string" style-ref="here-doc" style-inside="true">
-      <start>&lt;&lt;-`(\w+)`</start>
-      <end>^\s*\%{1@start}</end>
+    <context id="heredoc-backtick-quoted-indented-string" style-ref="heredoc" style-inside="true">
+      <start>\%{start-heredoc}-`(\w+)`</start>
+      <end>^\s*\%{2@start}</end>
       <include>
-        <context sub-pattern="0" where="start" style-ref="here-doc-bound"/>
-        <context sub-pattern="0" where="end" style-ref="here-doc-bound"/>
+        <context where="start" sub-pattern="1" style-ref="operator"/>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
         <context ref="interpolation"/>
       </include>
     </context>
     
-    <define-regex id="regex-opts">[iomx]*[neus]?[iomx]*</define-regex>
+    <define-regex id="regex-opts">([iomx]*[neus]?[iomx]*)</define-regex>
 
     <context id="regex-bracketed" style-ref="escape" style-inside="true">
       <start>(?&lt;!\\)[[]</start>
@@ -908,8 +901,9 @@
 
     <context id="regex-curly" style-ref="regex">
       <start>%r\{</start>
-      <end>\}%{regex-opts}</end>
+      <end>(\})%{regex-opts}</end>
       <include>
+        <context where="end"   sub-pattern="2" style-ref="regex-options"/>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
         <context ref="interpolation"/>
@@ -919,7 +913,7 @@
 
     <context id="regex-normal" style-ref="regex">
       <start>%r\(</start>
-      <end>\)%{regex-opts}</end>
+      <end>(\))%{regex-opts}</end>
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
@@ -930,7 +924,7 @@
 
     <context id="regex-square" style-ref="regex">
       <start>%r\[</start>
-      <end>\]%{regex-opts}</end>
+      <end>(\])%{regex-opts}</end>
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
@@ -941,7 +935,7 @@
 
     <context id="regex-angle" style-ref="regex">
       <start>%r&lt;</start>
-      <end>&gt;\%{regex-opts}</end>
+      <end>(&gt;)\%{regex-opts}</end>
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
@@ -952,7 +946,7 @@
 
     <context id="regex-generic" style-ref="regex">
       <start>%r([^[:alpha:]\s])</start>
-      <end>\%{1@start}\%{regex-opts}</end>
+      <end>(\%{1@start})\%{regex-opts}</end>
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
@@ -972,7 +966,7 @@
           \%{regex-opts}
           ([),;.]|\s|$)
         )</start>
-      <end>\/\%{regex-opts}</end>
+      <end>(\/)\%{regex-opts}</end>
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
@@ -987,10 +981,9 @@
       <include>
         <context where="start" sub-pattern="0" style-ref="collection"/>
         <context where="end" sub-pattern="0" style-ref="collection"/>
-        <context ref="ruby:*"/>
         <context ref="hash-symbols"/>
         <context ref="hash-strings"/>
-        <context ref="hash-syntaxes"/>
+        <context ref="ruby:*"/>
       </include>
     </context>
 
@@ -1001,7 +994,6 @@
         <context where="start" sub-pattern="0" style-ref="collection"/>
         <context where="end" sub-pattern="0" style-ref="collection"/>
         <context ref="ruby:*"/>
-        <context ref="array-syntaxes"/>
       </include>
     </context>
 
@@ -1011,14 +1003,14 @@
         <context ref="def:shell-like-comment"/>
         <context ref="multiline-comment"/>
 
-        <context ref="here-doc-string"/>
-        <context ref="here-doc-single-quoted-string"/>
-        <context ref="here-doc-double-quoted-string"/>
-        <context ref="here-doc-backtick-quoted-string"/>
-        <context ref="here-doc-indented-string"/>
-        <context ref="here-doc-single-quoted-indented-string"/>
-        <context ref="here-doc-double-quoted-indented-string"/>
-        <context ref="here-doc-backtick-quoted-indented-string"/>
+        <context ref="heredoc-string"/>
+        <context ref="heredoc-single-quoted-string"/>
+        <context ref="heredoc-double-quoted-string"/>
+        <context ref="heredoc-backtick-quoted-string"/>
+        <context ref="heredoc-indented-string"/>
+        <context ref="heredoc-single-quoted-indented-string"/>
+        <context ref="heredoc-double-quoted-indented-string"/>
+        <context ref="heredoc-backtick-quoted-indented-string"/>
 
         <context ref="symbols"/>
         <context ref="symbols-single-quoted"/>
@@ -1090,6 +1082,8 @@
         <context ref="binary"/>
 
         <context ref="operators"/>
+
+        <context ref="syntax-chars"/>
       </include>
     </context>
  </definitions>
