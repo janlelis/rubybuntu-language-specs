@@ -20,15 +20,13 @@ Improvements/Changes
 * Simplify/refactor/update keyword and builtin detection
 * More logical style mappings
 * Support Arrays & Hashes (inclusive 1.9 symbol syntax)
+* Different heredoc matching
 * ... more (see git log for more details)
 
 === TODO - ruby
 * Yard highlighting
-* Add some erroneous constructs
 * Create a nice style
-* Add range support
 * Add rational support
-* 
 
 == TODO - languages to add/import
 * HTML

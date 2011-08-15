@@ -808,7 +808,7 @@
       </include>
     </context>
 
-    <define-regex id="start-heredoc">([^a-zA-Z0-9\s])\s*&lt;&lt;</define-regex>
+    <define-regex id="start-heredoc">([^a-zA-Z0-9\s\]\)>}])\s*&lt;&lt;</define-regex>
 
     <context id="heredoc-string" style-ref="heredoc" style-inside="true">
       <start>\%{start-heredoc}(\w+)</start>
