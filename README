@@ -24,7 +24,6 @@ Improvements/Changes
 * ... more (see git log for more details)
 
 === TODO - ruby
-* Add magic comment support
 * Create a nice style
 * Different colorizations for "end"s (e.g. def, class, module, while/until, if, block)
 
