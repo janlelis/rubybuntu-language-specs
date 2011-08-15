@@ -36,12 +36,12 @@
     <style id="method"                _name="Method or local variable"       map-to="def:type"/>
     <style id="important-method"      _name="Important methods"     map-to="def:builtin"/>
     <style id="keyword"               _name="Keyword"               map-to="def:keyword"/>
-    <style id="syntax-chars"          _name="Syntactical characters" map-to="ruby:keyword"/>
+    <style id="syntax-char"           _name="Syntactical characters" map-to="ruby:keyword"/>
     <style id="special-value"         _name="nil, false, true"      map-to="def:boolean"/>
-    <style id="self"                  _name="self"                  map-to="ruby:special-value"/>
-    <style id="true"                  _name="true"                  map-to="ruby:special-value"/>
-    <style id="false"                 _name="false"                 map-to="ruby:special-value"/>
-    <style id="nil"                   _name="nil"                   map-to="ruby:special-value"/>
+      <style id="self"                  _name="self"                  map-to="ruby:special-value"/>
+      <style id="true"                  _name="true"                  map-to="ruby:special-value"/>
+      <style id="false"                 _name="false"                 map-to="ruby:special-value"/>
+      <style id="nil"                   _name="nil"                   map-to="ruby:special-value"/>
 
     <style id="important-constant"    _name="Important constant"    map-to="def:special-constant"/>
     <style id="constant"              _name="Constant"              map-to="def:constant"/>
@@ -190,7 +190,7 @@
       <keyword>autoload\?</keyword>
     </context>
 
-    <context id="keywords" style-ref="keyword">
+    <context id="keywords" style-ref="keyword"><!-- only put here if not already used at another place -->
       <!-- do not highlight methods like .class -->
       <prefix>(?&lt;![\w\.])</prefix>
       <keyword>__ENCODING__</keyword>
@@ -199,12 +199,10 @@
       <keyword>BEGIN</keyword>
       <keyword>END</keyword>
       <keyword>alias</keyword>
-      <keyword>and</keyword>
       <keyword>begin</keyword>
       <keyword>break</keyword>
       <keyword>case</keyword>
       <keyword>class</keyword>
-      <keyword>defined?</keyword>
       <keyword>do</keyword>
       <keyword>else</keyword>
       <keyword>elsif</keyword>
@@ -215,8 +213,6 @@
       <keyword>in</keyword>
       <keyword>module</keyword>
       <keyword>next</keyword>
-      <keyword>not</keyword>
-      <keyword>or</keyword>
       <keyword>redo</keyword>
       <keyword>rescue</keyword>
       <keyword>retry</keyword>
@@ -395,7 +391,11 @@
     </context>
 
     <context id="operators" style-ref="operator">
-      <match>&lt;=&gt;|(?&lt;!%)=(?!&gt;)|~|&lt;|&amp;|(?&lt;!=)&gt;|\*|/|\+|-|\||!</match>
+      <match>&lt;=&gt;|(?&lt;!%)=(?!&gt;)|~|&lt;|&amp;|(?&lt;!=)&gt;|\.\.\.?|::|\*|/|\+|-|\||!|not|and|or|defined\?</match>
+    </context>
+
+    <context id="syntax-chars" style-ref="syntax-char" extend-parent="false">
+      <match>(=&gt;|[,.()[\]{}*&amp;])</match>
     </context>
 
     <define-regex id="n">\d(_?\d)*</define-regex>
@@ -424,27 +424,22 @@
 
     <context id="special-values">
       <include>
-        <context ref="self"/>
-        <context ref="false"/>
-        <context ref="true"/>
-        <context ref="nil"/>
+        <context id="self" style-ref="self">
+          <match>self\%{n_suf}</match>
+        </context>
+
+        <context id="false" style-ref="false">
+          <match>false\%{n_suf}</match>
+        </context>
+
+        <context id="true" style-ref="true">
+          <match>true\%{n_suf}</match>
+        </context>
+
+        <context id="nil" style-ref="nil">
+          <match>nil\%{n_suf}</match>
+        </context>
       </include>
-    </context>
-
-    <context id="self" style-ref="self">
-      <match>self\%{n_suf}</match>
-    </context>
-
-    <context id="false" style-ref="false">
-      <match>false\%{n_suf}</match>
-    </context>
-
-    <context id="true" style-ref="true">
-      <match>true\%{n_suf}</match>
-    </context>
-
-    <context id="nil" style-ref="nil">
-      <match>nil\%{n_suf}</match>
     </context>
 
     <context id="block-parameters">
@@ -511,11 +506,6 @@
     <context id="hash-strings" style-ref="string">
       <match>(?&lt;!\s)\:</match>
     </context>
-
-    <context id="syntax-chars" style-ref="collection">
-      <match>(=&gt;|[,.()[\]{}*])</match>
-    </context>
-
 
     <!-- ruby strings do not end at line end,
          so we cannot use def:string
@@ -917,7 +907,7 @@
       </include>
     </context>
     
-    <define-regex id="regex-opts">([iomx]*[neus]?[iomx]*)</define-regex>
+    <define-regex id="regex-options">([iomx]*[neus]?[iomx]*)</define-regex>
 
     <context id="regex-bracketed" style-ref="escape" style-inside="true">
       <start>(?&lt;!\\)[[]</start>
@@ -926,9 +916,8 @@
 
     <context id="regex-curly" style-ref="regex">
       <start>%r\{</start>
-      <end>(\})%{regex-opts}</end>
+      <end>(\})%{regex-options}</end>
       <include>
-        <context where="end"   sub-pattern="2" style-ref="regex-options"/>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
         <context ref="interpolation"/>
@@ -938,7 +927,7 @@
 
     <context id="regex-normal" style-ref="regex">
       <start>%r\(</start>
-      <end>(\))%{regex-opts}</end>
+      <end>(\))%{regex-options}</end>
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
@@ -949,7 +938,7 @@
 
     <context id="regex-square" style-ref="regex">
       <start>%r\[</start>
-      <end>(\])%{regex-opts}</end>
+      <end>(\])%{regex-options}</end>
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
@@ -960,7 +949,7 @@
 
     <context id="regex-angle" style-ref="regex">
       <start>%r&lt;</start>
-      <end>(&gt;)\%{regex-opts}</end>
+      <end>(&gt;)\%{regex-options}</end>
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
@@ -971,7 +960,7 @@
 
     <context id="regex-generic" style-ref="regex">
       <start>%r([^[:alpha:]\s])</start>
-      <end>(\%{1@start})\%{regex-opts}</end>
+      <end>(\%{1@start})\%{regex-options}</end>
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>
@@ -988,10 +977,10 @@
           ([^/\\]*(\\.))*
           [^/]*
           \/
-          \%{regex-opts}
+          \%{regex-options}
           ([),;.]|\s|$)
         )</start>
-      <end>(\/)\%{regex-opts}</end>
+      <end>(\/)\%{regex-options}</end>
       <include>
         <context ref="escape"/>
         <context ref="def:line-continue"/>

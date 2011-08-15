@@ -24,8 +24,14 @@ Improvements/Changes
 * ... more (see git log for more details)
 
 === TODO - ruby
-* Create a nice style
-* Different colorizations for "end"s (e.g. def, class, module, while/until, if, block)
+* Different colorizations for "end"s (e.g. def/begin, class/module, while/until, if/case, block)
+
+* Brackets
+* Treat __FILE__, etc as special-values, not keywords
+* Bugs:
+  * def hey a;
+  * (n="%b"%$*)
+  * Highlighter sometimes off?
 
 * Add rational support
 * Detect yard doc tag values (multi-line)
