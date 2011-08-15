@@ -36,13 +36,21 @@
     <style id="escape"                _name="Escaped Character"     map-to="def:special-char"/>
 
     <style id="comment"               _name="Comment"               map-to="def:comment"/>
+    <style id="comment-tag"           _name="YARD comment tag"      map-to="def:doc-comment"/>
+    <!--style id="comment-tag-value"     _name="YARD comment tag value" map-to="def:doc-comment-element"/-->
 
+    <style id="method"                _name="Method or local variable"       map-to="def:type"/>
     <style id="important-method"      _name="Important methods"     map-to="def:builtin"/>
     <style id="keyword"               _name="Keyword"               map-to="def:keyword"/>
+    <style id="syntax-chars"          _name="Syntactical characters" map-to="ruby:keyword"/>
     <style id="special-value"         _name="nil, false, true"      map-to="def:boolean"/>
+    <style id="self"                  _name="self"                  map-to="ruby:special-value"/>
     <style id="true"                  _name="true"                  map-to="ruby:special-value"/>
     <style id="false"                 _name="false"                 map-to="ruby:special-value"/>
     <style id="nil"                   _name="nil"                   map-to="ruby:special-value"/>
+
+    <style id="important-constant"    _name="Important constant"    map-to="def:special-constant"/>
+    <style id="constant"              _name="Constant"              map-to="def:constant"/>
 
     <style id="floating-point"        _name="Floating point number" map-to="def:floating-point"/>
     <style id="decimal"               _name="Integer number"        map-to="def:decimal"/>
@@ -55,14 +63,10 @@
     <style id="heredoc"               _name="Heredoc"               map-to="ruby:string"/>
     <style id="collection"            _name="Collection (Arrays, Hashes)"   map-to="def:type"/>
 
-    <style id="important-constant"    _name="Important constant"    map-to="def:special-constant"/>
-    <style id="constant"              _name="Constant"              map-to="def:constant"/>
-
     <style id="instance-variable"     _name="Instance Variable"     map-to="def:identifier"/>
     <style id="class-variable"        _name="Class Variable"        map-to="def:identifier"/>
     <style id="global-variable"       _name="Global Variable"       map-to="def:identifier"/>
     <style id="special-variable"      _name="Special Variable"      map-to="ruby:global-variable"/>
-    <style id="method"                _name="Method or local variable"       map-to="def:type"/>
 
     <style id="operator"              _name="Operators"             map-to="def:operator"/>
 
@@ -80,8 +84,21 @@
       <end>^=end</end>
       <include>
         <context ref="def:in-comment"/>
+        <context ref="in-comment-docs"/>
       </include>
     </context>
+
+    <context id="shell-like-comment" style-ref="comment" end-at-line-end="true" class-disabled="no-spell-check">
+      <start>#</start>
+      <include>
+        <context ref="def:in-comment"/>
+        <context ref="in-comment-docs"/>
+      </include>
+    </context>
+
+    <context id="in-comment-docs" style-ref="comment-tag" extend-parent="false">
+      <match>@\w+(\s*\[.*?\])?</match>
+  </context>
 
     <context id="important-methods" style-ref="important-method">
       <keyword>included</keyword>
@@ -492,7 +509,7 @@
     </context>
 
     <context id="syntax-chars" style-ref="collection">
-      <match>(?:=&gt;|,|\.\.\.?)</match>
+      <match>(=&gt;|[,.()[\]{}*])</match>
     </context>
 
 
@@ -812,7 +829,7 @@
       </include>
     </context>
 
-    <define-regex id="start-heredoc">([^a-zA-Z0-9\s\]\)>}])\s*&lt;&lt;</define-regex>
+    <define-regex id="start-heredoc">([^a-zA-Z0-9\s\]\)&gt;}])\s*&lt;&lt;</define-regex>
 
     <context id="heredoc-string" style-ref="heredoc" style-inside="true">
       <start>\%{start-heredoc}(\w+)</start>
@@ -992,7 +1009,7 @@
     </context>
 
     <context id="array">
-      <start>\[</start>
+      <start>(?&lt;!\w)\[</start>
       <end>\]</end>
       <include>
         <context where="start" sub-pattern="0" style-ref="collection"/>
@@ -1004,7 +1021,7 @@
     <context id="ruby" class="no-spell-check">
       <include>
         <context ref="def:shebang"/>
-        <context ref="def:shell-like-comment"/>
+        <context ref="shell-like-comment"/><!-- not from def -->
         <context ref="multiline-comment"/>
 
         <context ref="heredoc-string"/>

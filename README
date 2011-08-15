@@ -24,9 +24,12 @@ Improvements/Changes
 * ... more (see git log for more details)
 
 === TODO - ruby
-* Yard highlighting
+* Add magic comment support
 * Create a nice style
+* Different colorizations for "end"s (e.g. def, class, module, while/until, if, block)
+
 * Add rational support
+* Detect yard doc tag values (multi-line)
 
 == TODO - languages to add/import
 * HTML
@@ -39,4 +42,7 @@ Improvements/Changes
 * CUCUMBER
 
 Meanwhile, you can use the ones in gmate.
+
+=== MAYBE
+* RDOC markup support (and cross-referencing in ruby)
 
