@@ -200,7 +200,6 @@
       <keyword>rescue</keyword>
       <keyword>retry</keyword>
       <keyword>return</keyword>
-      <keyword>self</keyword>
       <keyword>super</keyword>
       <keyword>then</keyword>
       <keyword>undef</keyword>
@@ -404,10 +403,15 @@
 
     <context id="special-values">
       <include>
+        <context ref="self"/>
         <context ref="false"/>
         <context ref="true"/>
         <context ref="nil"/>
       </include>
+    </context>
+
+    <context id="self" style-ref="self">
+      <match>self\%{n_suf}</match>
     </context>
 
     <context id="false" style-ref="false">
