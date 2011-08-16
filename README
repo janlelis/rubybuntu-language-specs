@@ -24,17 +24,19 @@ Improvements/Changes
 * ... more (see git log for more details)
 
 === TODO - ruby
-* Add delimiter/regex-options
+* Fix symbols
 * Brackets
-* Treat __FILE__, etc as special-values, not keywords
 * Bugs:
   * def hey a;
   * (n="%b"%$*)
 
-* Add rational support
-* Detect yard doc tag values (multi-line)
+
+==== Advanced TODOs
 * Improve heredocs (e.g. nested ones)
 * Different colorizations for "end"s (e.g. def/begin, class/module, while/until, if/case, block)
+* Detect yard doc tag values (multi-line)
+* Add escapable char for generic string delimiters
+* Advanced regex highlighting (maybe is already some for pcre out there?)
 
 == TODO - languages to add/import
 * HTML
@@ -50,4 +52,5 @@ Meanwhile, you can use the ones in gmate.
 
 === MAYBE
 * RDOC markup support (and cross-referencing in ruby)
+* ruby: Add rational support
 
