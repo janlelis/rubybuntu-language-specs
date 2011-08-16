@@ -15,18 +15,16 @@ Contains various language specs needed by Ruby/Rails/Web developers, e.g. Gemfil
 
 Improvements/Changes
 * Use 1.9 as reference implementation
-* No Rails keywords, no extra language for Rails (Rails methods are not highlighted differently, that's a feature)
 * Better support for advanced literals (e.g. %x[], %r<>, ...)
-* Simplify/refactor/update keyword and builtin detection
-* More logical style mappings
+* No Rails keywords, no extra language for Rails
+* Simplify/refactor/update keyword and builtin detection, highlight important constants and methods
+* More logical style mappings, highly customizable
 * Support Arrays & Hashes (inclusive 1.9 symbol syntax)
 * Different heredoc matching
 * ... more (see git log for more details)
 
 === TODO - ruby
-* Different colorizations for "end"s (e.g. def/begin, class/module, while/until, if/case, block)
-* Add __END__ support
-
+* Add delimiter/regex-options
 * Brackets
 * Treat __FILE__, etc as special-values, not keywords
 * Bugs:
@@ -36,6 +34,7 @@ Improvements/Changes
 * Add rational support
 * Detect yard doc tag values (multi-line)
 * Improve heredocs (e.g. nested ones)
+* Different colorizations for "end"s (e.g. def/begin, class/module, while/until, if/case, block)
 
 == TODO - languages to add/import
 * HTML
