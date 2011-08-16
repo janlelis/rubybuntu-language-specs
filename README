@@ -18,7 +18,7 @@ Improvements/Changes
 * Better support for advanced literals (e.g. %x[], %r<>, ...)
 * No Rails keywords, no extra language for Rails
 * Simplify/refactor/update keyword and builtin detection, highlight important constants and methods
-* More logical style mappings, highly customizable
+* More logical style mappings
 * Support Arrays & Hashes (inclusive 1.9 symbol syntax)
 * Different heredoc matching
 * ... more (see git log for more details)

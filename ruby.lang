@@ -1059,12 +1059,20 @@
       </include>
     </context>
 
+    <context id="data" style-ref="string" style-inside="true">
+      <start>__END__</start>
+      <!--include>
+        <context where="start" sub-pattern="0" style-ref="string-delimter"/>
+      </include-->
+    </context>
+
     <context id="ruby" class="no-spell-check">
       <include>
         <context ref="def:shebang"/>
         <context ref="encoding-comment"/>
         <context ref="shell-like-comment"/><!-- not from def -->
         <context ref="multiline-comment"/>
+        <context ref="data"/>
 
         <context ref="heredoc-string"/>
         <context ref="heredoc-single-quoted-string"/>
@@ -1147,6 +1155,7 @@
         <context ref="operators"/>
 
         <context ref="syntax-chars"/>
+
       </include>
     </context>
  </definitions>
