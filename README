@@ -25,16 +25,17 @@ Improvements/Changes
 
 === TODO - ruby
 * Different colorizations for "end"s (e.g. def/begin, class/module, while/until, if/case, block)
+* Add __END__ support
 
 * Brackets
 * Treat __FILE__, etc as special-values, not keywords
 * Bugs:
   * def hey a;
   * (n="%b"%$*)
-  * Highlighter sometimes off?
 
 * Add rational support
 * Detect yard doc tag values (multi-line)
+* Improve heredocs (e.g. nested ones)
 
 == TODO - languages to add/import
 * HTML
