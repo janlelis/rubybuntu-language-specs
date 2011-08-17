@@ -42,6 +42,7 @@
         <style id="true"                  _name="true"                  map-to="ruby:special-value"/>
         <style id="false"                 _name="false"                 map-to="ruby:special-value"/>
         <style id="nil"                   _name="nil"                   map-to="ruby:special-value"/>
+    <style id="function"              _name="Function definition"   map-to="def:function"/>
 
     <style id="constant"              _name="Constant"              map-to="def:constant"/>
       <style id="important-constant"    _name="Important constant"    map-to="def:special-constant"/>
@@ -50,7 +51,7 @@
       <style id="encoding-comment"      _name="Magic Comment"         map-to="def:shebang"/>
       <style id="comment-tag"           _name="YARD comment tag"      map-to="def:doc-comment"/>
       <!--style id="comment-tag-value"     _name="YARD comment tag value" map-to="def:doc-comment-element"/-->
- 
+
     <style id="string"                _name="String"                map-to="def:string"/>
       <style id="string-delimiter"      _name="String delimiter"      map-to="ruby:string"/>
       <style id="character"             _name="Character in question mark notation"   map-to="def:character"/>
@@ -79,7 +80,8 @@
 
     <style id="operator"              _name="Operators"             map-to="def:operator"/>
 
-    <style id="function"              _name="Function definition"   map-to="def:function"/>
+
+    <style id="error"                 _name="Erroneous syntax"      map-to="def:error"/>
   </styles>
 
   <definitions>
@@ -433,24 +435,6 @@
 
     <context id="constants" style-ref="constant">
       <match>\b[A-Z][A-Za-z0-9_]*\b</match>
-    </context>
-
-    <context id="function">
-      <start>(?&lt;![\w\.])(?=def)\b(def)\b</start>
-      <end>([^.]+?)(?=[\s(;]|$)</end>
-      <include>
-        <context where="start" sub-pattern="0" style-ref="keyword"/>
-        <context where="end"   sub-pattern="1" style-ref="function"/>
-        <context ref="ruby:*"/>
-      </include>
-    </context>
-
-    <context id="operators" style-ref="operator" extend-parent="false">
-      <match>&lt;=&gt;|(?&lt;!%)=(?!&gt;)|~|&lt;|&amp;|(?&lt;!=)&gt;|\.\.\.?|::|\*|/|\+|-|\||!|not|and|or|defined\?</match>
-    </context>
-
-    <context id="syntax-chars" style-ref="syntax-char" extend-parent="false">
-      <match>[()[\]{}.\\;]</match>
     </context>
 
     <define-regex id="n">\d(_?\d)*</define-regex>
@@ -909,6 +893,41 @@
       <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="symbol-delimiter"/><context where="end" sub-pattern="0" style-ref="symbol-delimiter"/></include>
     </context>
 
+    <context id="function">
+      <start>(?&lt;![\w\.])(?=def)\b(def)\b</start>
+      <end>([^.]+?)(?=[\s(;]|$)</end>
+      <include>
+        <context where="start" sub-pattern="0" style-ref="keyword"/>
+        <context where="end"   sub-pattern="1" style-ref="function"/>
+        <context ref="ruby:*"/>
+      </include>
+    </context>
+
+    <context id="operators" style-ref="operator" extend-parent="false">
+      <match>&lt;=&gt;|(?&lt;!%)=(?!&gt;)|~|&lt;|&amp;|(?&lt;!=)&gt;|\.\.\.?|::|\*|/|\+|-|\||!|not|and|or|defined\?</match>
+    </context>
+
+    <context id="syntax-chars" style-ref="syntax-char" extend-parent="false">
+      <match>[.\\;]</match>
+    </context>
+
+    <context id="brackets">
+      <include>
+        <context id="normal-brackets" style-ref="syntax-char">
+          <start>\(</start><end>\)</end>
+          <include><context ref="ruby:*"/></include>
+        </context>
+        <context id="square-brackets" style-ref="syntax-char">
+          <start>\[</start><end>\]</end>
+          <include><context ref="ruby:*"/></include>
+        </context>
+        <context id="curly-brackets" style-ref="syntax-char">
+          <start>\{</start><end>\}</end>
+          <include><context ref="ruby:*"/></include>
+        </context>
+      </include>
+    </context>
+
     <context id="hash-symbols" style-ref="symbol">
       <match>[a-zA-Z0-9_]+(!|\?)?:</match>
     </context>
@@ -950,6 +969,12 @@
       </include>
     </context>
 
+    <context id="errors" style-ref="error" extend-parent="false">
+      <match extended="true">
+        [}\])]
+      </match>
+    </context>
+
     <context id="ruby" class="no-spell-check">
       <include>
         <context ref="def:shebang"/>
@@ -966,11 +991,6 @@
         <context ref="heredoc-single-quoted-indented-string"/>
         <context ref="heredoc-double-quoted-indented-string"/>
         <context ref="heredoc-backtick-quoted-indented-string"/>
-
-        <!--context style-ref="symbol">
-          <start>:\$&amp;</start>
-          <end></end>
-        </context-->
 
         <context ref="symbols"/>
         <context ref="symbols-single-quoted"/>
@@ -1045,7 +1065,8 @@
         <context ref="collection-chars"/>
         <context ref="operators"/>
         <context ref="syntax-chars"/>
-
+        <context ref="brackets"/>
+        <context ref="errors"/>
       </include>
     </context>
  </definitions>
