@@ -21,15 +21,16 @@ Improvements/Changes
 * More logical style mappings
 * Support Arrays & Hashes (inclusive 1.9 symbol syntax)
 * Different heredoc matching
-* ... more (see git log for more details)
+* Lots of details improved (see git log for more details)
 
 === TODO - ruby
-* Fix symbols
 * Brackets
+  * []
+  * ()
+  * {}
 * Bugs:
   * def hey a;
   * (n="%b"%$*)
-
 
 ==== Advanced TODOs
 * Improve heredocs (e.g. nested ones)
