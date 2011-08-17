@@ -66,7 +66,7 @@
         <style id="regex-delimiter"       _name="Regular expression delimiter" map-to="ruby:regex"/>
         <style id="regex-options"         _name="Regular expression options" map-to="ruby:regex-delimiter"/>
 
-    <style id="collection"            _name="Collection (Arrays, Hashes)"   map-to="def:type"/>
+    <style id="collection"            _name="Collections (Arrays, Hashes)"   map-to="def:type"/>
 
     <style id="floating-point"        _name="Floating point number" map-to="def:floating-point"/>
     <style id="decimal"               _name="Integer number"        map-to="def:decimal"/>
@@ -450,7 +450,7 @@
     </context>
 
     <context id="syntax-chars" style-ref="syntax-char" extend-parent="false">
-      <match>(=&gt;|[,.()[\]{}*&amp;])</match>
+      <match>[.()[\]{}]</match>
     </context>
 
     <define-regex id="n">\d(_?\d)*</define-regex>
@@ -917,9 +917,8 @@
       <match>(?&lt;!\s)\:</match>
     </context>
 
-
     <context id="hash">
-      <start>\{</start>
+      <start>(?&lt;![\])\w])\s*\{</start>
       <end>\}</end>
       <include>
         <context where="start" sub-pattern="0" style-ref="collection"/>
@@ -930,8 +929,12 @@
       </include>
     </context>
 
+    <context id="collection-chars" style-ref="collection">
+      <match>(=&gt;|,)</match>
+    </context>
+
     <context id="array">
-      <start>(?&lt;!\w)\[</start>
+      <start>(?&lt;![\])}\w])\[</start>
       <end>\]</end>
       <include>
         <context where="start" sub-pattern="0" style-ref="collection"/>
@@ -1029,18 +1032,18 @@
         <context ref="class-variables"/>
         <context ref="instance-variables"/>
 
-        <context ref="block-parameters"/>
-        <context ref="hash"/>
-        <context ref="array"/>
-
         <context ref="float"/>
         <context ref="integer"/>
         <context ref="hex"/>
         <context ref="octal"/>
         <context ref="binary"/>
 
-        <context ref="operators"/>
+        <context ref="block-parameters"/>
+        <context ref="hash"/>
+        <context ref="array"/>
 
+        <context ref="collection-chars"/>
+        <context ref="operators"/>
         <context ref="syntax-chars"/>
 
       </include>

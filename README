@@ -11,9 +11,7 @@ Contains various language specs needed by Ruby/Rails/Web developers, e.g. Gemfil
 == erb stuff
 [explain]
 
-== ruby
-
-Improvements/Changes
+== Ruby - Improvements/Changes
 * Use 1.9 as reference implementation
 * Better support for advanced literals (e.g. %x[], %r<>, ...)
 * No Rails keywords, no extra language for Rails
@@ -23,24 +21,20 @@ Improvements/Changes
 * Different heredoc matching
 * Lots of details improved (see git log for more details)
 
-=== TODO - ruby
-* Brackets
-  * []
-  * ()
-  * {}
+=== Ruby - TODOs
 * Bugs:
-  * def hey a;
+  * def hey a;  # (+ bracket)
   * (n="%b"%$*)
-* Make unicode-aware
+* Ternary operator
 
-==== Advanced TODOs
+=== Ruby - Advanced TODOs
 * Improve heredocs (e.g. nested ones)
-* Different colorizations for "end"s (e.g. def/begin, class/module, while/until, if/case, block)
-* Detect yard doc tag values (multi-line)
+* Different colorizations for "end"s (e.g. def/begin, class/module, while/until, if/case, block), needs to detect modifier statements correctly
+* Detect (multi-line) yard doc tag values
 * Add escapable char for generic string delimiters
-* Advanced regex highlighting (maybe is already some for pcre out there?)
+* Advanced regex highlighting (maybe there already is some for pcre out there?)
 
-== TODO - languages to add/import
+== Languages to add/import
 * HTML
 * CSS
 * SASS / SCSS
@@ -52,7 +46,8 @@ Improvements/Changes
 
 Meanwhile, you can use the ones in gmate.
 
-=== MAYBE
+== MAYBE
 * RDOC markup support (and cross-referencing in ruby)
 * ruby: Add rational support
+* ruby: make unicode-aware/test with much unicode
 
