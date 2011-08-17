@@ -23,7 +23,6 @@ Contains various language specs needed by Ruby/Rails/Web developers, e.g. Gemfil
 
 === Ruby - TODOs
 * Bugs:
-  * (n="%b"%$*) # or: 5%3
   * 3==3?(:hey)::nein
   * (3==3)?(:hey)::nein
    * ?' # °_°
