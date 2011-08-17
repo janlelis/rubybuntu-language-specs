@@ -24,6 +24,13 @@ Contains various language specs needed by Ruby/Rails/Web developers, e.g. Gemfil
 === Ruby - TODOs
 * Bugs:
   * (n="%b"%$*) # or: 5%3
+  * 3==3?(:hey)::nein
+  * (3==3)?(:hey)::nein
+   * ?' # °_°
+  * BEGIN {
+  * bottles-2
+  * game-of-life-2
+  * don't highlight regexes: /, -(\d*, -)*/
 
 === Ruby - Advanced TODOs
 * Improve heredocs (e.g. nested ones)
