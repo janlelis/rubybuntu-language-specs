@@ -870,7 +870,7 @@
         | \$ \%{special-variables-2-chars}
         | [a-zA-Z_$] [a-zA-Z0-9_]* [?!=]?
         | &lt;=&gt; | &lt;= | &gt;= | != | [!=]~ | ={2,3} | \[\]=?
-        | [ &lt; &gt; ! * + ~ ]
+        | [&lt;&gt;!*+~]
         )
       </start>
       <end></end>
@@ -904,7 +904,7 @@
     </context>
 
     <context id="operators" style-ref="operator" extend-parent="false">
-      <match>&lt;=&gt;|(?&lt;!%)=(?!&gt;)|~|&lt;|&amp;|(?&lt;!=)&gt;|\.\.\.?|::|\*|/|\+|-|\||!|not|and|or|defined\?</match>
+      <match>&lt;=&gt;|(?&lt;!%)=(?!&gt;)|~|&lt;|&amp;|(?&lt;!=)&gt;|\.\.\.?|::|\*|/|\+|-|\||!|not|and|or|defined\?|\?|:</match>
     </context>
 
     <context id="syntax-chars" style-ref="syntax-char" extend-parent="false">

@@ -24,7 +24,6 @@ Contains various language specs needed by Ruby/Rails/Web developers, e.g. Gemfil
 === Ruby - TODOs
 * Bugs:
   * (n="%b"%$*) # or: 5%3
-* Ternary operator
 
 === Ruby - Advanced TODOs
 * Improve heredocs (e.g. nested ones)
