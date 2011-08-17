@@ -59,7 +59,7 @@
       <style id="system"                _name="System command"        map-to="ruby:string"/>
         <style id="system-delimiter"      _name="System command delimiter" map-to="ruby:system"/>
 
-      <style id="symbol"                _name="Symbol"                map-to="ruby:string"/>
+      <style id="symbol"                _name="Symbol"                map-to="ruby:function"/>
         <style id="symbol-delimiter"      _name="Symbol delimiter"      map-to="ruby:symbol"/>
 
       <style id="regex"                 _name="Regular expression"    map-to="ruby:string"/>
@@ -437,7 +437,7 @@
 
     <context id="function">
       <start>(?&lt;![\w\.])(?=def)\b(def)\b</start>
-      <end>([^.]+?)(?:[\s(]|$)</end>
+      <end>([^.]+?)(?=[\s(;]|$)</end>
       <include>
         <context where="start" sub-pattern="0" style-ref="keyword"/>
         <context where="end"   sub-pattern="1" style-ref="function"/>
@@ -450,7 +450,7 @@
     </context>
 
     <context id="syntax-chars" style-ref="syntax-char" extend-parent="false">
-      <match>[.()[\]{}]</match>
+      <match>[()[\]{}.\\;]</match>
     </context>
 
     <define-regex id="n">\d(_?\d)*</define-regex>

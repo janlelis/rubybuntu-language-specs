@@ -23,8 +23,7 @@ Contains various language specs needed by Ruby/Rails/Web developers, e.g. Gemfil
 
 === Ruby - TODOs
 * Bugs:
-  * def hey a;  # (+ bracket)
-  * (n="%b"%$*)
+  * (n="%b"%$*) # or: 5%3
 * Ternary operator
 
 === Ruby - Advanced TODOs
@@ -48,6 +47,5 @@ Meanwhile, you can use the ones in gmate.
 
 == MAYBE
 * RDOC markup support (and cross-referencing in ruby)
-* ruby: Add rational support
 * ruby: make unicode-aware/test with much unicode
 
