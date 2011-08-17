@@ -6,47 +6,41 @@
     <property name="block-comment-start">&lt;!--</property>
     <property name="block-comment-end">--&gt;</property>
   </metadata>
-  <styles>
-    <style id="comment"  _name="Comment" map-to="xml:comment"/>
-    <style id="javascript-block" _name="JavaScript code block"/>
-    <style id="ruby-code" _name="Ruby code"/>
+
+  <!-- also see erb.lang -->
+
+  <styles><!-- you should not edit these but the original ones -->
+    <style id="tag"          _name="ERB tag"                 map-to="erb:tag"/>
+    <style id="output-char"  _name="ERB tag - output option" map-to="erb:output-char"/>
+    <style id="comment"      _name="ERB comment"             map-to="erb:comment"/>
+    <style id="ruby-method"  _name="Ruby method"             map-to="ruby:method"/>
+    <style id="ruby-keyword" _name="Ruby keyword"            map-to="ruby:keyword"/>
   </styles>
+
   <definitions>
-
-    <context id="comment" style-ref="comment">
-        <start>&lt;%=?\s*#</start>
-        <end>%&gt;</end>
-        <include>
-            <context ref="def:in-comment"/>
-        </include>
-    </context>
-    
-    <!-- JS code inside javascript_tag -->
+     <!-- JS code inside javascript_tag -->
     <context id="javascript-block">
-        <start>&lt;%= javascript_tag (do) %&gt;</start>
-        <end>&lt;% (end) %&gt;</end>
-        <include>
-            <context sub-pattern="1" where="start" style-ref="ruby:keyword"/>
-            <context sub-pattern="1" where="end" style-ref="ruby:keyword"/>
-            <context ref="js:js"/>
-        </include>
-    </context>
-
-    <context id="erb-block" style-ref="ruby-code" class="no-spell-check">
-      <start>&lt;%</start>
-      <end>%&gt;</end>
-      <include>
-        <context ref="ruby:ruby:*"/>
+       <start>(&lt;%)(=)\s*(javascript_tag)\s*(do|\{)\s*(%&gt;)</start>
+       <end>(&lt;%)\s*(end|})\s*(%&gt;)</end>
+       <include>
+          <context where="start" sub-pattern="1" style-ref="tag"/>
+          <context where="start" sub-pattern="2" style-ref="output-char"/>
+          <context where="start" sub-pattern="3" style-ref="ruby-method"/>
+          <context where="start" sub-pattern="4" style-ref="ruby-keyword"/>
+          <context where="start" sub-pattern="5" style-ref="tag"/>
+          <context where="end"   sub-pattern="1" style-ref="tag"/>
+          <context where="end"   sub-pattern="2" style-ref="ruby-keyword"/>
+          <context where="end"   sub-pattern="3" style-ref="tag"/>
+          <context ref="js:js"/>
       </include>
     </context>
 
-    <replace id="html:embedded-lang-hook" ref="erb-block"/>
+    <replace id="html:embedded-lang-hook" ref="erb:block"/>
 
     <context id="html-erb">
       <include>
-        <context ref="comment"/>
         <context ref="javascript-block"/>
-        <context ref="erb-block"/>
+        <context ref="erb:erb"/>
         <context ref="html:html"/>
       </include>
     </context>

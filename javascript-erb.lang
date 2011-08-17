@@ -8,36 +8,16 @@
     <property name="block-comment-start">/*</property>
     <property name="block-comment-end">*/</property>
   </metadata>
-  <styles>
-    <style id="comment"  _name="Comment" map-to="xml:comment"/>
-    <style id="ruby-code" _name="Ruby code"/>
-  </styles>
+
+  <!-- also see erb.lang -->
+
   <definitions>
-
-    <context id="comment" style-ref="comment">
-        <start>&lt;%=?\s*#</start>
-        <end>%&gt;</end>
-        <include>
-            <context ref="def:in-comment"/>
-        </include>
-    </context>
-
-    <context id="erb-block" style-ref="ruby-code" class="no-spell-check">
-      <start>&lt;%</start>
-      <end>%&gt;</end>
-      <include>
-        <context ref="ruby:ruby:*"/>
-      </include>
-    </context>
-
     <context id="js-erb">
       <include>
-        <context ref="comment"/>
-        <context ref="erb-block"/>
+        <context ref="erb:erb"/>
         <context ref="js:js"/>
       </include>
     </context>
-
   </definitions>
 </language>
 

@@ -1,22 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language id="erb" _name="Embedded Ruby (erb)" version="2.0" _section="Markup">
-    <metadata>
-      <property name="mimetypes">text/erb</property>
-      <property name="globs">*(?&lt;!text).erb</property>
-    </metadata>
-    <definitions>
-        <context id="erb-block">
-            <start>&lt;%</start>
-            <end>%&gt;</end>
-            <include>
-              <context ref="ruby:ruby:*"/>
-            </include>
-        </context>
-        <context id="erb">
-            <include>
-                <context ref="erb-block"/>
-            </include>
-        </context>
-    </definitions>
+  <metadata>
+    <property name="mimetypes">text/erb</property>
+    <property name="globs">*(?&lt;!text).erb</property>
+  </metadata>
+
+  <styles>
+    <style id="tag"         _name="ERB tag"                 map-to="xml:tag"/>
+    <style id="output-char" _name="ERB tag - output option" map-to="erb:tag"/>
+    <style id="comment"     _name="ERB comment"             map-to="xml:comment"/>
+  </styles>
+
+  <definitions>
+    <context id="comment" style-ref="comment">
+      <start>&lt;%#</start>
+      <end>-?%&gt;</end>
+      <include>
+        <context ref="def:in-comment"/>
+      </include>
+    </context>
+
+    <context id="block" class="no-spell-check">
+      <start>(&lt;%)(=)?</start>
+      <end>-?%&gt;</end>
+      <include>
+        <context where="start" sub-pattern="1" style-ref="tag"/>
+        <context where="start" sub-pattern="2" style-ref="output-char"/>
+        <context where="end"   sub-pattern="0" style-ref="tag"/>
+        <context ref="ruby:ruby"/>
+      </include>
+    </context>
+
+    <context id="erb">
+      <include>
+        <context ref="comment"/>
+        <context ref="block"/>
+      </include>
+    </context>
+
+  </definitions>
 </language>
 
