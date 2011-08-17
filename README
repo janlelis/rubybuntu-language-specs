@@ -31,6 +31,7 @@ Improvements/Changes
 * Bugs:
   * def hey a;
   * (n="%b"%$*)
+* Make unicode-aware
 
 ==== Advanced TODOs
 * Improve heredocs (e.g. nested ones)

@@ -522,6 +522,10 @@
       </include>
     </context>
 
+    <context id="question-mark-string" style-ref="character">
+      <match>(?&lt;![\w\.])\?((\\[MC]-){1,2}|\\?)\S</match>
+    </context>
+
     <context id="interpolation" style-ref="string-delimiter">
       <start>#\{</start>
       <end>\}</end>
@@ -530,14 +534,23 @@
       </include>
     </context>
 
-    <context id="question-mark-string" style-ref="character">
-      <match>(?&lt;![\w\.])\?((\\[MC]-){1,2}|\\?)\S</match>
+    <context id="variable-interpolation">
+      <start>(#)(?=[@$])</start>
+      <end>\s</end>
+      <include>
+        <context where="start" sub-pattern="1" style-ref="string-delimiter"/>
+        <context ref="class-variables"/>
+        <context ref="instance-variables"/>
+        <context ref="special-variables"/>
+        <context ref="global-variables"/>
+      </include>
     </context>
 
     <context id="double-quoted">
       <include>
         <context ref="special-chars"/>
         <context ref="interpolation"/>
+        <context ref="variable-interpolation"/>
       </include>
     </context>
 
