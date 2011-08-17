@@ -6,9 +6,9 @@
   </metadata>
 
   <styles>
-    <style id="tag"         _name="ERB tag"                 map-to="xml:tag"/>
-    <style id="output-char" _name="ERB tag - output option" map-to="erb:tag"/>
-    <style id="comment"     _name="ERB comment"             map-to="xml:comment"/>
+    <style id="tag"         _name="ERB tag: <%"                  map-to="xml:cdata-delim"/>
+    <style id="output-char" _name="ERB tag - output option: <%=" map-to="erb:tag"/>
+    <style id="comment"     _name="ERB comment: <%#"             map-to="xml:comment"/>
   </styles>
 
   <definitions>
