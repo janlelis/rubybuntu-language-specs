@@ -580,7 +580,7 @@
     </context>
 
     <!-- %Q-Hello world- %-Hello world- %+hello world+ and so on... -->
-    <context id="double-quoted-string-generic" style-ref="string">
+    <context id="double-quoted-string-generic" style-ref="string" extend-parent="false">
       <start>%Q?([[:print:]])(?&lt;![[:alnum:][:space:]])</start>
       <end>\%{1@start}</end>
       <include><!--context style-ref="special-char"><match>\\[\%{1@start}\\]</match></context-->
@@ -814,14 +814,11 @@
 
     <context id="regex" style-ref="regex">
       <start extended="true">
-        ((?&lt;=([(]|\s))|^)
         \/
         (?=
           ([^/\\]*(\\.))*
           [^/]*
-          \/
-          \%{regex-options}
-          ([),;.]|\s|$)
+          \/\%{regex-options}
         )</start>
       <end>(\/)\%{regex-options}</end>
       <include><context style-ref="special-char"><match>\\[/\\]</match></context>
@@ -904,11 +901,11 @@
     </context>
 
     <context id="operators" style-ref="operator" extend-parent="false">
-      <match>&lt;=&gt;|(?&lt;!%)=(?!&gt;)|~|&lt;|&amp;|(?&lt;!=)&gt;|\.\.\.?|::|\*|/|\+|-|\||!|not|and|or|defined\?|\?|:</match>
+      <match>&lt;=&gt;|(?&lt;!%)=(?!&gt;)|~|&lt;|&amp;|(?&lt;!=)&gt;|\.|::|\*|/|\+|-|\||!|not|and|or|defined\?|\?|:</match>
     </context>
 
     <context id="syntax-chars" style-ref="syntax-char" extend-parent="false">
-      <match>[.\\;]</match>
+      <match>[\\;]</match>
     </context>
 
     <context id="brackets">
