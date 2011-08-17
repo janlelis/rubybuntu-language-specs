@@ -507,7 +507,7 @@
     </context>
 
     <context id="question-mark-string" style-ref="character">
-      <match>(?&lt;![\w\.])\?((\\[MC]-){1,2}|\\?)\S</match>
+      <match>(?&lt;![\w\.)\]}])\s*\?((\\[MC]-){1,2}|\\?)\S</match>
     </context>
 
     <context id="interpolation" style-ref="string-delimiter">

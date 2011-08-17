@@ -21,22 +21,13 @@ Contains various language specs needed by Ruby/Rails/Web developers, e.g. Gemfil
 * Different heredoc matching
 * Lots of details improved (see git log for more details)
 
-=== Ruby - TODOs
-* Bugs:
-  * 3==3?(:hey)::nein
-  * (3==3)?(:hey)::nein
-   * ?' # °_°
-  * BEGIN {
-  * bottles-2
-  * game-of-life-2
-  * don't highlight regexes: /, -(\d*, -)*/
-
-=== Ruby - Advanced TODOs
+=== Ruby - Advanced TODOs (or: build a "real" parser)
 * Improve heredocs (e.g. nested ones)
 * Different colorizations for "end"s (e.g. def/begin, class/module, while/until, if/case, block), needs to detect modifier statements correctly
 * Detect (multi-line) yard doc tag values
 * Add escapable char for generic string delimiters
-* Advanced regex highlighting (maybe there already is some for pcre out there?)
+* Advanced regex highlighting (maybe there is already something for pcre out there?)
+* known-bugs.rb
 
 == Languages to add/import
 * HTML
