@@ -33,10 +33,11 @@
   </metadata>
 
   <styles>
-    <style id="method"                _name="Method or local variable"       map-to="def:type"/>
+    <style id="method"                _name="Method or local variable"       map-to="def:identifier"/>
       <style id="important-method"      _name="Important methods"     map-to="def:builtin"/>
     <style id="keyword"               _name="Keyword"               map-to="def:keyword"/>
       <style id="syntax-char"           _name="Syntactical characters" map-to="ruby:keyword"/>
+      <style id="operator"              _name="Operators"             map-to="def:operator"/>
       <style id="special-value"         _name="nil, false, true"      map-to="def:boolean"/>
         <style id="self"                  _name="self"                  map-to="ruby:special-value"/>
         <style id="true"                  _name="true"                  map-to="ruby:special-value"/>
@@ -48,6 +49,11 @@
     <style id="constant"              _name="Constant"              map-to="def:constant"/>
       <style id="important-constant"    _name="Important constant"    map-to="def:special-constant"/>
 
+    <style id="instance-variable"     _name="Instance variable"     map-to="def:identifier"/>
+      <style id="class-variable"        _name="Class variable"        map-to="ruby:instance-variable"/>
+    <style id="global-variable"       _name="Global variable"       map-to="def:identifier"/>
+      <style id="special-variable"      _name="Special variable"      map-to="ruby:global-variable"/>
+
     <style id="comment"               _name="Comment"               map-to="def:comment"/>
       <style id="encoding-comment"      _name="Magic Comment"         map-to="def:shebang"/>
       <style id="comment-tag"           _name="YARD comment tag"      map-to="def:doc-comment"/>
@@ -56,29 +62,21 @@
     <style id="string"                _name="String"                map-to="def:string"/>
       <style id="string-delimiter"      _name="String delimiter"      map-to="ruby:string"/>
       <style id="character"             _name="Character in question mark notation"   map-to="def:character"/>
-      <style id="special-char"                _name="Escaped Character"     map-to="def:special-char"/>
+      <style id="special-char"          _name="Escaped Character"     map-to="def:special-char"/>
 
-      <style id="system"                _name="System command"        map-to="ruby:string"/>
-        <style id="system-delimiter"      _name="System command delimiter" map-to="ruby:system"/>
+    <style id="system"                _name="System command"        map-to="ruby:string"/>
+      <style id="system-delimiter"      _name="System command delimiter" map-to="ruby:system"/>
 
-      <style id="symbol"                _name="Symbol"                map-to="ruby:function"/>
-        <style id="symbol-delimiter"      _name="Symbol delimiter"      map-to="ruby:symbol"/>
+    <style id="symbol"                _name="Symbol"                map-to="ruby:function"/>
+      <style id="symbol-delimiter"      _name="Symbol delimiter"      map-to="ruby:symbol"/>
 
-      <style id="regex"                 _name="Regular expression"    map-to="ruby:string"/>
-        <style id="regex-delimiter"       _name="Regular expression delimiter" map-to="ruby:regex"/>
-        <style id="regex-options"         _name="Regular expression options" map-to="ruby:regex-delimiter"/>
+    <style id="regex"                 _name="Regular expression"    map-to="ruby:string"/>
+      <style id="regex-delimiter"       _name="Regular expression delimiter" map-to="ruby:regex"/>
+      <style id="regex-options"         _name="Regular expression options" map-to="ruby:regex-delimiter"/>
 
     <style id="floating-point"        _name="Floating point number" map-to="def:floating-point"/>
     <style id="decimal"               _name="Integer number"        map-to="def:decimal"/>
     <style id="base-n-integer"        _name="Base-N number"         map-to="def:base-n-integer"/>
-
-    <style id="instance-variable"     _name="Instance variable"     map-to="def:identifier"/>
-    <style id="class-variable"        _name="Class variable"        map-to="def:identifier"/>
-    <style id="global-variable"       _name="Global variable"       map-to="def:identifier"/>
-    <style id="special-variable"      _name="Special variable"      map-to="ruby:global-variable"/>
-
-    <style id="operator"              _name="Operators"             map-to="def:operator"/>
-
 
     <style id="error"                 _name="Erroneous syntax"      map-to="def:error"/>
   </styles>
