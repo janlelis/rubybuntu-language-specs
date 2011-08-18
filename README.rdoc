@@ -5,7 +5,7 @@ Part of {RubyBuntuGedit}[https://github.com/janlelis/rubybuntu-gedit]
 == Features
 Contains various language specs needed by Ruby/Rails/Web developers and also tries to maintain them.
 
-* The Ruby language specification has been improved alot. It uses 1.9.2 as reference implementation, recognizes many Ruby-specific language constructs (that can be highlighted differently) and implements many language details. To see all these changes, you need a style that supports ("uses") the new specification, see https://github.com/janlelis/rubybuntu-editor-styles. See below for a changelog summary.
+* The Ruby language specification has been improved alot. It uses 1.9.2 as reference implementation, recognizes many Ruby-specific language constructs (that can be highlighted differently) and implements many language details. To see all these changes, you need a style that supports ("uses") the new specification, for example, {these styles}[https://github.com/janlelis/rubybuntu-editor-styles]. See below for a changelog summary.
 * ERB is not only usable with HTML, but also with JavaScript, YAML and XML.
 * Gemfile.lock highlighting
 
@@ -23,10 +23,8 @@ You should also use up-to-date {mime types}[https://github.com/janlelis/rubybunt
 
 === as non-root
 
-    mkdir -p ~/.local/share/mime/packages
-    cp *.xml ~/.local/share/mime/packages
-
-    cp *.lang /usr/share/gtksourceview-2.0/language-specs
+    mkdir -p ~/.local/share/gtksourceview-2.0/language-specs
+    cp *.lang ~/.local/share/gtksourceview-2.0/language-specs
     # you can also delete the rhtml.lang (now done via html-erb)
     rm -f ~/.local/share/gtksourceview-2.0/language-specs/rhtml.lang
     # and the ruby_on_rails.lang (except you want to have rails highlighting with an extra language..)
@@ -72,3 +70,4 @@ Meanwhile, you can, for example, use the ones found in gmate[https://github.com/
 * RDOC markup support (and cross-referencing in ruby)
 * ruby: make unicode-aware/test with unicode code
 
+== J-_-L
