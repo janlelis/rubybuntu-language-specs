@@ -490,8 +490,8 @@
       <start>(?&lt;=do|\{)\s*(\|)</start>
       <end>\|</end>
       <include>
-        <context sub-pattern="0" where="start" style-ref="keyword"/>
-        <context sub-pattern="0" where="end"   style-ref="keyword"/>
+        <context sub-pattern="1" where="start" style-ref="syntax-char"/>
+        <context sub-pattern="0" where="end"   style-ref="syntax-char"/>
 
         <context ref="important-constants"/>
         <context ref="constants"/>
