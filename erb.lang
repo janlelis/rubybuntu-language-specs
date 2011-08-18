@@ -6,9 +6,9 @@
   </metadata>
 
   <styles>
-    <style id="tag"         _name="ERB tag: <%"                  map-to="xml:cdata-delim"/>
-    <style id="output-char" _name="ERB tag - output option: <%=" map-to="erb:tag"/>
-    <style id="comment"     _name="ERB comment: <%#"             map-to="xml:comment"/>
+    <style id="tag"         _name="ERB tag: &lt;%"                  map-to="xml:cdata-delim"/>
+    <style id="output-char" _name="ERB tag - output option: &lt;%=" map-to="erb:tag"/>
+    <style id="comment"     _name="ERB comment: &lt;%#"             map-to="xml:comment"/>
   </styles>
 
   <definitions>
@@ -21,7 +21,7 @@
     </context>
 
     <context id="block" class="no-spell-check">
-      <start>(&lt;%)(=)?</start>
+      <start>(&lt;%(=)?)</start>
       <end>-?%&gt;</end>
       <include>
         <context where="start" sub-pattern="1" style-ref="tag"/>

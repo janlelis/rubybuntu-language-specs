@@ -20,7 +20,7 @@
   <definitions>
      <!-- JS code inside javascript_tag -->
     <context id="javascript-block">
-       <start>(&lt;%)(=)\s*(javascript_tag)\s*(do|\{)\s*(%&gt;)</start>
+       <start>(&lt;%(=))\s*(javascript_tag)\s*(do|\{)\s*(%&gt;)</start>
        <end>(&lt;%)\s*(end|})\s*(%&gt;)</end>
        <include>
           <context where="start" sub-pattern="1" style-ref="tag"/>
@@ -35,7 +35,7 @@
       </include>
     </context>
 
-    <replace id="html:embedded-lang-hook" ref="erb:block"/>
+    <replace id="html:embedded-lang-hook" ref="erb:block"/><!-- allow erb tags in strings -->
 
     <context id="html-erb">
       <include>
