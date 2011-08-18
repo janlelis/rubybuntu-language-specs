@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<language id="yaml-erb" _name="Yaml (erb)" version="2.0" _section="Markup">
+  <metadata>
+    <property name="mimetypes">text/x-yaml-erb</property>
+    <property name="globs">*.yaml.erb;*.yml.erb</property>
+    <property name="line-comment-start">#</property>
+  </metadata>
+
+  <!-- also see erb.lang -->
+
+  <definitions>
+    <context id="yaml-erb">
+      <include>
+        <context ref="erb:erb"/>
+        <context ref="yaml:yaml"/>
+      </include>
+    </context>
+  </definitions>
+</language>
+
