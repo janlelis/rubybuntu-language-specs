@@ -74,8 +74,8 @@
       <style id="regex-delimiter"       _name="Regular expression delimiter" map-to="ruby:regex"/>
       <style id="regex-options"         _name="Regular expression options" map-to="ruby:regex-delimiter"/>
 
-    <style id="floating-point"        _name="Floating point number" map-to="def:floating-point"/>
-    <style id="decimal"               _name="Integer number"        map-to="def:decimal"/>
+    <style id="float"                 _name="Floating point number" map-to="def:floating-point"/>
+    <style id="integer"               _name="Integer number"        map-to="def:decimal"/>
     <style id="base-n-integer"        _name="Base-N number"         map-to="def:base-n-integer"/>
 
     <style id="error"                 _name="Erroneous syntax"      map-to="def:error"/>
@@ -438,11 +438,11 @@
     <define-regex id="n_pre">(?&lt;!\w)</define-regex>
     <define-regex id="n_suf">(?!\w)</define-regex>
 
-    <context id="float" style-ref="floating-point">
+    <context id="float" style-ref="float">
       <match>\%{n_pre}(\%{n}\.\%{n}|\%{n}(\.\%{n})?[eE][+-]?\%{n})\%{n_suf}</match>
     </context>
 
-    <context id="integer" style-ref="decimal">
+    <context id="integer" style-ref="integer">
       <match>\%{n_pre}([1-9](_?[0-9])*|0)\%{n_suf}</match>
     </context>
 
