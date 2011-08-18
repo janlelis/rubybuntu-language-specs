@@ -1,37 +1,61 @@
-= Ruby/Rails/Web related gedit language definitions.
+= Ruby/Rails/Web related gedit/gtksourceview language definitions.
+
+Part of {RubyBuntuGedit}[https://github.com/janlelis/rubybuntu-gedit]
 
 == Features
-Contains various language specs needed by Ruby/Rails/Web developers, e.g. Gemfile.lock highlighting and .js.erb handling and a different (more ruby- and gedit-like) ruby syntax highlighting.
+Contains various language specs needed by Ruby/Rails/Web developers and also tries to maintain them.
 
-[...]
+* The Ruby language specification has been improved alot. It uses 1.9.2 as reference implementation, recognizes many Ruby-specific language constructs (that can be highlighted differently) and implements many language details. To see all these changes, you need a style that supports ("uses") the new specification, see https://github.com/janlelis/rubybuntu-editor-styles. See below for a changelog summary.
+* ERB is not only usable with HTML, but also with JavaScript, YAML and XML.
+* Gemfile.lock highlighting
 
 == Setup
-[explain]
 
-== erb stuff
-[explain]
+You should also use up-to-date {mime types}[https://github.com/janlelis/rubybuntu-mime].
 
-== Ruby - Improvements/Changes
+=== as root
+
+    sudo cp *.lang /usr/share/gtksourceview-2.0/language-specs
+    # you can also delete the rhtml.lang (now done via html-erb)
+    sudo rm -f /usr/share/gtksourceview-2.0/language-specs/rhtml.lang
+    # and the ruby_on_rails.lang (except you want to have rails highlighting with an extra language..)
+    sudo rm -f /usr/share/gtksourceview-2.0/language-specs/ruby_on_rails.lang
+
+=== as non-root
+
+    mkdir -p ~/.local/share/mime/packages
+    cp *.xml ~/.local/share/mime/packages
+
+    cp *.lang /usr/share/gtksourceview-2.0/language-specs
+    # you can also delete the rhtml.lang (now done via html-erb)
+    rm -f ~/.local/share/gtksourceview-2.0/language-specs/rhtml.lang
+    # and the ruby_on_rails.lang (except you want to have rails highlighting with an extra language..)
+    rm -f ~/.local/share/gtksourceview-2.0/language-specs/ruby_on_rails.lang
+
+
+== CHANGES
+=== ruby.lang
 * Use 1.9 as reference implementation
-* Better support for advanced literals (e.g. %x[], %r<>, ...)
 * No Rails keywords, no extra language for Rails
-* Simplify/refactor/update keyword and builtin detection, highlight important constants and methods
-* More logical style mappings
+* Refactor/update keyword and builtin detection, highlight important constants and methods
+* Better support for advanced literals (e.g. `%x[]`, `%r<>`, ...)
+* More logical style mappings (also means: current styles are not fully ruby:compatible)
 * Support Arrays & Hashes (inclusive 1.9 symbol syntax)
 * Different heredoc matching
-* Lots of details improved (see git log for more details)
+* Small language details, like recognizing `__END__`
+* See git log for full details
+* Based on https://github.com/gmate/gmate/blob/master/lang-specs/ruby_on_rails.lang
 
-=== Ruby - Advanced TODOs (or: build a "real" parser)
+== TODO
+=== ruby.lang - Advanced TODOs (or: build a "real" parser)
 * Improve heredocs (e.g. nested ones)
 * Different colorizations for "end"s (e.g. def/begin, class/module, while/until, if/case, block), needs to detect modifier statements correctly
 * Detect (multi-line) yard doc tag values
 * Add escapable char for generic string delimiters
 * Advanced regex highlighting (maybe there is already something for pcre out there?)
-* known-bugs.rb
+* ruby.lang-extras/known-bugs.rb
 
-== Languages to add/import
-* HTML
-* CSS
+=== Languages to add/import
 * SASS / SCSS
 * COFFEE
 * HAML
@@ -39,9 +63,9 @@ Contains various language specs needed by Ruby/Rails/Web developers, e.g. Gemfil
 * YAML
 * CUCUMBER
 
-Meanwhile, you can use the ones in gmate.
+Meanwhile, you can, for example,  use the ones in gmate[https://github.com/gmate/gmate/tree/master/lang-specs]
 
-== MAYBE
+=== MAYBE
 * RDOC markup support (and cross-referencing in ruby)
-* ruby: make unicode-aware/test with much unicode
+* ruby: make unicode-aware/test with unicode code
 
