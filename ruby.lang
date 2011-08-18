@@ -42,6 +42,7 @@
         <style id="true"                  _name="true"                  map-to="ruby:special-value"/>
         <style id="false"                 _name="false"                 map-to="ruby:special-value"/>
         <style id="nil"                   _name="nil"                   map-to="ruby:special-value"/>
+    <style id="collection"            _name="Collections (Arrays, Hashes)"   map-to="ruby:syntax-char"/>
     <style id="function"              _name="Function definition"   map-to="def:function"/>
 
     <style id="constant"              _name="Constant"              map-to="def:constant"/>
@@ -66,8 +67,6 @@
       <style id="regex"                 _name="Regular expression"    map-to="ruby:string"/>
         <style id="regex-delimiter"       _name="Regular expression delimiter" map-to="ruby:regex"/>
         <style id="regex-options"         _name="Regular expression options" map-to="ruby:regex-delimiter"/>
-
-    <style id="collection"            _name="Collections (Arrays, Hashes)"   map-to="def:type"/>
 
     <style id="floating-point"        _name="Floating point number" map-to="def:floating-point"/>
     <style id="decimal"               _name="Integer number"        map-to="def:decimal"/>
@@ -919,21 +918,21 @@
           <include><context ref="ruby:*"/></include>
         </context>
         <context id="curly-brackets" style-ref="syntax-char">
-          <start>\{</start><end>\}</end>
+          <start>(?&lt;=[\])\w])\s*\{</start><end>\}</end>
           <include><context ref="ruby:*"/></include>
         </context>
       </include>
     </context>
 
     <context id="hash-symbols" style-ref="symbol">
-      <match>[a-zA-Z0-9_]+(!|\?)?:</match>
+      <match>[a-zA-Z0-9_]+(!|\?)?:(?!:)</match>
     </context>
 
     <context id="hash-strings" style-ref="string">
-      <match>(?&lt;!\s)\:</match>
+      <match>(?&lt;!\s)\:(?!:)</match>
     </context>
 
-    <context id="hash">
+    <context id="hash" extend-parent="false">
       <start>(?&lt;![\])\w])\s*\{</start>
       <end>\}</end>
       <include>

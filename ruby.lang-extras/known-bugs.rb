@@ -9,7 +9,3 @@
 # question mark madness vs ternary operator
 [?', ?(, :vs] ?'a':'b'
 
-# {} recognized as hash instead of block
-BEGIN {}
-
-
