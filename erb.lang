@@ -6,13 +6,13 @@
   </metadata>
 
   <styles>
-    <style id="tag"         _name="ERB tag: &lt;%"                  map-to="xml:cdata-delim"/>
-    <style id="output-char" _name="ERB tag - output option: &lt;%=" map-to="erb:tag"/>
-    <style id="comment"     _name="ERB comment: &lt;%#"             map-to="xml:comment"/>
+    <style id="tag"         _name="ERB tag: &lt;%"         map-to="xml:cdata-delim"/>
+    <style id="output"      _name="ERB output tag_ &lt;%=" map-to="erb:tag"/>
+    <style id="comment"     _name="ERB comment: &lt;%#"    map-to="xml:comment"/>
   </styles>
 
   <definitions>
-    <context id="comment" style-ref="comment">
+    <context id="block-comment" style-ref="comment">
       <start>&lt;%#</start>
       <end>-?%&gt;</end>
       <include>
@@ -20,12 +20,21 @@
       </include>
     </context>
 
-    <context id="block" class="no-spell-check">
-      <start>(&lt;%(=)?)</start>
+    <context id="block-output" class="no-spell-check">
+      <start>&lt;%=</start>
       <end>-?%&gt;</end>
       <include>
-        <context where="start" sub-pattern="1" style-ref="tag"/>
-        <context where="start" sub-pattern="2" style-ref="output-char"/>
+        <context where="start" sub-pattern="0" style-ref="output"/>
+        <context where="end"   sub-pattern="0" style-ref="output"/>
+        <context ref="ruby:ruby"/>
+      </include>
+    </context>
+
+    <context id="block" class="no-spell-check">
+      <start>&lt;%</start>
+      <end>-?%&gt;</end>
+      <include>
+        <context where="start" sub-pattern="0" style-ref="tag"/>
         <context where="end"   sub-pattern="0" style-ref="tag"/>
         <context ref="ruby:ruby"/>
       </include>
@@ -33,7 +42,8 @@
 
     <context id="erb">
       <include>
-        <context ref="comment"/>
+        <context ref="block-comment"/>
+        <context ref="block-output"/>
         <context ref="block"/>
       </include>
     </context>

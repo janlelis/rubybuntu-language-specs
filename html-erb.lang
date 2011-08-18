@@ -10,24 +10,22 @@
   <!-- also see erb.lang -->
 
   <styles><!-- you should not edit these but the original ones -->
-    <style id="tag"          _name="ERB tag"                 map-to="erb:tag"/>
-    <style id="output-char"  _name="ERB tag - output option" map-to="erb:output-char"/>
-    <style id="comment"      _name="ERB comment"             map-to="erb:comment"/>
-    <style id="ruby-method"  _name="Ruby method"             map-to="ruby:method"/>
-    <style id="ruby-keyword" _name="Ruby keyword"            map-to="ruby:keyword"/>
+    <style id="tag"          _name="ERB tag"          map-to="erb:tag"/>
+    <style id="output"       _name="ERB output tag"   map-to="erb:output"/>
+    <style id="ruby-method"  _name="Ruby method"      map-to="ruby:method"/>
+    <style id="ruby-keyword" _name="Ruby keyword"     map-to="ruby:keyword"/>
   </styles>
 
   <definitions>
      <!-- JS code inside javascript_tag -->
     <context id="javascript-block">
-       <start>(&lt;%(=))\s*(javascript_tag)\s*(do|\{)\s*(%&gt;)</start>
+       <start>(&lt;%=)\s*(javascript_tag)\s*(do|\{)\s*(%&gt;)</start>
        <end>(&lt;%)\s*(end|})\s*(%&gt;)</end>
        <include>
-          <context where="start" sub-pattern="1" style-ref="tag"/>
-          <context where="start" sub-pattern="2" style-ref="output-char"/>
-          <context where="start" sub-pattern="3" style-ref="ruby-method"/>
-          <context where="start" sub-pattern="4" style-ref="ruby-keyword"/>
-          <context where="start" sub-pattern="5" style-ref="tag"/>
+          <context where="start" sub-pattern="1" style-ref="output"/>
+          <context where="start" sub-pattern="2" style-ref="ruby-method"/>
+          <context where="start" sub-pattern="3" style-ref="ruby-keyword"/>
+          <context where="start" sub-pattern="4" style-ref="output"/>
           <context where="end"   sub-pattern="1" style-ref="tag"/>
           <context where="end"   sub-pattern="2" style-ref="ruby-keyword"/>
           <context where="end"   sub-pattern="3" style-ref="tag"/>
