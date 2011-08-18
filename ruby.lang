@@ -517,7 +517,7 @@
 
     <context id="variable-interpolation">
       <start>(#)(?=[@$])</start>
-      <end>\s</end>
+      <end>(?!\%{variable})</end>
       <include>
         <context where="start" sub-pattern="1" style-ref="string-delimiter"/>
         <context ref="class-variables"/>
