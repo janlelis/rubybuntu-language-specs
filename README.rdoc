@@ -55,15 +55,15 @@ You should also use up-to-date {mime types}[https://github.com/janlelis/rubybunt
 * Advanced regex highlighting (maybe there is already something for pcre out there?)
 * ruby.lang-extras/known-bugs.rb
 
-=== Languages to add/import
-* SASS / SCSS
+=== Languages to add/import/update
+* SASS / SCSS / CSS
 * COFFEE
 * HAML
 * SLIM
 * YAML
 * CUCUMBER
 
-Meanwhile, you can, for example,  use the ones in gmate[https://github.com/gmate/gmate/tree/master/lang-specs]
+Meanwhile, you can, for example, use the ones found in gmate[https://github.com/gmate/gmate/tree/master/lang-specs]
 
 === MAYBE
 * RDOC markup support (and cross-referencing in ruby)
