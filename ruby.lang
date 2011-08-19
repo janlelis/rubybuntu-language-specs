@@ -33,52 +33,52 @@
   </metadata>
 
   <styles>
-    <style id="method"                _name="Method or local variable"       map-to="def:identifier"/>
-      <style id="important-method"      _name="Important methods"     map-to="def:builtin"/>
-    <style id="keyword"               _name="Keyword"               map-to="def:keyword"/>
-      <style id="syntax-char"           _name="Syntactical characters" map-to="ruby:keyword"/>
-      <style id="operator"              _name="Operators"             map-to="def:operator"/>
-      <style id="special-value"         _name="nil, false, true"      map-to="def:boolean"/>
-        <style id="self"                  _name="self"                  map-to="ruby:special-value"/>
-        <style id="true"                  _name="true"                  map-to="ruby:special-value"/>
-        <style id="false"                 _name="false"                 map-to="ruby:special-value"/>
-        <style id="nil"                   _name="nil"                   map-to="ruby:special-value"/>
-    <style id="collection"            _name="Collections (Arrays, Hashes)"   map-to="ruby:syntax-char"/>
-    <style id="function"              _name="Function definition"   map-to="def:function"/>
+    <style id="method" _name="Method or local variable"  map-to="def:identifier"/>
+      <style id="important-method" _name="Important methods" map-to="def:builtin"/>
+    <style id="keyword" _name="Keyword" map-to="def:keyword"/>
+      <style id="syntax-char" _name="Syntactical characters" map-to="ruby:keyword"/>
+      <style id="operator" _name="Operators" map-to="def:operator"/>
+      <style id="special-value" _name="nil, false, true" map-to="def:boolean"/>
+        <style id="self" _name="self" map-to="ruby:special-value"/>
+        <style id="true" _name="true" map-to="ruby:special-value"/>
+        <style id="false" _name="false" map-to="ruby:special-value"/>
+        <style id="nil" _name="nil" map-to="ruby:special-value"/>
+    <style id="collection" _name="Collections (Arrays, Hashes)" map-to="ruby:syntax-char"/>
+    <style id="function" _name="Function definition"   map-to="def:function"/>
 
-    <style id="constant"              _name="Constant"              map-to="def:constant"/>
-      <style id="important-constant"    _name="Important constant"    map-to="def:special-constant"/>
+    <style id="constant" _name="Constant" map-to="def:constant"/>
+      <style id="important-constant" _name="Important constant" map-to="def:special-constant"/>
 
-    <style id="instance-variable"     _name="Instance variable"     map-to="def:identifier"/>
-      <style id="class-variable"        _name="Class variable"        map-to="ruby:instance-variable"/>
-    <style id="global-variable"       _name="Global variable"       map-to="def:identifier"/>
-      <style id="special-variable"      _name="Special variable"      map-to="ruby:global-variable"/>
+    <style id="instance-variable" _name="Instance variable" map-to="def:identifier"/>
+      <style id="class-variable" _name="Class variable" map-to="ruby:instance-variable"/>
+    <style id="global-variable" _name="Global variable" map-to="def:identifier"/>
+      <style id="special-variable" _name="Special variable" map-to="ruby:global-variable"/>
 
-    <style id="comment"               _name="Comment"               map-to="def:comment"/>
-      <style id="encoding-comment"      _name="Magic Comment"         map-to="def:shebang"/>
-      <style id="comment-tag"           _name="YARD comment tag"      map-to="def:doc-comment"/>
-      <!--style id="comment-tag-value"     _name="YARD comment tag value" map-to="def:doc-comment-element"/-->
+    <style id="comment" _name="Comment" map-to="def:comment"/>
+      <style id="encoding-comment" _name="Magic Comment" map-to="def:shebang"/>
+      <style id="comment-tag" _name="YARD comment tag" map-to="def:doc-comment"/>
+      <!--style id="comment-tag-value" _name="YARD comment tag value" map-to="def:doc-comment-element"/-->
 
-    <style id="string"                _name="String"                map-to="def:string"/>
-      <style id="string-delimiter"      _name="String delimiter"      map-to="ruby:string"/>
-      <style id="character"             _name="Character in question mark notation"   map-to="def:character"/>
-      <style id="special-char"          _name="Escaped Character"     map-to="def:special-char"/>
+    <style id="string" _name="String" map-to="def:string"/>
+      <style id="string-delimiter" _name="String delimiter" map-to="ruby:string"/>
+      <style id="character" _name="Character in question mark notation" map-to="def:character"/>
+      <style id="special-char" _name="Escaped Character" map-to="def:special-char"/>
 
-    <style id="system"                _name="System command"        map-to="ruby:string"/>
-      <style id="system-delimiter"      _name="System command delimiter" map-to="ruby:system"/>
+    <style id="system" _name="System command" map-to="ruby:string"/>
+      <style id="system-delimiter" _name="System command delimiter" map-to="ruby:system"/>
 
-    <style id="symbol"                _name="Symbol"                map-to="ruby:function"/>
-      <style id="symbol-delimiter"      _name="Symbol delimiter"      map-to="ruby:symbol"/>
+    <style id="symbol" _name="Symbol" map-to="ruby:function"/>
+      <style id="symbol-delimiter" _name="Symbol delimiter" map-to="ruby:symbol"/>
 
-    <style id="regex"                 _name="Regular expression"    map-to="ruby:string"/>
-      <style id="regex-delimiter"       _name="Regular expression delimiter" map-to="ruby:regex"/>
-      <style id="regex-options"         _name="Regular expression options" map-to="ruby:regex-delimiter"/>
+    <style id="regex" _name="Regular expression" map-to="ruby:string"/>
+      <style id="regex-delimiter" _name="Regular expression delimiter" map-to="ruby:regex"/>
+      <style id="regex-options" _name="Regular expression options" map-to="ruby:regex-delimiter"/>
 
-    <style id="float"                 _name="Floating point number" map-to="def:floating-point"/>
-    <style id="integer"               _name="Integer number"        map-to="def:decimal"/>
-    <style id="base-n-integer"        _name="Base-N number"         map-to="def:base-n-integer"/>
+    <style id="float" _name="Floating point number" map-to="def:floating-point"/>
+    <style id="integer" _name="Integer number" map-to="def:decimal"/>
+    <style id="base-n-integer" _name="Base-N number" map-to="def:base-n-integer"/>
 
-    <style id="error"                 _name="Erroneous syntax"      map-to="def:error"/>
+    <style id="error" _name="Erroneous syntax"      map-to="def:error"/>
   </styles>
 
   <definitions>
@@ -96,7 +96,8 @@
       </include>
     </context>
 
-    <context id="shell-like-comment" style-ref="comment" end-at-line-end="true" class-disabled="no-spell-check">
+    <context id="shell-like-comment" style-ref="comment" end-at-line-end="true"
+             class-disabled="no-spell-check">
       <start>#</start>
       <include>
         <context ref="def:in-comment"/>
@@ -108,7 +109,8 @@
       <match>@\w+(\s*\[.*?\])?</match>
     </context>
 
-    <context id="encoding-comment" style-ref="encoding-comment" class="no-spell-check" first-line-only="true">
+    <context id="encoding-comment" style-ref="encoding-comment" first-line-only="true"
+             class="no-spell-check">
       <match case-sensitive="false">\s*#.*coding.*</match>
     </context>
 
@@ -540,72 +542,105 @@
     <context id="double-quoted-string" style-ref="string" class-disabled="no-spell-check" style-inside="true">
       <start>"</start>
       <end>"</end>
-      <include><context style-ref="special-char"><match>\\[\"\\]</match></context>
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="string-delimiter"/><context where="end" sub-pattern="0" style-ref="string-delimiter"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[\"\\]</match></context>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="string-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="string-delimiter"/>
+      </include>
     </context>
 
    <!--  %Q{Hello world} %{Hello world} -->
     <context id="double-quoted-string-curly" style-ref="string">
       <start>%Q?\{</start>
       <end>\}</end>
-      <include><context style-ref="special-char"><match>\\[}\\]</match></context>
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="string-delimiter"/><context where="end" sub-pattern="0" style-ref="string-delimiter"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[}\\]</match></context>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="string-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="string-delimiter"/>
+      </include>
     </context>
 
     <!-- %Q(Hello world) %(Hello world) -->
     <context id="double-quoted-string-normal" style-ref="string">
       <start>%Q?\(</start>
       <end>\)</end>
-      <include><context style-ref="special-char"><match>\\[)\\]</match></context>
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="string-delimiter"/><context where="end" sub-pattern="0" style-ref="string-delimiter"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[)\\]</match></context>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="string-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="string-delimiter"/>
+      </include>
     </context>
 
     <!-- %Q[Hello world] %[Hello world] -->
     <context id="double-quoted-string-square" style-ref="string">
       <start>%Q?\[</start>
       <end>\]</end>
-      <include><context style-ref="special-char"><match>\\[\]\\]</match></context>
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="string-delimiter"/><context where="end" sub-pattern="0" style-ref="string-delimiter"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[\]\\]</match></context>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="string-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="string-delimiter"/>
+      </include>
     </context>
 
     <!-- %Q<Hello world> %<Hello world> -->
     <context id="double-quoted-string-angle" style-ref="string">
       <start>%Q?&lt;</start>
       <end>&gt;</end>
-      <include><context style-ref="special-char"><match>\\[&gt;\\]</match></context>
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="string-delimiter"/><context where="end" sub-pattern="0" style-ref="string-delimiter"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[&gt;\\]</match></context>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="string-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="string-delimiter"/>
+      </include>
     </context>
 
     <!-- %Q-Hello world- %-Hello world- %+hello world+ and so on... -->
     <context id="double-quoted-string-generic" style-ref="string" extend-parent="false">
       <start>%Q?([[:print:]])(?&lt;![[:alnum:][:space:]])</start>
       <end>\%{1@start}</end>
-      <include><!--context style-ref="special-char"><match>\\[\%{1@start}\\]</match></context-->
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="string-delimiter"/><context where="end" sub-pattern="0" style-ref="string-delimiter"/></include>
+      <include>
+        <!--context style-ref="special-char"><match>\\[\%{1@start}\\]</match></context-->
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="string-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="string-delimiter"/>
+      </include>
     </context>
 
     <!-- 'Hello world' -->
     <context id="single-quoted-string" style-ref="string" class-disabled="no-spell-check">
       <start>'</start>
       <end>'</end>
-      <include><context style-ref="special-char"><match>\\['\\]</match></context>
-      <context where="start" sub-pattern="0" style-ref="string-delimiter"/><context where="end" sub-pattern="0" style-ref="string-delimiter"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\['\\]</match></context>
+        <context where="start" sub-pattern="0" style-ref="string-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="string-delimiter"/>
+      </include>
     </context>
 
     <!-- %q{Hello world} -->
     <context id="single-quoted-string-curly" style-ref="string">
       <start>%q\{</start>
       <end>\}</end>
-      <include><context style-ref="special-char"><match>\\[}\\]</match></context>
-      <context where="start" sub-pattern="0" style-ref="string-delimiter"/><context where="end" sub-pattern="0" style-ref="string-delimiter"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[}\\]</match></context>
+        <context where="start" sub-pattern="0" style-ref="string-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="string-delimiter"/>
+      </include>
     </context>
 
     <!-- %q(Hello world) -->
     <context id="single-quoted-string-normal" style-ref="string">
       <start>%q\(</start>
       <end>\)</end>
-      <include><context style-ref="special-char"><match>\\[)\\]</match></context>
-      <context where="start" sub-pattern="0" style-ref="string-delimiter"/><context where="end" sub-pattern="0" style-ref="string-delimiter"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[)\\]</match></context>
+        <context where="start" sub-pattern="0" style-ref="string-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="string-delimiter"/>
+      </include>
     </context>
 
     <!-- %q[Hello world] -->
@@ -613,23 +648,31 @@
       <start>%q\[</start>
       <end>\]</end>
       <include><context style-ref="special-char"><match>\\[\]\\]</match></context>
-      <context where="start" sub-pattern="0" style-ref="string-delimiter"/><context where="end" sub-pattern="0" style-ref="string-delimiter"/></include>
+        <context where="start" sub-pattern="0" style-ref="string-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="string-delimiter"/>
+      </include>
     </context>
 
     <!-- %q<Hello world> -->
     <context id="single-quoted-string-angle" style-ref="string">
       <start>%q&lt;</start>
       <end>&gt;</end>
-      <include><context style-ref="special-char"><match>\\[%gt;\\]</match></context>
-      <context where="start" sub-pattern="0" style-ref="string-delimiter"/><context where="end" sub-pattern="0" style-ref="string-delimiter"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[%gt;\\]</match></context>
+        <context where="start" sub-pattern="0" style-ref="string-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="string-delimiter"/>
+      </include>
     </context>
 
     <!-- %q-Hello world- %q+Hello world+ %q*Hello world* and so on... -->
     <context id="single-quoted-string-generic" style-ref="string">
       <start>%q([[:print:]])(?&lt;![[:alnum:]])</start>
       <end>\%{1@start}</end>
-      <include><!--context style-ref="special-char"><match>\\[\%{1@start}\\]</match></context-->
-      <context where="start" sub-pattern="0" style-ref="string-delimiter"/><context where="end" sub-pattern="0" style-ref="string-delimiter"/></include>
+      <include>
+        <!--context style-ref="special-char"><match>\\[\%{1@start}\\]</match></context-->
+        <context where="start" sub-pattern="0" style-ref="string-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="string-delimiter"/>
+      </include>
     </context>
 
     <!-- Arrays of strings
@@ -637,32 +680,48 @@
     <context id="double-quoted-word-array-curly" style-ref="string">
       <start>%W\{</start>
       <end>\}</end>
-      <include><context style-ref="special-char"><match>\\[}\\]</match></context>
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="collection"/><context where="end" sub-pattern="0" style-ref="collection"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[}\\]</match></context>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="collection"/>
+        <context where="end" sub-pattern="0" style-ref="collection"/>
+      </include>
     </context>
 
     <!-- %W(Array of #{interpolated} strings) -->
     <context id="double-quoted-word-array-normal" style-ref="string">
       <start>%W\(</start>
       <end>\)</end>
-      <include><context style-ref="special-char"><match>\\[)\\]</match></context>
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="collection"/><context where="end" sub-pattern="0" style-ref="collection"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[)\\]</match></context>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="collection"/>
+        <context where="end" sub-pattern="0" style-ref="collection"/>
+      </include>
     </context>
 
     <!-- %W[Array of #{interpolated} strings] -->
     <context id="double-quoted-word-array-square" style-ref="string">
       <start>%W\[</start>
       <end>\]</end>
-      <include><context style-ref="special-char"><match>\\[\]\\]</match></context>
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="collection"/><context where="end" sub-pattern="0" style-ref="collection"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[\]\\]</match></context>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="collection"/>
+        <context where="end" sub-pattern="0" style-ref="collection"/>
+      </include>
     </context>
 
     <!-- %W<Array of #{interpolated} strings> -->
     <context id="double-quoted-word-array-angle" style-ref="string">
       <start>%W&lt;</start>
       <end>&gt;</end>
-      <include><context style-ref="special-char"><match>\\[&gt;\\]</match></context>
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="collection"/><context where="end" sub-pattern="0" style-ref="collection"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[&gt;\\]</match></context>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="collection"/>
+        <context where="end" sub-pattern="0" style-ref="collection"/>
+      </include>
     </context>
 
     <!-- %W-Array of #{interpolated} strings-
@@ -671,90 +730,130 @@
     <context id="double-quoted-word-array-generic" style-ref="string">
       <start>%W([[:print:]])(?&lt;![[:alnum:]])</start>
       <end>\%{1@start}</end>
-      <include><!--context style-ref="special-char"><match>\\[\%{1@start}\\]</match></context-->
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="collection"/><context where="end" sub-pattern="0" style-ref="collection"/></include>
+      <include>
+        <!--context style-ref="special-char"><match>\\[\%{1@start}\\]</match></context-->
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="collection"/>
+        <context where="end" sub-pattern="0" style-ref="collection"/>
+      </include>
     </context>
 
     <!-- %w{Array of strings} -->
     <context id="single-quoted-word-array-curly" style-ref="string">
       <start>%w\{</start>
       <end>\}</end>
-      <include><context style-ref="special-char"><match>\\[}\\]</match></context>
-      <context where="start" sub-pattern="0" style-ref="collection"/><context where="end" sub-pattern="0" style-ref="collection"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[}\\]</match></context>
+        <context where="start" sub-pattern="0" style-ref="collection"/>
+        <context where="end" sub-pattern="0" style-ref="collection"/>
+      </include>
     </context>
 
     <!-- %w(Array of strings) -->
     <context id="single-quoted-word-array-normal" style-ref="string">
       <start>%w\(</start>
       <end>\)</end>
-      <include><context style-ref="special-char"><match>\\[)\\]</match></context>
-      <context where="start" sub-pattern="0" style-ref="collection"/><context where="end" sub-pattern="0" style-ref="collection"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[)\\]</match></context>
+        <context where="start" sub-pattern="0" style-ref="collection"/>
+        <context where="end" sub-pattern="0" style-ref="collection"/>
+      </include>
     </context>
 
     <!-- %w[Array of strings] -->
     <context id="single-quoted-word-array-square" style-ref="string">
       <start>%w\[</start>
       <end>\]</end>
-      <include><context style-ref="special-char"><match>\\[\]\\]</match></context>
-      <context where="start" sub-pattern="0" style-ref="collection"/><context where="end" sub-pattern="0" style-ref="collection"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[\]\\]</match></context>
+        <context where="start" sub-pattern="0" style-ref="collection"/>
+        <context where="end" sub-pattern="0" style-ref="collection"/>
+      </include>
     </context>
 
     <!-- %w<Array of strings> -->
     <context id="single-quoted-word-array-angle" style-ref="string">
       <start>%w&lt;</start>
       <end>&gt;</end>
-      <include><context style-ref="special-char"><match>\\[&gt;\\]</match></context>
-      <context where="start" sub-pattern="0" style-ref="collection"/><context where="end" sub-pattern="0" style-ref="collection"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[&gt;\\]</match></context>
+        <context where="start" sub-pattern="0" style-ref="collection"/>
+        <context where="end" sub-pattern="0" style-ref="collection"/>
+      </include>
     </context>
 
     <!-- %w-Array of strings- %w+Array of strings+ %w*Array of strings* and so on... -->
     <context id="single-quoted-word-array-generic" style-ref="string">
       <start>%w([[:print:]])(?&lt;![[:alnum:]])</start>
       <end>\%{1@start}</end>
-      <include><!--context style-ref="special-char"><match>\\[\%{1@start}\\]</match></context-->
-      <context where="start" sub-pattern="0" style-ref="collection"/><context where="end" sub-pattern="0" style-ref="collection"/></include>
+      <include>
+        <!--context style-ref="special-char"><match>\\[\%{1@start}\\]</match></context-->
+        <context where="start" sub-pattern="0" style-ref="collection"/>
+        <context where="end" sub-pattern="0" style-ref="collection"/>
+      </include>
     </context>
 
     <context id="backtick-quoted-string" style-ref="system">
       <start>`</start>
       <end>`</end>
-      <include><context style-ref="special-char"><match>\\[`\\]</match></context>
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="system-delimiter"/><context where="end" sub-pattern="0" style-ref="system-delimiter"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[`\\]</match></context>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="system-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="system-delimiter"/>
+      </include>
     </context>
 
     <context id="backtick-quoted-string-curly" style-ref="system">
       <start>%x\{</start>
       <end>\}</end>
-      <include><context style-ref="special-char"><match>\\[}\\]</match></context>
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="system-delimiter"/><context where="end" sub-pattern="0" style-ref="system-delimiter"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[}\\]</match></context>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="system-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="system-delimiter"/>
+      </include>
     </context>
 
     <context id="backtick-quoted-string-normal" style-ref="system">
       <start>%x\(</start>
       <end>\)</end>
       <include><context style-ref="special-char"><match>\\[)\\]</match></context>
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="system-delimiter"/><context where="end" sub-pattern="0" style-ref="system-delimiter"/></include>
+      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="system-delimiter"/>
+      <context where="end" sub-pattern="0" style-ref="system-delimiter"/></include>
     </context>
 
     <context id="backtick-quoted-string-square" style-ref="system">
       <start>%x\[</start>
       <end>\]</end>
-      <include><context style-ref="special-char"><match>\\[\]\\]</match></context>
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="system-delimiter"/><context where="end" sub-pattern="0" style-ref="system-delimiter"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[\]\\]</match></context>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="system-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="system-delimiter"/>
+      </include>
     </context>
 
     <context id="backtick-quoted-string-angle" style-ref="system">
       <start>%x&lt;</start>
       <end>&gt;</end>
-      <include><context style-ref="special-char"><match>\\[&gt;\\]</match></context>
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="system-delimiter"/><context where="end" sub-pattern="0" style-ref="system-delimiter"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[&gt;\\]</match></context>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="system-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="system-delimiter"/>
+      </include>
     </context>
 
     <context id="backtick-quoted-string-generic" style-ref="system">
       <start>%x([[:print:]])(?&lt;![[:alnum:]])</start>
       <end>\%{1@start}</end>
-      <include><!--context style-ref="special-char"><match>\\[\%{1@start}\\]</match></context-->
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="system-delimiter"/><context where="end" sub-pattern="0" style-ref="system-delimiter"/></include>
+      <include>
+        <!--context style-ref="special-char"><match>\\[\%{1@start}\\]</match></context-->
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="system-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="system-delimiter"/>
+      </include>
     </context>
 
     <define-regex id="start-heredoc">([^a-zA-Z0-9\s\]\)&gt;}])\s*(&lt;&lt;)</define-regex>
@@ -762,49 +861,93 @@
     <context id="heredoc-string" style-ref="string">
       <start>\%{start-heredoc}((\w+))</start>
       <end>^\%{4@start}$</end>
-      <include><context ref="double-quoted"/><context where="start" sub-pattern="1" style-ref="operator"/><context where="start" sub-pattern="2" style-ref="string-delimiter"/><context where="start" sub-pattern="3" style-ref="string-delimiter"/><context where="end" sub-pattern="0" style-ref="string-delimiter"/></include>
+      <include>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="1" style-ref="operator"/>
+        <context where="start" sub-pattern="2" style-ref="string-delimiter"/>
+        <context where="start" sub-pattern="3" style-ref="string-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="string-delimiter"/>
+      </include>
     </context>
 
     <context id="heredoc-indented-string" style-ref="string">
       <start>\%{start-heredoc}(-(\w+))</start>
       <end>^\s*\%{4@start}$</end>
-      <include><context ref="double-quoted"/><context where="start" sub-pattern="1" style-ref="operator"/><context where="start" sub-pattern="2" style-ref="string-delimiter"/><context where="start" sub-pattern="3" style-ref="string-delimiter"/><context where="end" sub-pattern="0" style-ref="string-delimiter"/></include>
+      <include>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="1" style-ref="operator"/>
+        <context where="start" sub-pattern="2" style-ref="string-delimiter"/>
+        <context where="start" sub-pattern="3" style-ref="string-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="string-delimiter"/>
+      </include>
     </context>
 
     <context id="heredoc-single-quoted-string" style-ref="string">
       <start>\%{start-heredoc}('(\w+)')</start>
       <end>^\%{4@start}$</end>
-      <include><context where="start" sub-pattern="1" style-ref="operator"/><context where="start" sub-pattern="2" style-ref="string-delimiter"/><context where="start" sub-pattern="3" style-ref="string-delimiter"/><context where="end" sub-pattern="0" style-ref="string-delimiter"/></include>
+      <include>
+        <context where="start" sub-pattern="1" style-ref="operator"/>
+        <context where="start" sub-pattern="2" style-ref="string-delimiter"/>
+        <context where="start" sub-pattern="3" style-ref="string-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="string-delimiter"/>
+      </include>
     </context>
 
     <context id="heredoc-double-quoted-string" style-ref="string">
       <start>\%{start-heredoc}("(\w+)")</start>
       <end>^\%{4@start}$</end>
-      <include><context ref="double-quoted"/><context where="start" sub-pattern="1" style-ref="operator"/><context where="start" sub-pattern="2" style-ref="string-delimiter"/><context where="start" sub-pattern="3" style-ref="string-delimiter"/><context where="end" sub-pattern="0" style-ref="string-delimiter"/></include>
+      <include>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="1" style-ref="operator"/>
+        <context where="start" sub-pattern="2" style-ref="string-delimiter"/>
+        <context where="start" sub-pattern="3" style-ref="string-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="string-delimiter"/>
+      </include>
     </context>
     
     <context id="heredoc-backtick-quoted-string" style-ref="system">
       <start>\%{start-heredoc}(`(\w+)`)</start>
       <end>^\%{4@start}$</end>
-      <include><context ref="double-quoted"/><context where="start" sub-pattern="1" style-ref="operator"/><context where="start" sub-pattern="2" style-ref="system-delimiter"/><context where="start" sub-pattern="3" style-ref="system-delimiter"/><context where="end" sub-pattern="0" style-ref="system-delimiter"/></include>
+      <include>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="1" style-ref="operator"/>
+        <context where="start" sub-pattern="2" style-ref="system-delimiter"/>
+        <context where="start" sub-pattern="3" style-ref="system-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="system-delimiter"/>
+      </include>
     </context>
     
     <context id="heredoc-single-quoted-indented-string" style-ref="string">
       <start>\%{start-heredoc}(-'(\w+)')</start>
       <end>^\s*\%{4@start}$</end>
-      <include><context where="start" sub-pattern="1" style-ref="operator"/><context where="start" sub-pattern="2" style-ref="string-delimiter"/><context where="start" sub-pattern="3" style-ref="string-delimiter"/><context where="end" sub-pattern="0" style-ref="string-delimiter"/></include>
+      <include>
+        <context where="start" sub-pattern="1" style-ref="operator"/>
+        <context where="start" sub-pattern="2" style-ref="string-delimiter"/>
+        <context where="start" sub-pattern="3" style-ref="string-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="string-delimiter"/>
+      </include>
     </context>
 
     <context id="heredoc-double-quoted-indented-string" style-ref="string">
       <start>\%{start-heredoc}(-"(\w+)")</start>
       <end>^\s*\%{4@start}$</end>
-      <include><context where="start" sub-pattern="1" style-ref="operator"/><context where="start" sub-pattern="2" style-ref="string-delimiter"/><context where="start" sub-pattern="3" style-ref="string-delimiter"/><context where="end" sub-pattern="0" style-ref="string-delimiter"/></include>
+      <include>
+        <context where="start" sub-pattern="1" style-ref="operator"/>
+        <context where="start" sub-pattern="2" style-ref="string-delimiter"/>
+        <context where="start" sub-pattern="3" style-ref="string-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="string-delimiter"/>
+      </include>
     </context>
     
     <context id="heredoc-backtick-quoted-indented-string" style-ref="system">
       <start>\%{start-heredoc}(-`(\w+)`)</start>
       <end>^\s*\%{4@start}$</end>
-      <include><context where="start" sub-pattern="1" style-ref="operator"/><context where="start" sub-pattern="2" style-ref="system-delimiter"/><context where="start" sub-pattern="3" style-ref="system-delimiter"/><context where="end" sub-pattern="0" style-ref="system-delimiter"/></include>
+      <include>
+        <context where="start" sub-pattern="1" style-ref="operator"/>
+        <context where="start" sub-pattern="2" style-ref="system-delimiter"/>
+        <context where="start" sub-pattern="3" style-ref="system-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="system-delimiter"/>
+      </include>
     </context>
     
     <define-regex id="regex-options">([mixo]*[neus]?[mixo]*)</define-regex>
@@ -818,43 +961,73 @@
           \/\%{regex-options}
         )</start>
       <end>(\/)\%{regex-options}</end>
-      <include><context style-ref="special-char"><match>\\[/\\]</match></context>
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="regex-delimiter"/><context where="end" sub-pattern="1" style-ref="regex-delimiter"/><context where="end" sub-pattern="2" style-ref="regex-options"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[/\\]</match></context>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="regex-delimiter"/>
+        <context where="end" sub-pattern="1" style-ref="regex-delimiter"/>
+        <context where="end" sub-pattern="2" style-ref="regex-options"/>
+      </include>
     </context>
 
     <context id="regex-curly" style-ref="regex">
       <start>%r\{</start>
       <end>(\})%{regex-options}</end>
-      <include><context style-ref="special-char"><match>\\[/\\]</match></context>
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="regex-delimiter"/><context where="end" sub-pattern="1" style-ref="regex-delimiter"/><context where="end" sub-pattern="2" style-ref="regex-options"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[/\\]</match></context>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="regex-delimiter"/>
+        <context where="end" sub-pattern="1" style-ref="regex-delimiter"/>
+        <context where="end" sub-pattern="2" style-ref="regex-options"/>
+      </include>
     </context>
 
     <context id="regex-normal" style-ref="regex">
       <start>%r\(</start>
       <end>(\))%{regex-options}</end>
-      <include><context style-ref="special-char"><match>\\[)\\]</match></context>
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="regex-delimiter"/><context where="end" sub-pattern="1" style-ref="regex-delimiter"/><context where="end" sub-pattern="2" style-ref="regex-options"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[)\\]</match></context>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="regex-delimiter"/>
+        <context where="end" sub-pattern="1" style-ref="regex-delimiter"/>
+        <context where="end" sub-pattern="2" style-ref="regex-options"/>
+      </include>
     </context>
 
     <context id="regex-square" style-ref="regex">
       <start>%r\[</start>
       <end>(\])%{regex-options}</end>
-      <include><context style-ref="special-char"><match>\\[\]\\]</match></context>
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="regex-delimiter"/><context where="end" sub-pattern="1" style-ref="regex-delimiter"/><context where="end" sub-pattern="2" style-ref="regex-options"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[\]\\]</match></context>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="regex-delimiter"/>
+        <context where="end" sub-pattern="1" style-ref="regex-delimiter"/>
+        <context where="end" sub-pattern="2" style-ref="regex-options"/>
+      </include>
     </context>
 
     <context id="regex-angle" style-ref="regex">
       <start>%r&lt;</start>
       <end>(&gt;)\%{regex-options}</end>
-      <include><context style-ref="special-char"><match>\\[&gt;\\]</match></context>
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="regex-delimiter"/><context where="end" sub-pattern="1" style-ref="regex-delimiter"/><context where="end" sub-pattern="2" style-ref="regex-options"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[&gt;\\]</match></context>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="regex-delimiter"/>
+        <context where="end" sub-pattern="1" style-ref="regex-delimiter"/>
+        <context where="end" sub-pattern="2" style-ref="regex-options"/>
+      </include>
     </context>
 
     <context id="regex-generic" style-ref="regex">
       <start>%r([[:print:]])(?&lt;![[:alnum:]])</start>
       <end>(\%{1@start})\%{regex-options}</end>
-      <include><!--context style-ref="special-char"><match>\\[\%{1@start}\\]</match></context-->
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="regex-delimiter"/><context where="end" sub-pattern="1" style-ref="regex-delimiter"/><context where="end" sub-pattern="2" style-ref="regex-options"/></include>
+      <include>
+        <!--context style-ref="special-char"><match>\\[\%{1@start}\\]</match></context-->
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="regex-delimiter"/>
+        <context where="end" sub-pattern="1" style-ref="regex-delimiter"/>
+        <context where="end" sub-pattern="2" style-ref="regex-options"/>
+     </include>
      </context>
 
      <context id="symbols" style-ref="symbol">
@@ -876,15 +1049,22 @@
     <context id="symbols-single-quoted" style-ref="symbol">
       <start>:'</start>
       <end>'</end>
-      <include><context style-ref="special-char"><match>\\[\'\\]</match></context>
-      <context where="start" sub-pattern="0" style-ref="symbol-delimiter"/><context where="end" sub-pattern="0" style-ref="symbol-delimiter"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[\'\\]</match></context>
+        <context where="start" sub-pattern="0" style-ref="symbol-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="symbol-delimiter"/>
+      </include>
     </context>
 
     <context id="symbols-double-quoted" style-ref="symbol">
       <start>:"</start>
       <end>"</end>
-      <include><context style-ref="special-char"><match>\\[\"\\]</match></context>
-      <context ref="double-quoted"/><context where="start" sub-pattern="0" style-ref="symbol-delimiter"/><context where="end" sub-pattern="0" style-ref="symbol-delimiter"/></include>
+      <include>
+        <context style-ref="special-char"><match>\\[\"\\]</match></context>
+        <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="symbol-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="symbol-delimiter"/>
+      </include>
     </context>
 
     <context id="function">
