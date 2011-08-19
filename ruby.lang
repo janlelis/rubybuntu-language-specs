@@ -1068,10 +1068,10 @@
     </context>
 
     <context id="function">
-      <start>(?&lt;![\w\.])(?=def)\b(def)\b</start>
+      <start>(?&lt;![\w\.])\b(def)\b\s*</start>
       <end>([^.]+?)(?=[\s(;]|$)</end>
       <include>
-        <context where="start" sub-pattern="0" style-ref="keyword"/>
+        <context where="start" sub-pattern="1" style-ref="keyword"/>
         <context where="end"   sub-pattern="1" style-ref="function"/>
         <context ref="ruby:*"/>
       </include>
@@ -1087,17 +1087,29 @@
 
     <context id="brackets">
       <include>
-        <context id="normal-brackets" style-ref="syntax-char">
+        <context id="normal-brackets">
           <start>\(</start><end>\)</end>
-          <include><context ref="ruby:*"/></include>
+          <include>
+            <context where="start" sub-pattern="0" style-ref="syntax-char">
+            <context where="end"   sub-pattern="0" style-ref="syntax-char"/>
+            <context ref="ruby:*"/>
+          </include>
         </context>
-        <context id="square-brackets" style-ref="syntax-char">
+        <context id="square-brackets">
           <start>\[</start><end>\]</end>
-          <include><context ref="ruby:*"/></include>
+          <include>
+            <context where="start" sub-pattern="0" style-ref="syntax-char">
+            <context where="end"   sub-pattern="0" style-ref="syntax-char"/>
+            <context ref="ruby:*"/>
+          </include>
         </context>
-        <context id="curly-brackets" style-ref="syntax-char">
-          <start>(?&lt;=[\])\w])\s*\{</start><end>\}</end>
-          <include><context ref="ruby:*"/></include>
+        <context id="curly-brackets">
+          <start>(?&lt;=[\])\w])\s*(\{)</start><end>\}</end>
+          <include>
+          <context where="start" sub-pattern="1" style-ref="syntax-char"/>
+          <context where="end"   sub-pattern="0" style-ref="syntax-char"/>
+            <context ref="ruby:*"/>
+          </include>
         </context>
       </include>
     </context>
