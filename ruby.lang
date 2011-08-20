@@ -1098,7 +1098,7 @@
         <context id="square-brackets">
           <start>\[</start><end>\]</end>
           <include>
-            <context where="start" sub-pattern="0" style-ref="syntax-char">
+            <context where="start" sub-pattern="0" style-ref="syntax-char"/>
             <context where="end"   sub-pattern="0" style-ref="syntax-char"/>
             <context ref="ruby:*"/>
           </include>
