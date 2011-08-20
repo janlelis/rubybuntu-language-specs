@@ -1104,7 +1104,7 @@
           </include>
         </context>
         <context id="curly-brackets">
-          <start>(?&lt;=[\])\w])\s*(\{)</start><end>\}</end>
+          <start>(?&lt;=(?:.[\])\w]|->))\s*(\{)</start><end>\}</end>
           <include>
           <context where="start" sub-pattern="1" style-ref="syntax-char"/>
           <context where="end"   sub-pattern="0" style-ref="syntax-char"/>
@@ -1123,7 +1123,7 @@
     </context>
 
     <context id="hash" extend-parent="false">
-      <start>(?&lt;![\])\w])\s*\{</start>
+      <start>(?&lt;!(?:.[\])\w]|->))\s*\{</start>
       <end>\}</end>
       <include>
         <context where="start" sub-pattern="0" style-ref="collection"/>
