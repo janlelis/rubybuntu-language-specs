@@ -33,7 +33,7 @@
       </include>
     </context>
 
-    <replace id="html:embedded-lang-hook" ref="erb:block"/><!-- allow erb tags in strings -->
+    <replace id="html:embedded-lang-hook" ref="erb:erb"/><!-- allow erb tags in strings -->
 
     <context id="html-erb">
       <include>
