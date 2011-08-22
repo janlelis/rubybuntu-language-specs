@@ -114,9 +114,11 @@
       <match case-sensitive="false">\s*#.*coding.*</match>
     </context>
 
+    <define-regex id="no_method_prefix">(?&lt;![\w\.\:])</define-regex>
+
     <context id="keywords" style-ref="keyword">
       <!-- do not highlight methods like .class -->
-      <prefix>(?&lt;![\w\.\:])</prefix>
+      <prefix>\%{no_method_prefix}</prefix>
       <!-- only put here if not already used at another place -->
       <keyword>BEGIN</keyword>
       <keyword>END</keyword>
@@ -463,22 +465,27 @@
     <context id="special-values">
       <include>
         <context id="self" style-ref="self">
+          <prefix>\%{no_method_prefix}</prefix>
           <keyword>self</keyword>
         </context>
 
         <context id="false" style-ref="false">
+          <prefix>\%{no_method_prefix}</prefix>
           <keyword>false</keyword>
         </context>
 
         <context id="true" style-ref="true">
+          <prefix>\%{no_method_prefix}</prefix>
           <keyword>true</keyword>
         </context>
 
         <context id="nil" style-ref="nil">
+          <prefix>\%{no_method_prefix}</prefix>
           <keyword>nil</keyword>
         </context>
 
         <context id="special-values-words" style-ref="special-value">
+          <prefix>\%{no_method_prefix}</prefix>
           <keyword>__ENCODING__</keyword>
           <keyword>__FILE__</keyword>
           <keyword>__LINE__</keyword>
