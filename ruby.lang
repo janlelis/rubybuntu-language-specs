@@ -502,6 +502,8 @@
 
         <context ref="class-variables"/>
         <context ref="instance-variables"/>
+
+        <context ref="syntax-chars"/>
       </include>
     </context>
 
