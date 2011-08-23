@@ -434,7 +434,7 @@
       <match>@\%{variable}</match>
     </context>
 
-    <context id="constants" style-ref="constant">
+    <context id="constants" style-ref="constant" extend-parent="false">
       <match>\b[A-Z][A-Za-z0-9_]*\b</match>
     </context>
 
