@@ -1039,7 +1039,7 @@
      </include>
      </context>
 
-     <context id="symbols" style-ref="symbol">
+     <context id="symbol" style-ref="symbol">
       <start extended="true">
         (?&lt;!:)(:)(
           \$ \%{special-variables-1-char}
@@ -1055,22 +1055,76 @@
       </include>
     </context>
 
-    <context id="symbols-single-quoted" style-ref="symbol">
+    <context id="single-quoted-symbol" style-ref="symbol">
       <start>:'</start>
       <end>'</end>
       <include>
         <context style-ref="special-char"><match>\\[\'\\]</match></context>
         <context where="start" sub-pattern="0" style-ref="symbol-delimiter"/>
-        <context where="end" sub-pattern="0" style-ref="symbol-delimiter"/>
+        <context where="end"   sub-pattern="0" style-ref="symbol-delimiter"/>
       </include>
     </context>
 
-    <context id="symbols-double-quoted" style-ref="symbol">
+    <context id="double-quoted-symbol" style-ref="symbol">
       <start>:"</start>
       <end>"</end>
       <include>
         <context style-ref="special-char"><match>\\[\"\\]</match></context>
         <context ref="double-quoted"/>
+        <context where="start" sub-pattern="0" style-ref="symbol-delimiter"/>
+        <context where="end"   sub-pattern="0" style-ref="symbol-delimiter"/>
+      </include>
+    </context>
+    
+        <!-- %s{Hello world} -->
+    <context id="single-quoted-symbol-curly" style-ref="symbol">
+      <start>%s\{</start>
+      <end>\}</end>
+      <include>
+        <context style-ref="special-char"><match>\\[}\\]</match></context>
+        <context where="start" sub-pattern="0" style-ref="symbol-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="symbol-delimiter"/>
+      </include>
+    </context>
+
+    <!-- %s(Hello world) -->
+    <context id="single-quoted-symbol-normal" style-ref="symbol">
+      <start>%s\(</start>
+      <end>\)</end>
+      <include>
+        <context style-ref="special-char"><match>\\[)\\]</match></context>
+        <context where="start" sub-pattern="0" style-ref="symbol-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="symbol-delimiter"/>
+      </include>
+    </context>
+
+    <!-- %s[Hello world] -->
+    <context id="single-quoted-symbol-square" style-ref="symbol">
+      <start>%s\[</start>
+      <end>\]</end>
+      <include><context style-ref="special-char"><match>\\[\]\\]</match></context>
+        <context where="start" sub-pattern="0" style-ref="symbol-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="symbol-delimiter"/>
+      </include>
+    </context>
+
+    <!-- %s<Hello world> -->
+    <context id="single-quoted-symbol-angle" style-ref="symbol">
+      <start>%s&lt;</start>
+      <end>&gt;</end>
+      <include>
+        <context style-ref="special-char"><match>\\[%gt;\\]</match></context>
+        <context where="start" sub-pattern="0" style-ref="symbol-delimiter"/>
+        <context where="end" sub-pattern="0" style-ref="symbol-delimiter"/>
+      </include>
+    </context>
+    
+    <!-- %s-Hello world- %s+Hello world+ %s*Hello world* and so on... -->
+    <context id="single-quoted-symbol-generic" style-ref="symbol">
+      <start>%s([[:print:]])(?&lt;![[:alnum:]])</start>
+      <end>\%{1@start}</end>
+      <include>
+        <!--context style-ref="special-char"><match>\\[\%{1@start}\\]</match></context-->
         <context where="start" sub-pattern="0" style-ref="symbol-delimiter"/>
         <context where="end" sub-pattern="0" style-ref="symbol-delimiter"/>
       </include>
@@ -1123,7 +1177,7 @@
       </include>
     </context>
 
-    <context id="hash-symbols" style-ref="symbol">
+    <context id="hash-symbol" style-ref="symbol">
       <match>[a-zA-Z0-9_]+(!|\?)?:(?!:)</match>
     </context>
 
@@ -1137,7 +1191,7 @@
       <include>
         <context where="start" sub-pattern="0" style-ref="collection"/>
         <context where="end" sub-pattern="0" style-ref="collection"/>
-        <context ref="hash-symbols"/>
+        <context ref="hash-symbol"/>
         <context ref="hash-strings"/>
         <context ref="ruby:*"/>
       </include>
@@ -1187,11 +1241,17 @@
         <context ref="heredoc-double-quoted-indented-string"/>
         <context ref="heredoc-backtick-quoted-indented-string"/>
 
-        <context ref="symbols"/>
-        <context ref="symbols-single-quoted"/>
-        <context ref="symbols-double-quoted"/>
-
         <context ref="question-mark-string"/>
+
+        <context ref="symbol"/>
+        <context ref="single-quoted-symbol"/>
+        <context ref="double-quoted-symbol"/>
+        <context ref="single-quoted-symbol-curly"/>
+        <context ref="single-quoted-symbol-normal"/>
+        <context ref="single-quoted-symbol-square"/>
+        <context ref="single-quoted-symbol-angle"/>
+        <context ref="single-quoted-symbol-generic"/>
+
 
         <context ref="double-quoted-string"/>
         <context ref="double-quoted-string-curly"/>
