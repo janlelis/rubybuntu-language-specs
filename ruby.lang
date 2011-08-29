@@ -1041,8 +1041,7 @@
      </context>
 
      <context id="symbol" style-ref="symbol">
-      <start extended="true">
-        (?&lt;!:)(:)(
+      <start extended="true">(?&lt;!:)(:)(
           \$ \%{special-variables-1-char}
         | \$ \%{special-variables-2-chars}
         | [a-zA-Z_$] [a-zA-Z0-9_]* [?!=]?
@@ -1183,7 +1182,7 @@
     </context>
 
     <context id="hash-strings" style-ref="string">
-      <match>(?&lt;!\s)\:(?!:)</match>
+      <match>(?&lt;![\s{>])\:(?!:)</match>
     </context>
 
     <context id="hash" extend-parent="false">
