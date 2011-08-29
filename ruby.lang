@@ -803,7 +803,7 @@
       </include>
     </context>
 
-    <context id="backtick-quoted-string" style-ref="system">
+    <context id="backtick-quoted-string" style-ref="system" extend-parent="false">
       <start>`</start>
       <end>`</end>
       <include>
