@@ -511,6 +511,7 @@
         <context ref="instance-variables"/>
 
         <context ref="syntax-chars"/>
+        <context ref="collection-chars"/>
       </include>
     </context>
 
