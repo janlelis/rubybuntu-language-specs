@@ -38,7 +38,7 @@ You should also use up-to-date {mime types}[https://github.com/janlelis/rubybunt
 * Refactored/updated keyword and builtin detection, highlight important constants and methods
 * Improved function definition highlighting
 * More logical style mappings (which also means: current styles are not fully ruby:compatible)
-* Fixed string interpolations
+* Fix string interpolations
 * Better support for advanced literals (e.g. `%x[]`, `%r<>`, ...)
 * Support Arrays & Hashes (inclusive 1.9 symbol syntax)
 * Different heredoc matching
