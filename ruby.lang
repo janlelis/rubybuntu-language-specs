@@ -1185,7 +1185,7 @@
       <match>(?&lt;![\s{>])\:(?!:)</match>
     </context>
 
-    <context id="hash" extend-parent="false">
+    <context id="hash">
       <start>(?&lt;!(?:.[\])\w]|->))\s*\{</start>
       <end>\}</end>
       <include>
