@@ -416,7 +416,7 @@
       </match>
     </context>
 
-    <define-regex id="variable">[a-zA-Z_][a-zA-Z0-9_]*</define-regex>
+    <define-regex id="variable">[a-zA-Z_][^&amp;&gt;&lt;!?"'`$%/()=\{[\]}*+-~#|;,:.-^]*</define-regex>
 
     <context id="methods" style-ref="method" extend-parent="false">
       <match>\%{variable}[!?]?</match>
