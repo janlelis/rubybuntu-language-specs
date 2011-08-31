@@ -500,18 +500,7 @@
         <context sub-pattern="1" where="start" style-ref="syntax-char"/>
         <context sub-pattern="0" where="end"   style-ref="syntax-char"/>
 
-        <context ref="important-constants"/>
-        <context ref="constants"/>
-
-        <context ref="special-variables"/>
-        <context ref="global-variables"/>
-        <context ref="methods"/>
-
-        <context ref="class-variables"/>
-        <context ref="instance-variables"/>
-
-        <context ref="syntax-chars"/>
-        <context ref="collection-chars"/>
+        <context ref="ruby:*"/>
       </include>
     </context>
 

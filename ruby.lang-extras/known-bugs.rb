@@ -9,3 +9,4 @@
 # question mark madness vs ternary operator
 [?', ?(, :vs] ?'a':'b'
 
+# multi-line regex
