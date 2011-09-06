@@ -6,7 +6,7 @@ Part of {RubyBuntuGedit}[https://github.com/janlelis/rubybuntu-gedit]
 Contains various language specs needed by Ruby/Rails/Web developers and also tries to maintain them.
 
 * The Ruby language specification has been improved alot. It uses 1.9.2 as reference implementation, recognizes many Ruby-specific language constructs (that can be highlighted differently) and implements many language details. To see all these changes, you need a style that supports ("uses") the new specification, for example, {these styles}[https://github.com/janlelis/rubybuntu-editor-styles]. See below for a changelog summary.
-* ERB is not only usable with HTML, but also with JavaScript, YAML and XML.
+* ERB is not only usable with HTML, but also with JavaScript, YAML and XML...
 * Gemfile.lock highlighting
 
 == Setup
@@ -44,6 +44,7 @@ You should also use up-to-date {mime types}[https://github.com/janlelis/rubybunt
 * Different heredoc matching
 * Better symbol detection
 * Small language details, like recognizing `__END__`
+* Better unicode support
 * See `git log` for full details
 * Based on https://github.com/gmate/gmate/blob/master/lang-specs/ruby_on_rails.lang
 
@@ -68,6 +69,5 @@ Meanwhile, you can, for example, use the ones found in gmate[https://github.com/
 
 === MAYBE
 * RDOC markup support (and cross-referencing in ruby)
-* ruby: make unicode-aware/test with unicode code
 
 == J-_-L

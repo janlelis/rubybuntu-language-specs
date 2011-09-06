@@ -416,26 +416,26 @@
       </match>
     </context>
 
-    <define-regex id="variable">[a-zA-Z_][^&amp;&gt;&lt;!?"'`$%/()=\{[\]}*+-~#|;,:.-^]*</define-regex>
+    <define-regex id="alnum">[^&amp;&gt;&lt;!?"'`@$%/()=\\{\[\]}*+~#|;,:.\-\^\s]</define-regex>
 
     <context id="methods" style-ref="method" extend-parent="false">
-      <match>\%{variable}[!?]?</match>
+      <match>\%{alnum}(?&lt;![A-Z0-9:])\%{alnum}*[!?]?</match>
     </context>
 
     <context id="global-variables" style-ref="global-variable">
-      <match>\$\%{variable}</match>
+      <match>\$\%{alnum}(?&lt;![0-9])\%{alnum}*</match>
     </context>
 
     <context id="class-variables" style-ref="class-variable">
-      <match>@@\%{variable}</match>
+      <match>@@\%{alnum}(?&lt;![0-9])\%{alnum}*</match>
     </context>
 
     <context id="instance-variables" style-ref="instance-variable">
-      <match>@\%{variable}</match>
+      <match>@\%{alnum}(?&lt;![0-9])\%{alnum}*</match>
     </context>
 
     <context id="constants" style-ref="constant" extend-parent="false">
-      <match>\b[A-Z][A-Za-z0-9_]*\b</match>
+      <match>[A-Z]\%{alnum}*</match>
     </context>
 
     <define-regex id="n">\d(_?\d)*</define-regex>
@@ -518,7 +518,7 @@
 
     <context id="variable-interpolation">
       <start>(#)(?=[@$])</start>
-      <end>(?!\%{variable})</end>
+      <end>(?!\%{alnum})</end>
       <include>
         <context where="start" sub-pattern="1" style-ref="string-delimiter"/>
         <context ref="class-variables"/>
@@ -599,7 +599,7 @@
 
     <!-- %Q-Hello world- %-Hello world- %+hello world+ and so on... -->
     <context id="double-quoted-string-generic" style-ref="string" extend-parent="false">
-      <start>%Q?([[:print:]])(?&lt;![[:alnum:][:space:]])</start>
+      <start>%Q?([[:print:]])(?&lt;![[:alnum:]])</start>
       <end>\%{1@start}</end>
       <include>
         <!--context style-ref="special-char"><match>\\[\%{1@start}\\]</match></context-->
@@ -1034,7 +1034,7 @@
         (?&lt;!:)(:)
         ( \$ \%{special-variables-1-char}
         | \$ \%{special-variables-2-chars}
-        | [a-zA-Z_$] [a-zA-Z0-9_]* [?!=]?
+        | (?:\%{alnum}|\$|@@?) (?&lt;![0-9]) \%{alnum}* [?!=]?
         | &lt;=&gt; | &lt;= | &gt;= | &lt;&lt;? | &gt;&gt;? | != | [!=]~ | ===? | \[\]=? | \*\*? | [+-]@?
         | [!|~\^&amp;]
         )
