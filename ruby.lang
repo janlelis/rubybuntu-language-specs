@@ -419,7 +419,11 @@
     </context>
 
     <context id="methods" style-ref="method" extend-parent="false">
-      <match>\%{alnum}(?&lt;![A-Z0-9:])\%{alnum}*[!?]?</match>
+      <match extended="true">
+        ( \%{alnum}(?&lt;![A-Z0-9:])\%{alnum}*[!?]?
+        | [A-Z]\%{alnum}*[!?]?(?=\()
+        )
+      </match>
     </context>
 
     <context id="global-variables" style-ref="global-variable">
