@@ -152,140 +152,146 @@
     </context>
 
     <context id="important-methods" style-ref="important-method" extend-parent="false">
+      <keyword>Array(?=\()</keyword>
+      <keyword>Complex(?=\()</keyword>
+      <keyword>Float(?=\()</keyword>
+      <keyword>Integer(?=\()</keyword>
+      <keyword>Rational(?=\()</keyword>
+      <keyword>String(?=\()</keyword>
+      <keyword>__callee__</keyword>
+      <keyword>__id__</keyword>
+      <keyword>__method__</keyword>
+      <keyword>__send__</keyword>
+      <keyword>abort</keyword>
       <keyword>allocate</keyword>
-      <keyword>new</keyword>
-      <keyword>superclass</keyword>
-      <keyword>freeze</keyword>
-      <keyword>to_s</keyword>
-      <keyword>included_modules</keyword>
-      <keyword>include\?</keyword>
-      <keyword>name</keyword>
       <keyword>ancestors</keyword>
-      <keyword>instance_methods</keyword>
-      <keyword>public_instance_methods</keyword>
-      <keyword>protected_instance_methods</keyword>
-      <keyword>private_instance_methods</keyword>
-      <keyword>constants</keyword>
-      <keyword>const_get</keyword>
-      <keyword>const_set</keyword>
-      <keyword>const_defined\?</keyword>
-      <keyword>const_missing</keyword>
-      <keyword>class_variables</keyword>
-      <keyword>remove_class_variable</keyword>
-      <keyword>class_variable_get</keyword>
-      <keyword>class_variable_set</keyword>
-      <keyword>class_variable_defined\?</keyword>
-      <keyword>module_exec</keyword>
-      <keyword>class_exec</keyword>
-      <keyword>module_eval</keyword>
-      <keyword>class_eval</keyword>
-      <keyword>method_defined\?</keyword>
-      <keyword>public_method_defined\?</keyword>
-      <keyword>private_method_defined\?</keyword>
-      <keyword>protected_method_defined\?</keyword>
-      <keyword>public_class_method</keyword>
-      <keyword>private_class_method</keyword>
+      <keyword>at_exit</keyword>
       <keyword>autoload</keyword>
       <keyword>autoload\?</keyword>
-      <keyword>instance_method</keyword>
-      <keyword>public_instance_method</keyword>
-      <keyword>nil\?</keyword>
-      <keyword>eql\?</keyword>
-      <keyword>hash</keyword>
+      <keyword>binding</keyword>
+      <keyword>block_given\?</keyword>
+      <keyword>caller</keyword>
+      <keyword>catch</keyword>
       <keyword>class</keyword>
-      <keyword>singleton_class</keyword>
+      <keyword>class_eval</keyword>
+      <keyword>class_exec</keyword>
+      <keyword>class_variable_defined\?</keyword>
+      <keyword>class_variable_get</keyword>
+      <keyword>class_variable_set</keyword>
+      <keyword>class_variables</keyword>
       <keyword>clone</keyword>
-      <keyword>dup</keyword>
-      <keyword>initialize_dup</keyword>
-      <keyword>initialize_clone</keyword>
-      <keyword>taint</keyword>
-      <keyword>tainted\?</keyword>
-      <keyword>untaint</keyword>
-      <keyword>untrust</keyword>
-      <keyword>untrusted\?</keyword>
-      <keyword>trust</keyword>
-      <keyword>frozen\?</keyword>
-      <keyword>inspect</keyword>
-      <keyword>methods</keyword>
-      <keyword>singleton_methods</keyword>
-      <keyword>protected_methods</keyword>
-      <keyword>private_methods</keyword>
-      <keyword>public_methods</keyword>
-      <keyword>instance_variables</keyword>
-      <keyword>instance_variable_get</keyword>
-      <keyword>instance_variable_set</keyword>
-      <keyword>instance_variable_defined\?</keyword>
-      <keyword>instance_of\?</keyword>
-      <keyword>kind_of\?</keyword>
-      <keyword>is_a\?</keyword>
-      <keyword>tap</keyword>
-      <keyword>send</keyword>
-      <keyword>public_send</keyword>
-      <keyword>respond_to\?</keyword>
-      <keyword>respond_to_missing\?</keyword>
-      <keyword>extend</keyword>
-      <keyword>display</keyword>
-      <keyword>method</keyword>
-      <keyword>public_method</keyword>
+      <keyword>const_defined\?</keyword>
+      <keyword>const_get</keyword>
+      <keyword>const_missing</keyword>
+      <keyword>const_set</keyword>
+      <keyword>constants</keyword>
       <keyword>define_singleton_method</keyword>
-      <keyword>__id__</keyword>
-      <keyword>object_id</keyword>
-      <keyword>to_enum</keyword>
+      <keyword>display</keyword>
+      <keyword>dup</keyword>
       <keyword>enum_for</keyword>
+      <keyword>eql\?</keyword>
       <keyword>equal\?</keyword>
+      <keyword>eval</keyword>
+      <keyword>exec</keyword>
+      <keyword>exit!</keyword>
+      <keyword>exit</keyword>
+      <keyword>extend</keyword>
+      <keyword>fail</keyword>
+      <keyword>fork</keyword>
+      <keyword>format</keyword>
+      <keyword>freeze</keyword>
+      <keyword>frozen\?</keyword>
+      <keyword>gets</keyword>
+      <keyword>global_variables</keyword>
+      <keyword>hash</keyword>
+      <keyword>include\?</keyword>
+      <keyword>included_modules</keyword>
+      <keyword>initialize_clone</keyword>
+      <keyword>initialize_dup</keyword>
+      <keyword>inspect</keyword>
       <keyword>instance_eval</keyword>
       <keyword>instance_exec</keyword>
-      <keyword>__send__</keyword>
-      <keyword>nesting</keyword>
-      <keyword>sprintf</keyword>
-      <keyword>format</keyword>
-      <keyword>warn</keyword>
-      <keyword>raise</keyword>
-      <keyword>fail</keyword>
-      <keyword>global_variables</keyword>
-      <keyword>__method__</keyword>
-      <keyword>__callee__</keyword>
-      <keyword>eval</keyword>
-      <keyword>local_variables</keyword>
+      <keyword>instance_method</keyword>
+      <keyword>instance_methods</keyword>
+      <keyword>instance_of\?</keyword>
+      <keyword>instance_variable_defined\?</keyword>
+      <keyword>instance_variable_get</keyword>
+      <keyword>instance_variable_set</keyword>
+      <keyword>instance_variables</keyword>
+      <keyword>is_a\?</keyword>
       <keyword>iterator\?</keyword>
-      <keyword>block_given\?</keyword>
-      <keyword>catch</keyword>
-      <keyword>throw</keyword>
+      <keyword>kind_of\?</keyword>
+      <keyword>lambda</keyword>
+      <keyword>load</keyword>
+      <keyword>local_variables</keyword>
       <keyword>loop</keyword>
-      <keyword>caller</keyword>
-      <keyword>trace_var</keyword>
-      <keyword>untrace_var</keyword>
-      <keyword>at_exit</keyword>
-      <keyword>syscall</keyword>
+      <keyword>method</keyword>
+      <keyword>method_defined\?</keyword>
+      <keyword>methods</keyword>
+      <keyword>module_eval</keyword>
+      <keyword>module_exec</keyword>
+      <keyword>name</keyword>
+      <keyword>nesting</keyword>
+      <keyword>new</keyword>
+      <keyword>nil\?</keyword>
+      <keyword>object_id</keyword>
       <keyword>open</keyword>
-      <keyword>printf</keyword>
+      <keyword>p</keyword>
       <keyword>print</keyword>
+      <keyword>printf</keyword>
+      <keyword>private_class_method</keyword>
+      <keyword>private_instance_methods</keyword>
+      <keyword>private_method_defined\?</keyword>
+      <keyword>private_methods</keyword>
+      <keyword>proc</keyword>
+      <keyword>protected_instance_methods</keyword>
+      <keyword>protected_method_defined\?</keyword>
+      <keyword>protected_methods</keyword>
+      <keyword>public_class_method</keyword>
+      <keyword>public_instance_method</keyword>
+      <keyword>public_instance_methods</keyword>
+      <keyword>public_method</keyword>
+      <keyword>public_method_defined\?</keyword>
+      <keyword>public_methods</keyword>
+      <keyword>public_send</keyword>
       <keyword>putc</keyword>
       <keyword>puts</keyword>
-      <keyword>gets</keyword>
-      <keyword>readline</keyword>
-      <keyword>select</keyword>
-      <keyword>readlines</keyword>
-      <keyword>p</keyword>
-      <keyword>test</keyword>
-      <keyword>srand</keyword>
+      <keyword>raise</keyword>
       <keyword>rand</keyword>
-      <keyword>trap</keyword>
-      <keyword>exec</keyword>
-      <keyword>fork</keyword>
-      <keyword>exit!</keyword>
-      <keyword>system</keyword>
-      <keyword>spawn</keyword>
-      <keyword>sleep</keyword>
-      <keyword>exit</keyword>
-      <keyword>abort</keyword>
-      <keyword>load</keyword>
+      <keyword>readline</keyword>
+      <keyword>readlines</keyword>
+      <keyword>remove_class_variable</keyword>
       <keyword>require</keyword>
       <keyword>require_relative</keyword>
-      <keyword>proc</keyword>
-      <keyword>lambda</keyword>
-      <keyword>binding</keyword>
+      <keyword>respond_to\?</keyword>
+      <keyword>respond_to_missing\?</keyword>
+      <keyword>select</keyword>
+      <keyword>send</keyword>
       <keyword>set_trace_func</keyword>
+      <keyword>singleton_class</keyword>
+      <keyword>singleton_methods</keyword>
+      <keyword>sleep</keyword>
+      <keyword>spawn</keyword>
+      <keyword>sprintf</keyword>
+      <keyword>srand</keyword>
+      <keyword>superclass</keyword>
+      <keyword>syscall</keyword>
+      <keyword>system</keyword>
+      <keyword>taint</keyword>
+      <keyword>tainted\?</keyword>
+      <keyword>tap</keyword>
+      <keyword>test</keyword>
+      <keyword>throw</keyword>
+      <keyword>to_enum</keyword>
+      <keyword>to_s</keyword>
+      <keyword>trace_var</keyword>
+      <keyword>trap</keyword>
+      <keyword>trust</keyword>
+      <keyword>untaint</keyword>
+      <keyword>untrace_var</keyword>
+      <keyword>untrust</keyword>
+      <keyword>untrusted\?</keyword>
+      <keyword>warn</keyword>
     </context>
 
     <context id="important-constants" style-ref="important-constant" extend-parent="false">

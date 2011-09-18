@@ -32,6 +32,9 @@ some_method with_symbol_hash: 42,
             another_one: 42 ?
             some_method: 42
 
+# Uppercased method names
+Array(42)
+
 # Colorful special values :D
 [true, false, nil]
 
