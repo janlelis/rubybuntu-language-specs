@@ -5,7 +5,7 @@ Part of {RubyBuntuGedit}[https://github.com/janlelis/rubybuntu-gedit]
 == Features
 Contains various language specs needed by Ruby/Rails/Web developers and also tries to maintain them.
 
-* The Ruby language specification has been improved alot. It uses 1.9.2 as reference implementation, recognizes many Ruby-specific language constructs (that can be highlighted differently) and implements many language details. To see all these changes, you need a style that supports ("uses") the new specification, for example, {these styles}[https://github.com/janlelis/rubybuntu-editor-styles]. See below for a changelog summary.
+* The Ruby language specification has been improved a lot. It uses 1.9.2 as reference implementation, recognizes many Ruby-specific language constructs (that can be highlighted differently) and implements many language details. To see all these changes, you need a style that supports ("uses") the new specification, for example, {these styles}[https://github.com/janlelis/rubybuntu-editor-styles]. See below for a changelog summary.
 * ERB is not only usable with HTML, but also with JavaScript, YAML and XML...
 * Gemfile.lock highlighting
 
@@ -49,12 +49,12 @@ You should also use up-to-date {mime types}[https://github.com/janlelis/rubybunt
 * Based on https://github.com/gmate/gmate/blob/master/lang-specs/ruby_on_rails.lang
 
 == TODO
-=== ruby.lang - Advanced TODOs (or: build a "real" parser)
+=== ruby.lang - Advanced TODOs [or: build a "real" parser, not (easily) possible with gtksourceview]
 * Improve heredocs (e.g. nested ones)
 * Different colorizations for "end"s (e.g. def/begin, class/module, while/until, if/case, block), needs to detect modifier statements correctly
 * Detect (multi-line) yard doc tag values
 * Add escapable char for generic string delimiters
-* Advanced regex highlighting (maybe there is already something for pcre out there?)
+* Advanced regex highlighting + multi-line regexes
 * ruby.lang-extras/known-bugs.rb
 
 === Languages to add/import/update

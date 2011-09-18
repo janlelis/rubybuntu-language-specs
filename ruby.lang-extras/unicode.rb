@@ -12,6 +12,13 @@ a☆b
 :☆☆
 :☆
 
+# hash symbols
+{
+  a☆b: 1.9,
+  ☆☆: 1.9,
+  ☆: 1.9,
+}
+
 # variables
 @@a☆b
 @@☆☆

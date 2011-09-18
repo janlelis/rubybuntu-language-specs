@@ -11,9 +11,6 @@ end
 def $*.important!
 end
 
-# 1.9 hash symbols
-{ strange: 'symbols' }
-
 # Highlights important methods
 normal_method
 require_relative
@@ -26,6 +23,18 @@ File
 $blubb
 $stdin
 
+# Hash symbols (1.9)
+some_method({ with_symbol_hash: 42,
+              another_one: 42 })
+some_method( with_symbol_hash: 42,
+             another_one: 42 )
+some_method with_symbol_hash: 42,
+            another_one: 42 ?
+            some_method: 42
+
+# Colorful special values :D
+[true, false, nil]
+
 # Different heredoc matching (however, still far from perfect)
 here = "doc"
 %w[string array] <<here # no heredoc
@@ -34,10 +43,7 @@ variable = <<here
 this one is a heredoc °_°
 here
 
-# colorful special values :D
-[true, false, nil]
-
-# strange literals are mostly supported
+# Strange literals are mostly supported
 %x[ls]
 %r>[\>]>
 

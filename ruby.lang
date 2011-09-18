@@ -78,7 +78,7 @@
     <style id="integer" _name="Integer number" map-to="def:decimal"/>
     <style id="base-n-integer" _name="Base-N number" map-to="def:base-n-integer"/>
 
-    <style id="error" _name="Erroneous syntax"      map-to="def:error"/>
+    <style id="error" _name="Erroneous syntax" map-to="def:error"/>
   </styles>
 
   <definitions>
@@ -1030,14 +1030,34 @@
      </context>
 
      <context id="symbol" style-ref="symbol">
+       <start extended="true">
+         (?&lt;!:)(:)
+         ( \$ \%{special-variables-1-char}
+         | \$ \%{special-variables-2-chars}
+         | (?:\%{alnum}|\$|@@?) (?&lt;![0-9]) \%{alnum}* [?!=]?
+         | &lt;=&gt; | &lt;= | &gt;= | &lt;&lt;? | &gt;&gt;? | != | [!=]~ | ===? | \[\]=? | \*\*? | [+-]@?
+         | [!|~\^&amp;]
+         )
+      </start>
+      <end></end>
+      <include>
+        <context where="start" sub-pattern="1" style-ref="symbol-delimiter"/>
+      </include>
+    </context>
+
+    <context id="ternary-operators">
+      <start>\?</start>
+      <end>:</end>
+      <include>
+        <context where="start" sub-pattern="0" style-ref="operator"/>
+        <context where="end"   sub-pattern="0" style-ref="operator"/>
+        <context ref="ruby:*"/>
+      </include>
+    </context>
+
+    <context id="hash-symbols" style-ref="symbol" extend-parent="false">
       <start extended="true">
-        (?&lt;!:)(:)
-        ( \$ \%{special-variables-1-char}
-        | \$ \%{special-variables-2-chars}
-        | (?:\%{alnum}|\$|@@?) (?&lt;![0-9]) \%{alnum}* [?!=]?
-        | &lt;=&gt; | &lt;= | &gt;= | &lt;&lt;? | &gt;&gt;? | != | [!=]~ | ===? | \[\]=? | \*\*? | [+-]@?
-        | [!|~\^&amp;]
-        )
+        (?=\%{alnum}+:) \%{alnum} (?&lt;![0-9]) \%{alnum}* [?!=]? (:) (?!:)
       </start>
       <end></end>
       <include>
@@ -1131,7 +1151,7 @@
     </context>
 
     <context id="operators" style-ref="operator" extend-parent="false">
-      <match>&lt;=&gt;|(?&lt;!%)=(?!&gt;)|~|&lt;|&amp;|(?&lt;!=)&gt;|\.|::|\*|/|\+|-|\||!|not|and|or|defined\?|\?|:</match>
+      <match>&lt;=&gt;|(?&lt;!%)=(?!&gt;)|~|&lt;|&amp;|(?&lt;!=)&gt;|\.|::|\*|/|\+|-|\||!|not|and|or|defined\?</match>
     </context>
 
     <context id="syntax-chars" style-ref="syntax-char" extend-parent="false">
@@ -1167,22 +1187,12 @@
       </include>
     </context>
 
-    <context id="hash-symbol" style-ref="symbol">
-      <match>[a-zA-Z0-9_]+(!|\?)?:(?!:)</match>
-    </context>
-
-    <context id="hash-strings" style-ref="string">
-      <match>(?&lt;![\s{>])\:(?!:)</match>
-    </context>
-
     <context id="hash">
       <start>(?&lt;!(?:.[\])\w]|->))\s*\{</start>
       <end>\}</end>
       <include>
         <context where="start" sub-pattern="0" style-ref="collection"/>
         <context where="end" sub-pattern="0" style-ref="collection"/>
-        <context ref="hash-symbol"/>
-        <context ref="hash-strings"/>
         <context ref="ruby:*"/>
       </include>
     </context>
@@ -1242,7 +1252,6 @@
         <context ref="single-quoted-symbol-angle"/>
         <context ref="single-quoted-symbol-generic"/>
 
-
         <context ref="double-quoted-string"/>
         <context ref="double-quoted-string-curly"/>
         <context ref="double-quoted-string-normal"/>
@@ -1285,14 +1294,16 @@
 
         <context ref="keywords"/>
         <context ref="special-values"/>
-        <context ref="important-methods"/>
-
-        <context ref="important-constants"/>
-        <context ref="constants"/>
 
         <context ref="special-variables"/>
         <context ref="global-variables"/>
+        <context ref="ternary-operators"/>
+        <context ref="hash-symbols"/>
+        <context ref="important-methods"/>
         <context ref="methods"/>
+
+        <context ref="important-constants"/>
+        <context ref="constants"/>
 
         <context ref="class-variables"/>
         <context ref="instance-variables"/>
