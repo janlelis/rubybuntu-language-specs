@@ -1,7 +1,6 @@
-puts ((Object.constants | Module.constants) + %w[
+puts (Object.constants + %w[
 DATA
 SCRIPT_LINES__
-  
 ]).map{ |e|
- "      <keyword>#{e}</keyword>"
+  "      <keyword>#{e}</keyword>"
 }.uniq

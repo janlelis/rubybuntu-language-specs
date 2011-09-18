@@ -397,6 +397,8 @@
     <define-regex id="special-variables-1-char">[;@!~&amp;`'+=,/\\_&gt;&lt;.*?$:"0-9]</define-regex>
     <define-regex id="special-variables-2-chars">-[FK0iIvwWdpla]</define-regex>
 
+    <define-regex id="alnum">[^&amp;&gt;&lt;!?"'`@$%/()=\\{\[\]}*+~#|;,:.\-\^\s]</define-regex>
+
     <context id="special-variables" style-ref="special-variable">
       <match extended="true">
         \$( \%{special-variables-1-char}
@@ -412,11 +414,9 @@
           | stdin
           | stdout
           | stderr
-          | binding )
+          | binding ) (?!\%{alnum})
       </match>
     </context>
-
-    <define-regex id="alnum">[^&amp;&gt;&lt;!?"'`@$%/()=\\{\[\]}*+~#|;,:.\-\^\s]</define-regex>
 
     <context id="methods" style-ref="method" extend-parent="false">
       <match>\%{alnum}(?&lt;![A-Z0-9:])\%{alnum}*[!?]?</match>
