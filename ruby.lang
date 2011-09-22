@@ -865,12 +865,13 @@
       </include>
     </context>
 
-    <define-regex id="start-heredoc">([^a-zA-Z0-9\s\]\)&gt;}])\s*(&lt;&lt;)</define-regex>
+    <define-regex id="start-heredoc">([^a-zA-Z0-9\s\]\)&gt;}]|^)\s*(&lt;&lt;)</define-regex>
 
     <context id="heredoc-string" style-ref="string">
       <start>\%{start-heredoc}((\w+))</start>
       <end>^\%{4@start}$</end>
       <include>
+        <context ref="ruby-end-at-line-end"/>
         <context ref="double-quoted"/>
         <context where="start" sub-pattern="1" style-ref="operator"/>
         <context where="start" sub-pattern="2" style-ref="string-delimiter"/>
@@ -883,6 +884,7 @@
       <start>\%{start-heredoc}(-(\w+))</start>
       <end>^\s*\%{4@start}$</end>
       <include>
+        <context ref="ruby-end-at-line-end"/>
         <context ref="double-quoted"/>
         <context where="start" sub-pattern="1" style-ref="operator"/>
         <context where="start" sub-pattern="2" style-ref="string-delimiter"/>
@@ -895,6 +897,7 @@
       <start>\%{start-heredoc}('(\w+)')</start>
       <end>^\%{4@start}$</end>
       <include>
+        <context ref="ruby-end-at-line-end"/>
         <context where="start" sub-pattern="1" style-ref="operator"/>
         <context where="start" sub-pattern="2" style-ref="string-delimiter"/>
         <context where="start" sub-pattern="3" style-ref="string-delimiter"/>
@@ -906,6 +909,7 @@
       <start>\%{start-heredoc}("(\w+)")</start>
       <end>^\%{4@start}$</end>
       <include>
+        <context ref="ruby-end-at-line-end"/>
         <context ref="double-quoted"/>
         <context where="start" sub-pattern="1" style-ref="operator"/>
         <context where="start" sub-pattern="2" style-ref="string-delimiter"/>
@@ -918,6 +922,7 @@
       <start>\%{start-heredoc}(`(\w+)`)</start>
       <end>^\%{4@start}$</end>
       <include>
+        <context ref="ruby-end-at-line-end"/>
         <context ref="double-quoted"/>
         <context where="start" sub-pattern="1" style-ref="operator"/>
         <context where="start" sub-pattern="2" style-ref="system-delimiter"/>
@@ -930,6 +935,7 @@
       <start>\%{start-heredoc}(-'(\w+)')</start>
       <end>^\s*\%{4@start}$</end>
       <include>
+        <context ref="ruby-end-at-line-end"/>
         <context where="start" sub-pattern="1" style-ref="operator"/>
         <context where="start" sub-pattern="2" style-ref="string-delimiter"/>
         <context where="start" sub-pattern="3" style-ref="string-delimiter"/>
@@ -941,6 +947,7 @@
       <start>\%{start-heredoc}(-"(\w+)")</start>
       <end>^\s*\%{4@start}$</end>
       <include>
+        <context ref="ruby-end-at-line-end"/>
         <context where="start" sub-pattern="1" style-ref="operator"/>
         <context where="start" sub-pattern="2" style-ref="string-delimiter"/>
         <context where="start" sub-pattern="3" style-ref="string-delimiter"/>
@@ -952,6 +959,7 @@
       <start>\%{start-heredoc}(-`(\w+)`)</start>
       <end>^\s*\%{4@start}$</end>
       <include>
+        <context ref="ruby-end-at-line-end"/>
         <context where="start" sub-pattern="1" style-ref="operator"/>
         <context where="start" sub-pattern="2" style-ref="system-delimiter"/>
         <context where="start" sub-pattern="3" style-ref="system-delimiter"/>
@@ -1232,6 +1240,14 @@
       <match extended="true">
         [}\])]
       </match>
+    </context>
+
+    <context id="ruby-end-at-line-end" end-at-line-end="true" once-only="true" extend-parent="false">
+      <start></start>
+      <end>(^|$)</end>
+      <include>
+        <context ref="ruby:*"/>
+      </include>
     </context>
 
     <context id="ruby" class="no-spell-check">

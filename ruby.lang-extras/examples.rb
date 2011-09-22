@@ -38,13 +38,17 @@ Array(42)
 # Colorful special values :D
 [true, false, nil]
 
-# Different heredoc matching (however, still far from perfect)
+# Different heredoc matching (however, still *far* from correct)
 here = "doc"
 %w[string array] <<here # no heredoc
 
-variable = <<here
-this one is a heredoc °_°
+variable = <<here + "°_°"
+this one is a heredoc
 here
+
+<<OR
+this one
+OR
 
 # Strange literals are mostly supported
 %x[ls]

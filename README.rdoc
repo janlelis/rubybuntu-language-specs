@@ -49,7 +49,7 @@ You should also use up-to-date {mime types}[https://github.com/janlelis/rubybunt
 * Based on https://github.com/gmate/gmate/blob/master/lang-specs/ruby_on_rails.lang
 
 == TODO
-=== ruby.lang - Advanced TODOs [or: build a "real" parser, not (easily) possible with gtksourceview]
+=== ruby.lang - Advanced TODOs [not (easily) possible with gtksourceview]
 * Improve heredocs (e.g. nested ones)
 * Different colorizations for "end"s (e.g. def/begin, class/module, while/until, if/case, block), needs to detect modifier statements correctly
 * Detect (multi-line) yard doc tag values
