@@ -4,13 +4,6 @@
 # Interpolation with instance variables
 "example #@variable"
 
-# Improved method defintions
-def self.some_method(a, b)
-end
-
-def $*.important!
-end
-
 # Highlights important methods
 normal_method
 require_relative
@@ -34,6 +27,14 @@ some_method with_symbol_hash: 42,
 
 # Uppercased method names
 Array(42)
+
+# Improved method defintions
+def self.some_method(a, b) end
+def $*.important!; end
+def self; end
+def [](arg) nil; end
+def setter=(v); end
+def Array; end
 
 # Colorful special values :D
 [true, false, nil]

@@ -424,12 +424,14 @@
       </match>
     </context>
 
+    <define-regex id="method" extended="true">
+      ( \%{alnum}(?&lt;![A-Z0-9:])\%{alnum}*[!?]?
+      | [A-Z]\%{alnum}*[!?]?(?=\()
+      )
+    </define-regex>
+
     <context id="methods" style-ref="method" extend-parent="false">
-      <match extended="true">
-        ( \%{alnum}(?&lt;![A-Z0-9:])\%{alnum}*[!?]?
-        | [A-Z]\%{alnum}*[!?]?(?=\()
-        )
-      </match>
+      <match>\%{method}</match>
     </context>
 
     <context id="global-variables" style-ref="global-variable">
@@ -1157,19 +1159,30 @@
         <context where="end" sub-pattern="0" style-ref="symbol-delimiter"/>
       </include>
     </context>
+<!--
+    <context id="operator-function">
+      <start>(?&lt;![\w\.])\b(def)\b\s*(\%{operator-method})(?=[\s(;]|$)</start>
+      <end>$^</end>
+      <include>
+        <context where="start" sub-pattern="1" style-ref="keyword"/>
+        <context where="start" sub-pattern="2" style-ref="function"/>
+      </include>
+    </context>
+-->
+    <define-regex id="definable-operator">===?|&lt;=&gt;|&amp;|&lt;[&lt;=]?|(?&lt;!=)&gt;[&gt;=]?|!|=?~|^|%|\*\*?|/|[+-]@?|\||\[\]=?</define-regex>
 
     <context id="function">
       <start>(?&lt;![\w\.])\b(def)\b\s*</start>
-      <end>([^.]+?)(?=[\s(;]|$)</end>
+      <end>(\%{definable-operator}|[A-Z]?\%{method}(?:(?&lt;![!?])=)?)(?=[\s(;]|$)</end>
       <include>
         <context where="start" sub-pattern="1" style-ref="keyword"/>
-        <context where="end"   sub-pattern="1" style-ref="function"/>
-        <context ref="ruby:*"/>
+        <context where="end"   sub-pattern="0" style-ref="function"/>
+        <context ref="ruby-end-at-line-end"/>
       </include>
     </context>
 
     <context id="operators" style-ref="operator" extend-parent="false">
-      <match>&lt;=&gt;|(?&lt;!%)=(?!&gt;)|~|&lt;|&amp;|(?&lt;!=)&gt;|\.|::|\*|/|\+|-|\||!|not|and|or|defined\?</match>
+      <match>\%{definable-operator}|(?&lt;!%)=(?!&gt;)|\.|::|not|and|or|defined\?</match>
     </context>
 
     <context id="syntax-chars" style-ref="syntax-char" extend-parent="false">
