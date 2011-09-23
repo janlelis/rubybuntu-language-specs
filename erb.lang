@@ -26,7 +26,7 @@
       <include>
         <context where="start" sub-pattern="0" style-ref="output"/>
         <context where="end"   sub-pattern="0" style-ref="output"/>
-        <context ref="ruby:ruby"/>
+        <context ref="ruby-code"/>
       </include>
     </context>
 
@@ -36,6 +36,13 @@
       <include>
         <context where="start" sub-pattern="0" style-ref="tag"/>
         <context where="end"   sub-pattern="0" style-ref="tag"/>
+        <context ref="ruby-code"/>
+      </include>
+    </context>
+
+    <context id="ruby-code" extend-parent="false"><!-- extend false -->
+      <start></start><end>$^</end><!-- everything -->
+      <include>
         <context ref="ruby:ruby"/>
       </include>
     </context>

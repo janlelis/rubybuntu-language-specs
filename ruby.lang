@@ -610,7 +610,7 @@
     </context>
 
     <!-- %Q-Hello world- %-Hello world- %+hello world+ and so on... -->
-    <context id="double-quoted-string-generic" style-ref="string" extend-parent="false">
+    <context id="double-quoted-string-generic" style-ref="string">
       <start>%Q?([[:print:]])(?&lt;![[:alnum:]])</start>
       <end>\%{1@start}</end>
       <include>
