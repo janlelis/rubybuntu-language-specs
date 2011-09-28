@@ -115,6 +115,7 @@
     </context>
 
     <define-regex id="no_method_prefix">(?&lt;![\w\.\:])</define-regex>
+    <define-regex id="no_method_suffix">(?![?!a-zA-Z_])</define-regex>
 
     <context id="keywords" style-ref="keyword">
       <!-- do not highlight methods like .class -->
@@ -151,147 +152,148 @@
       <keyword>yield</keyword>
     </context>
 
-    <context id="important-methods" style-ref="important-method" extend-parent="false">
-      <keyword>Array(?=\()</keyword>
-      <keyword>Complex(?=\()</keyword>
-      <keyword>Float(?=\()</keyword>
-      <keyword>Integer(?=\()</keyword>
-      <keyword>Rational(?=\()</keyword>
-      <keyword>String(?=\()</keyword>
-      <keyword>__callee__</keyword>
-      <keyword>__id__</keyword>
-      <keyword>__method__</keyword>
-      <keyword>__send__</keyword>
-      <keyword>abort</keyword>
-      <keyword>allocate</keyword>
-      <keyword>ancestors</keyword>
-      <keyword>at_exit</keyword>
-      <keyword>autoload</keyword>
-      <keyword>autoload\?</keyword>
-      <keyword>binding</keyword>
-      <keyword>block_given\?</keyword>
-      <keyword>caller</keyword>
-      <keyword>catch</keyword>
-      <keyword>class</keyword>
-      <keyword>class_eval</keyword>
-      <keyword>class_exec</keyword>
-      <keyword>class_variable_defined\?</keyword>
-      <keyword>class_variable_get</keyword>
-      <keyword>class_variable_set</keyword>
-      <keyword>class_variables</keyword>
-      <keyword>clone</keyword>
-      <keyword>const_defined\?</keyword>
-      <keyword>const_get</keyword>
-      <keyword>const_missing</keyword>
-      <keyword>const_set</keyword>
-      <keyword>constants</keyword>
-      <keyword>define_singleton_method</keyword>
-      <keyword>display</keyword>
-      <keyword>dup</keyword>
-      <keyword>enum_for</keyword>
-      <keyword>eql\?</keyword>
-      <keyword>equal\?</keyword>
-      <keyword>eval</keyword>
-      <keyword>exec</keyword>
-      <keyword>exit!</keyword>
-      <keyword>exit</keyword>
-      <keyword>extend</keyword>
-      <keyword>fail</keyword>
-      <keyword>fork</keyword>
-      <keyword>format</keyword>
-      <keyword>freeze</keyword>
-      <keyword>frozen\?</keyword>
-      <keyword>gets</keyword>
-      <keyword>global_variables</keyword>
-      <keyword>hash</keyword>
-      <keyword>include\?</keyword>
-      <keyword>included_modules</keyword>
-      <keyword>initialize_clone</keyword>
-      <keyword>initialize_dup</keyword>
-      <keyword>inspect</keyword>
-      <keyword>instance_eval</keyword>
-      <keyword>instance_exec</keyword>
-      <keyword>instance_method</keyword>
-      <keyword>instance_methods</keyword>
-      <keyword>instance_of\?</keyword>
-      <keyword>instance_variable_defined\?</keyword>
-      <keyword>instance_variable_get</keyword>
-      <keyword>instance_variable_set</keyword>
-      <keyword>instance_variables</keyword>
-      <keyword>is_a\?</keyword>
-      <keyword>iterator\?</keyword>
-      <keyword>kind_of\?</keyword>
-      <keyword>lambda</keyword>
-      <keyword>load</keyword>
-      <keyword>local_variables</keyword>
-      <keyword>loop</keyword>
-      <keyword>method</keyword>
-      <keyword>method_defined\?</keyword>
-      <keyword>methods</keyword>
-      <keyword>module_eval</keyword>
-      <keyword>module_exec</keyword>
-      <keyword>name</keyword>
-      <keyword>nesting</keyword>
-      <keyword>new</keyword>
-      <keyword>nil\?</keyword>
-      <keyword>object_id</keyword>
-      <keyword>open</keyword>
-      <keyword>p</keyword>
-      <keyword>print</keyword>
-      <keyword>printf</keyword>
-      <keyword>private_class_method</keyword>
-      <keyword>private_instance_methods</keyword>
-      <keyword>private_method_defined\?</keyword>
-      <keyword>private_methods</keyword>
-      <keyword>proc</keyword>
-      <keyword>protected_instance_methods</keyword>
-      <keyword>protected_method_defined\?</keyword>
-      <keyword>protected_methods</keyword>
-      <keyword>public_class_method</keyword>
-      <keyword>public_instance_method</keyword>
-      <keyword>public_instance_methods</keyword>
-      <keyword>public_method</keyword>
-      <keyword>public_method_defined\?</keyword>
-      <keyword>public_methods</keyword>
-      <keyword>public_send</keyword>
-      <keyword>putc</keyword>
-      <keyword>puts</keyword>
-      <keyword>raise</keyword>
-      <keyword>rand</keyword>
-      <keyword>readline</keyword>
-      <keyword>readlines</keyword>
-      <keyword>remove_class_variable</keyword>
-      <keyword>require</keyword>
-      <keyword>require_relative</keyword>
-      <keyword>respond_to\?</keyword>
-      <keyword>respond_to_missing\?</keyword>
-      <keyword>select</keyword>
-      <keyword>send</keyword>
-      <keyword>set_trace_func</keyword>
-      <keyword>singleton_class</keyword>
-      <keyword>singleton_methods</keyword>
-      <keyword>sleep</keyword>
-      <keyword>spawn</keyword>
-      <keyword>sprintf</keyword>
-      <keyword>srand</keyword>
-      <keyword>superclass</keyword>
-      <keyword>syscall</keyword>
-      <keyword>system</keyword>
-      <keyword>taint</keyword>
-      <keyword>tainted\?</keyword>
-      <keyword>tap</keyword>
-      <keyword>test</keyword>
-      <keyword>throw</keyword>
-      <keyword>to_enum</keyword>
-      <keyword>to_s</keyword>
-      <keyword>trace_var</keyword>
-      <keyword>trap</keyword>
-      <keyword>trust</keyword>
-      <keyword>untaint</keyword>
-      <keyword>untrace_var</keyword>
-      <keyword>untrust</keyword>
+    <context id="important-methods" style-ref="important-method">
+      <suffix></suffix>
+      <keyword>warn\%{no_method_suffix}</keyword>
       <keyword>untrusted\?</keyword>
-      <keyword>warn</keyword>
+      <keyword>untrust\%{no_method_suffix}</keyword>
+      <keyword>untrace_var\%{no_method_suffix}</keyword>
+      <keyword>untaint\%{no_method_suffix}</keyword>
+      <keyword>trust\%{no_method_suffix}</keyword>
+      <keyword>trap\%{no_method_suffix}</keyword>
+      <keyword>trace_var\%{no_method_suffix}</keyword>
+      <keyword>to_s\%{no_method_suffix}</keyword>
+      <keyword>to_enum\%{no_method_suffix}</keyword>
+      <keyword>throw\%{no_method_suffix}</keyword>
+      <keyword>test\%{no_method_suffix}</keyword>
+      <keyword>tap\%{no_method_suffix}</keyword>
+      <keyword>tainted\?</keyword>
+      <keyword>taint\%{no_method_suffix}</keyword>
+      <keyword>system\%{no_method_suffix}</keyword>
+      <keyword>syscall\%{no_method_suffix}</keyword>
+      <keyword>superclass\%{no_method_suffix}</keyword>
+      <keyword>srand\%{no_method_suffix}</keyword>
+      <keyword>sprintf\%{no_method_suffix}</keyword>
+      <keyword>spawn\%{no_method_suffix}</keyword>
+      <keyword>sleep\%{no_method_suffix}</keyword>
+      <keyword>singleton_methods\%{no_method_suffix}</keyword>
+      <keyword>singleton_class\%{no_method_suffix}</keyword>
+      <keyword>set_trace_func\%{no_method_suffix}</keyword>
+      <keyword>send\%{no_method_suffix}</keyword>
+      <keyword>select\%{no_method_suffix}</keyword>
+      <keyword>respond_to_missing\?</keyword>
+      <keyword>respond_to\?</keyword>
+      <keyword>require_relative\%{no_method_suffix}</keyword>
+      <keyword>require\%{no_method_suffix}</keyword>
+      <keyword>remove_class_variable\%{no_method_suffix}</keyword>
+      <keyword>readlines\%{no_method_suffix}</keyword>
+      <keyword>readline\%{no_method_suffix}</keyword>
+      <keyword>rand\%{no_method_suffix}</keyword>
+      <keyword>raise\%{no_method_suffix}</keyword>
+      <keyword>puts\%{no_method_suffix}</keyword>
+      <keyword>putc\%{no_method_suffix}</keyword>
+      <keyword>public_send\%{no_method_suffix}</keyword>
+      <keyword>public_methods\%{no_method_suffix}</keyword>
+      <keyword>public_method_defined\?</keyword>
+      <keyword>public_method\%{no_method_suffix}</keyword>
+      <keyword>public_instance_methods\%{no_method_suffix}</keyword>
+      <keyword>public_instance_method\%{no_method_suffix}</keyword>
+      <keyword>public_class_method\%{no_method_suffix}</keyword>
+      <keyword>protected_methods\%{no_method_suffix}</keyword>
+      <keyword>protected_method_defined\?</keyword>
+      <keyword>protected_instance_methods\%{no_method_suffix}</keyword>
+      <keyword>proc\%{no_method_suffix}</keyword>
+      <keyword>private_methods\%{no_method_suffix}</keyword>
+      <keyword>private_method_defined\?</keyword>
+      <keyword>private_instance_methods\%{no_method_suffix}</keyword>
+      <keyword>private_class_method\%{no_method_suffix}</keyword>
+      <keyword>printf\%{no_method_suffix}</keyword>
+      <keyword>print\%{no_method_suffix}</keyword>
+      <keyword>p\%{no_method_suffix}</keyword>
+      <keyword>open\%{no_method_suffix}</keyword>
+      <keyword>object_id\%{no_method_suffix}</keyword>
+      <keyword>nil\?</keyword>
+      <keyword>new\%{no_method_suffix}</keyword>
+      <keyword>nesting\%{no_method_suffix}</keyword>
+      <keyword>name\%{no_method_suffix}</keyword>
+      <keyword>module_exec\%{no_method_suffix}</keyword>
+      <keyword>module_eval\%{no_method_suffix}</keyword>
+      <keyword>methods\%{no_method_suffix}</keyword>
+      <keyword>method_defined\?</keyword>
+      <keyword>method\%{no_method_suffix}</keyword>
+      <keyword>loop\%{no_method_suffix}</keyword>
+      <keyword>local_variables\%{no_method_suffix}</keyword>
+      <keyword>load\%{no_method_suffix}</keyword>
+      <keyword>lambda\%{no_method_suffix}</keyword>
+      <keyword>kind_of\?</keyword>
+      <keyword>iterator\?</keyword>
+      <keyword>is_a\?</keyword>
+      <keyword>instance_variables\%{no_method_suffix}</keyword>
+      <keyword>instance_variable_set\%{no_method_suffix}</keyword>
+      <keyword>instance_variable_get\%{no_method_suffix}</keyword>
+      <keyword>instance_variable_defined\?</keyword>
+      <keyword>instance_of\?</keyword>
+      <keyword>instance_methods\%{no_method_suffix}</keyword>
+      <keyword>instance_method\%{no_method_suffix}</keyword>
+      <keyword>instance_exec\%{no_method_suffix}</keyword>
+      <keyword>instance_eval\%{no_method_suffix}</keyword>
+      <keyword>inspect\%{no_method_suffix}</keyword>
+      <keyword>initialize_dup\%{no_method_suffix}</keyword>
+      <keyword>initialize_clone\%{no_method_suffix}</keyword>
+      <keyword>included_modules\%{no_method_suffix}</keyword>
+      <keyword>include\?</keyword>
+      <keyword>hash\%{no_method_suffix}</keyword>
+      <keyword>global_variables\%{no_method_suffix}</keyword>
+      <keyword>gets\%{no_method_suffix}</keyword>
+      <keyword>frozen\?</keyword>
+      <keyword>freeze\%{no_method_suffix}</keyword>
+      <keyword>format\%{no_method_suffix}</keyword>
+      <keyword>fork\%{no_method_suffix}</keyword>
+      <keyword>fail\%{no_method_suffix}</keyword>
+      <keyword>extend\%{no_method_suffix}</keyword>
+      <keyword>exit\%{no_method_suffix}</keyword>
+      <keyword>exit!</keyword>
+      <keyword>exec\%{no_method_suffix}</keyword>
+      <keyword>eval\%{no_method_suffix}</keyword>
+      <keyword>equal\?</keyword>
+      <keyword>eql\?</keyword>
+      <keyword>enum_for\%{no_method_suffix}</keyword>
+      <keyword>dup\%{no_method_suffix}</keyword>
+      <keyword>display\%{no_method_suffix}</keyword>
+      <keyword>define_singleton_method\%{no_method_suffix}</keyword>
+      <keyword>constants\%{no_method_suffix}</keyword>
+      <keyword>const_set\%{no_method_suffix}</keyword>
+      <keyword>const_missing\%{no_method_suffix}</keyword>
+      <keyword>const_get\%{no_method_suffix}</keyword>
+      <keyword>const_defined\?</keyword>
+      <keyword>clone\%{no_method_suffix}</keyword>
+      <keyword>class_variables\%{no_method_suffix}</keyword>
+      <keyword>class_variable_set\%{no_method_suffix}</keyword>
+      <keyword>class_variable_get\%{no_method_suffix}</keyword>
+      <keyword>class_variable_defined\?</keyword>
+      <keyword>class_exec\%{no_method_suffix}</keyword>
+      <keyword>class_eval\%{no_method_suffix}</keyword>
+      <keyword>class\%{no_method_suffix}</keyword>
+      <keyword>catch\%{no_method_suffix}</keyword>
+      <keyword>caller\%{no_method_suffix}</keyword>
+      <keyword>block_given\?</keyword>
+      <keyword>binding\%{no_method_suffix}</keyword>
+      <keyword>autoload\?</keyword>
+      <keyword>autoload\%{no_method_suffix}</keyword>
+      <keyword>at_exit\%{no_method_suffix}</keyword>
+      <keyword>ancestors\%{no_method_suffix}</keyword>
+      <keyword>allocate\%{no_method_suffix}</keyword>
+      <keyword>abort\%{no_method_suffix}</keyword>
+      <keyword>__send__\%{no_method_suffix}</keyword>
+      <keyword>__method__\%{no_method_suffix}</keyword>
+      <keyword>__id__\%{no_method_suffix}</keyword>
+      <keyword>__callee__\%{no_method_suffix}</keyword>
+      <keyword>String(?=\()</keyword>
+      <keyword>Rational(?=\()</keyword>
+      <keyword>Integer(?=\()</keyword>
+      <keyword>Float(?=\()</keyword>
+      <keyword>Complex(?=\()</keyword>
+      <keyword>Array(?=\()</keyword>
     </context>
 
     <context id="important-constants" style-ref="important-constant" extend-parent="false">
@@ -478,26 +480,31 @@
       <include>
         <context id="self" style-ref="self">
           <prefix>\%{no_method_prefix}</prefix>
+          <suffix>\%{no_method_suffix}</suffix>
           <keyword>self</keyword>
         </context>
 
         <context id="false" style-ref="false">
           <prefix>\%{no_method_prefix}</prefix>
+          <suffix>\%{no_method_suffix}</suffix>
           <keyword>false</keyword>
         </context>
 
         <context id="true" style-ref="true">
           <prefix>\%{no_method_prefix}</prefix>
+          <suffix>\%{no_method_suffix}</suffix>
           <keyword>true</keyword>
         </context>
 
         <context id="nil" style-ref="nil">
           <prefix>\%{no_method_prefix}</prefix>
+          <suffix>\%{no_method_suffix}</suffix>
           <keyword>nil</keyword>
         </context>
 
         <context id="special-values-words" style-ref="special-value">
           <prefix>\%{no_method_prefix}</prefix>
+          <suffix>\%{no_method_suffix}</suffix>
           <keyword>__ENCODING__</keyword>
           <keyword>__FILE__</keyword>
           <keyword>__LINE__</keyword>
@@ -1159,17 +1166,8 @@
         <context where="end" sub-pattern="0" style-ref="symbol-delimiter"/>
       </include>
     </context>
-<!--
-    <context id="operator-function">
-      <start>(?&lt;![\w\.])\b(def)\b\s*(\%{operator-method})(?=[\s(;]|$)</start>
-      <end>$^</end>
-      <include>
-        <context where="start" sub-pattern="1" style-ref="keyword"/>
-        <context where="start" sub-pattern="2" style-ref="function"/>
-      </include>
-    </context>
--->
-    <define-regex id="definable-operator">===?|&lt;=&gt;|&amp;|&lt;[&lt;=]?|(?&lt;!=)&gt;[&gt;=]?|!|=?~|^|%|\*\*?|/|[+-]@?|\||\[\]=?</define-regex>
+
+    <define-regex id="definable-operator">===?|&lt;=&gt;|&amp;|&lt;[&lt;=]?|(?&lt;!=)&gt;[&gt;=]?|!|^|=?~|\^|%|\*\*?|/|[+-]@?|\||\[\]=?</define-regex>
 
     <context id="function">
       <start>(?&lt;![\w\.])\b(def)\b\s*</start>
@@ -1243,7 +1241,7 @@
     </context>
 
     <context id="data" style-ref="string">
-      <start>__END__</start>
+      <start>^__END__</start>
       <include>
         <context where="start" sub-pattern="0" style-ref="string-delimiter"/>
       </include>
@@ -1331,14 +1329,16 @@
 
         <context ref="function"/>
 
-        <context ref="keywords"/>
-        <context ref="special-values"/>
-
         <context ref="special-variables"/>
         <context ref="global-variables"/>
+
         <context ref="ternary-operators"/>
         <context ref="hash-symbols"/>
+
         <context ref="important-methods"/>
+        <context ref="special-values"/>
+
+        <context ref="keywords"/>
         <context ref="methods"/>
 
         <context ref="important-constants"/>
