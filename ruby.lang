@@ -114,12 +114,14 @@
       <match case-sensitive="false">\s*#.*coding.*</match>
     </context>
 
+    <define-regex id="alnum">[^&amp;&gt;&lt;!?"'`@$%/()=\\{\[\]}*+~#|;,:.\-\^\s]</define-regex>
     <define-regex id="no_method_prefix">(?&lt;![\w\.\:])</define-regex>
-    <define-regex id="no_method_suffix">(?![?!a-zA-Z_])</define-regex>
+    <define-regex id="no_method_suffix">(?!(\%{alnum}|[?!]))</define-regex>
 
     <context id="keywords" style-ref="keyword">
       <!-- do not highlight methods like .class -->
       <prefix>\%{no_method_prefix}</prefix>
+      <suffix>\%{no_method_suffix}</suffix>
       <!-- only put here if not already used at another place -->
       <keyword>BEGIN</keyword>
       <keyword>END</keyword>
@@ -404,8 +406,6 @@
 
     <define-regex id="special-variables-1-char">[;@!~&amp;`'+=,/\\_&gt;&lt;.*?$:"0-9]</define-regex>
     <define-regex id="special-variables-2-chars">-[FK0iIvwWdpla]</define-regex>
-
-    <define-regex id="alnum">[^&amp;&gt;&lt;!?"'`@$%/()=\\{\[\]}*+~#|;,:.\-\^\s]</define-regex>
 
     <context id="special-variables" style-ref="special-variable">
       <match extended="true">
@@ -1179,8 +1179,8 @@
       </include>
     </context>
 
-    <context id="operators" style-ref="operator" extend-parent="false">
-      <match>\%{definable-operator}|(?&lt;!%)=(?!&gt;)|\.|::|not|and|or|defined\?</match>
+    <context id="operators" style-ref="operator">
+      <match>\%{definable-operator}|(?&lt;!%)=(?!&gt;)|\.|::|(?:not|and|or)\%{no_method_suffix}|defined\?</match>
     </context>
 
     <context id="syntax-chars" style-ref="syntax-char" extend-parent="false">
@@ -1338,9 +1338,6 @@
         <context ref="important-methods"/>
         <context ref="special-values"/>
 
-        <context ref="keywords"/>
-        <context ref="methods"/>
-
         <context ref="important-constants"/>
         <context ref="constants"/>
 
@@ -1360,6 +1357,10 @@
         <context ref="collection-chars"/>
         <context ref="operators"/>
         <context ref="syntax-chars"/>
+
+        <context ref="keywords"/>
+        <context ref="methods"/>
+
         <context ref="brackets"/>
         <context ref="errors"/>
       </include>
