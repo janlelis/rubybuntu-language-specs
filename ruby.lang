@@ -1167,7 +1167,16 @@
       </include>
     </context>
 
-    <define-regex id="definable-operator">===?|&lt;=&gt;|&amp;|&lt;[&lt;=]?|(?&lt;!=)&gt;[&gt;=]?|!|^|=?~|\^|%|\*\*?|/|[+-]@?|\||\[\]=?</define-regex>
+    <define-regex id="definable-operator" extended="true">
+        ===?
+      | &lt;=&gt;
+      | &lt;[&lt;=]?
+      | (?&lt;!=)&gt;[&gt;=]?
+      | =?~
+      | \*\*?
+      | \[\]=?
+      | [+%^!/|&amp;-]
+    </define-regex>
 
     <context id="function">
       <start>(?&lt;![\w\.])\b(def)\b\s*</start>
@@ -1180,7 +1189,16 @@
     </context>
 
     <context id="operators" style-ref="operator">
-      <match>\%{definable-operator}|(?&lt;!%)=(?!&gt;)|\.|::|(?:not|and|or)\%{no_method_suffix}|defined\?</match>
+      <match extended="true">
+        ( [+-]@
+        | \%{definable-operator}
+        | (?&lt;!%)=(?!&gt;)
+        | \.
+        | ::
+        | \%{no_method_prefix}(?:not|and|or)\%{no_method_suffix}
+        | \%{no_method_prefix}defined\?
+        )
+      </match>
     </context>
 
     <context id="syntax-chars" style-ref="syntax-char" extend-parent="false">
