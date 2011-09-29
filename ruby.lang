@@ -1405,6 +1405,7 @@
         <context ref="ternary-operators"/>
         <context ref="hash-symbols"/>
 
+        <context ref="keywords"/>
         <context ref="important-methods"/>
         <context ref="special-values"/>
 
@@ -1431,7 +1432,6 @@
         <context ref="operators"/>
         <context ref="syntax-chars"/>
 
-        <context ref="keywords"/>
         <context ref="methods"/>
 
         <context ref="question-mark-string"/>
