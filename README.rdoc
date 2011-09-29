@@ -48,16 +48,15 @@ You should also use up-to-date {mime types}[https://github.com/janlelis/rubybunt
 * See `git log` for full details
 * Based on https://github.com/gmate/gmate/blob/master/lang-specs/ruby_on_rails.lang
 
-== TODO
-=== ruby.lang - Advanced TODOs [not (easily) possible with gtksourceview]
+== ruby.lang - Advanced TODOs [not (easily) possible with gtksourceview]
 * Improve heredocs (e.g. nested ones)
-* Different colorizations for "end"s (e.g. def/begin, class/module, while/until, if/case, block), needs to detect modifier statements correctly
+* Different colorizations for "end"s (e.g. def/begin, class/module, while/until, if/case, block), needs to detect modifier statements correctly :/
 * Detect (multi-line) yard doc tag values
 * Add escapable char for generic string delimiters
 * Advanced regex highlighting + multi-line regexes
 * ruby.lang-extras/known-bugs.rb
 
-=== Languages to add/import/update
+== Languages to add/import/update
 * SASS / SCSS / CSS
 * COFFEE
 * HAML
@@ -67,7 +66,7 @@ You should also use up-to-date {mime types}[https://github.com/janlelis/rubybunt
 
 Meanwhile, you can, for example, use the ones found in gmate[https://github.com/gmate/gmate/tree/master/lang-specs]
 
-=== MAYBE
+== MAYBE
 * RDOC markup support (and cross-referencing in ruby)
 
 == J-_-L

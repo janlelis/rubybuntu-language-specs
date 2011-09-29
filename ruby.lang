@@ -119,7 +119,6 @@
     <define-regex id="no_method_suffix">(?!(\%{alnum}|[?!]))</define-regex>
 
     <context id="keywords" style-ref="keyword">
-      <!-- do not highlight methods like .class -->
       <prefix>\%{no_method_prefix}</prefix>
       <suffix>\%{no_method_suffix}</suffix>
       <!-- only put here if not already used at another place -->
@@ -518,8 +517,7 @@
       <include>
         <context sub-pattern="1" where="start" style-ref="syntax-char"/>
         <context sub-pattern="0" where="end"   style-ref="syntax-char"/>
-
-        <context ref="ruby:*"/>
+        <context ref="ruby-end-at-line-end"/>
       </include>
     </context>
 
@@ -1216,29 +1214,57 @@
           </include>
         </context>
         <context id="square-brackets">
-          <start>\[</start><end>\]</end>
+          <start extended="true">
+            (?: (?&lt;= \%{alnum}[!?] )
+            |   (?&lt;= \%{alnum} | [})\]] )
+            ) \s*(\[)
+          </start>
+          <end>\]</end>
           <include>
-            <context where="start" sub-pattern="0" style-ref="syntax-char"/>
+            <context where="start" sub-pattern="1" style-ref="syntax-char"/>
             <context where="end"   sub-pattern="0" style-ref="syntax-char"/>
             <context ref="ruby:*"/>
           </include>
         </context>
-        <context id="curly-brackets">
-          <start>(?&lt;=(?:.[\])\w]|->))\s*(\{)</start><end>\}</end>
+        <context id="curly-brackets"><!--(?&lt;= [)\w\]] )    -->
+          <start extended="true">
+            (?: (?&lt;= -> | \%{alnum}[!?] )
+            |   (?&lt;= \%{alnum} | [)\]] )
+            ) \s*(\{)
+          </start>
+          <end>\}</end>
           <include>
-          <context where="start" sub-pattern="1" style-ref="syntax-char"/>
-          <context where="end"   sub-pattern="0" style-ref="syntax-char"/>
+            <context where="start" sub-pattern="1" style-ref="syntax-char"/>
+            <context where="end"   sub-pattern="0" style-ref="syntax-char"/>
             <context ref="ruby:*"/>
           </include>
         </context>
       </include>
     </context>
 
-    <context id="hash">
-      <start>(?&lt;!(?:.[\])\w]|->))\s*\{</start>
+    <context id="hash" extend-parent="false">
+      <start extended="true">
+        (?&lt;! -> | \%{alnum}[!?] )
+        (?&lt;! \%{alnum} | [)\]] )
+        (\{)
+      </start>
       <end>\}</end>
       <include>
-        <context where="start" sub-pattern="0" style-ref="collection"/>
+        <context where="start" sub-pattern="1" style-ref="collection"/>
+        <context where="end" sub-pattern="0" style-ref="collection"/>
+        <context ref="ruby:*"/>
+      </include>
+    </context>
+
+    <context id="array">
+      <start extended="true">
+        (?&lt;! \%{alnum}[!?] )
+        (?&lt;! \%{alnum} | [})\]] )
+        (\[)
+      </start>
+      <end>\]</end>
+      <include>
+        <context where="start" sub-pattern="1" style-ref="collection"/>
         <context where="end" sub-pattern="0" style-ref="collection"/>
         <context ref="ruby:*"/>
       </include>
@@ -1246,16 +1272,6 @@
 
     <context id="collection-chars" style-ref="collection">
       <match>(=&gt;|,)</match>
-    </context>
-
-    <context id="array">
-      <start>(?&lt;![\])}\w])\[</start>
-      <end>\]</end>
-      <include>
-        <context where="start" sub-pattern="0" style-ref="collection"/>
-        <context where="end" sub-pattern="0" style-ref="collection"/>
-        <context ref="ruby:*"/>
-      </include>
     </context>
 
     <context id="data" style-ref="string">
@@ -1295,8 +1311,6 @@
         <context ref="heredoc-single-quoted-indented-string"/>
         <context ref="heredoc-double-quoted-indented-string"/>
         <context ref="heredoc-backtick-quoted-indented-string"/>
-
-        <context ref="question-mark-string"/>
 
         <context ref="symbol"/>
         <context ref="single-quoted-symbol"/>
@@ -1371,6 +1385,7 @@
         <context ref="block-parameters"/>
         <context ref="hash"/>
         <context ref="array"/>
+        <context ref="brackets"/>
 
         <context ref="collection-chars"/>
         <context ref="operators"/>
@@ -1379,7 +1394,8 @@
         <context ref="keywords"/>
         <context ref="methods"/>
 
-        <context ref="brackets"/>
+        <context ref="question-mark-string"/>
+
         <context ref="errors"/>
       </include>
     </context>
