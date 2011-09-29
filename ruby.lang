@@ -1281,9 +1281,11 @@
       </include>
     </context>
 
-    <context id="errors" style-ref="error" extend-parent="false">
+    <context id="errors" style-ref="error" extend-parent="false"><!-- split if needed -->
       <match extended="true">
-        [}\])]
+        (?: [}\])]
+        |   =end\%{no_method_suffix}
+        )
       </match>
     </context>
 
@@ -1387,6 +1389,8 @@
         <context ref="array"/>
         <context ref="brackets"/>
 
+        <context ref="errors"/>
+
         <context ref="collection-chars"/>
         <context ref="operators"/>
         <context ref="syntax-chars"/>
@@ -1396,7 +1400,6 @@
 
         <context ref="question-mark-string"/>
 
-        <context ref="errors"/>
       </include>
     </context>
  </definitions>
