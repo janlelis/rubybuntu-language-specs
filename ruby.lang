@@ -160,6 +160,7 @@
       <keyword>untrust\%{no_method_suffix}</keyword>
       <keyword>untrace_var\%{no_method_suffix}</keyword>
       <keyword>untaint\%{no_method_suffix}</keyword>
+      <keyword>undef_method\%{no_method_suffix}</keyword>
       <keyword>trust\%{no_method_suffix}</keyword>
       <keyword>trap\%{no_method_suffix}</keyword>
       <keyword>trace_var\%{no_method_suffix}</keyword>
@@ -178,6 +179,9 @@
       <keyword>spawn\%{no_method_suffix}</keyword>
       <keyword>sleep\%{no_method_suffix}</keyword>
       <keyword>singleton_methods\%{no_method_suffix}</keyword>
+      <keyword>singleton_method_undefined\%{no_method_suffix}</keyword>
+      <keyword>singleton_method_removed\%{no_method_suffix}</keyword>
+      <keyword>singleton_method_added\%{no_method_suffix}</keyword>
       <keyword>singleton_class\%{no_method_suffix}</keyword>
       <keyword>set_trace_func\%{no_method_suffix}</keyword>
       <keyword>send\%{no_method_suffix}</keyword>
@@ -186,6 +190,9 @@
       <keyword>respond_to\?</keyword>
       <keyword>require_relative\%{no_method_suffix}</keyword>
       <keyword>require\%{no_method_suffix}</keyword>
+      <keyword>remove_method\%{no_method_suffix}</keyword>
+      <keyword>remove_instance_variable\%{no_method_suffix}</keyword>
+      <keyword>remove_const\%{no_method_suffix}</keyword>
       <keyword>remove_class_variable\%{no_method_suffix}</keyword>
       <keyword>readlines\%{no_method_suffix}</keyword>
       <keyword>readline\%{no_method_suffix}</keyword>
@@ -199,15 +206,20 @@
       <keyword>public_method\%{no_method_suffix}</keyword>
       <keyword>public_instance_methods\%{no_method_suffix}</keyword>
       <keyword>public_instance_method\%{no_method_suffix}</keyword>
+      <keyword>public_constant\%{no_method_suffix}</keyword>
       <keyword>public_class_method\%{no_method_suffix}</keyword>
+      <keyword>public\%{no_method_suffix}</keyword>
       <keyword>protected_methods\%{no_method_suffix}</keyword>
       <keyword>protected_method_defined\?</keyword>
       <keyword>protected_instance_methods\%{no_method_suffix}</keyword>
+      <keyword>protected\%{no_method_suffix}</keyword>
       <keyword>proc\%{no_method_suffix}</keyword>
       <keyword>private_methods\%{no_method_suffix}</keyword>
       <keyword>private_method_defined\?</keyword>
       <keyword>private_instance_methods\%{no_method_suffix}</keyword>
+      <keyword>private_constant\%{no_method_suffix}</keyword>
       <keyword>private_class_method\%{no_method_suffix}</keyword>
+      <keyword>private\%{no_method_suffix}</keyword>
       <keyword>printf\%{no_method_suffix}</keyword>
       <keyword>print\%{no_method_suffix}</keyword>
       <keyword>p\%{no_method_suffix}</keyword>
@@ -217,10 +229,15 @@
       <keyword>new\%{no_method_suffix}</keyword>
       <keyword>nesting\%{no_method_suffix}</keyword>
       <keyword>name\%{no_method_suffix}</keyword>
+      <keyword>module_function\%{no_method_suffix}</keyword>
       <keyword>module_exec\%{no_method_suffix}</keyword>
       <keyword>module_eval\%{no_method_suffix}</keyword>
       <keyword>methods\%{no_method_suffix}</keyword>
+      <keyword>method_undefined\%{no_method_suffix}</keyword>
+      <keyword>method_removed\%{no_method_suffix}</keyword>
+      <keyword>method_missing\%{no_method_suffix}</keyword>
       <keyword>method_defined\?</keyword>
+      <keyword>method_added\%{no_method_suffix}</keyword>
       <keyword>method\%{no_method_suffix}</keyword>
       <keyword>loop\%{no_method_suffix}</keyword>
       <keyword>local_variables\%{no_method_suffix}</keyword>
@@ -240,17 +257,25 @@
       <keyword>instance_eval\%{no_method_suffix}</keyword>
       <keyword>inspect\%{no_method_suffix}</keyword>
       <keyword>initialize_dup\%{no_method_suffix}</keyword>
+      <keyword>initialize_copy\%{no_method_suffix}</keyword>
       <keyword>initialize_clone\%{no_method_suffix}</keyword>
+      <keyword>initialize\%{no_method_suffix}</keyword>
       <keyword>included_modules\%{no_method_suffix}</keyword>
+      <keyword>included\%{no_method_suffix}</keyword>
       <keyword>include\?</keyword>
+      <keyword>include\%{no_method_suffix}</keyword>
       <keyword>hash\%{no_method_suffix}</keyword>
       <keyword>global_variables\%{no_method_suffix}</keyword>
       <keyword>gets\%{no_method_suffix}</keyword>
+      <keyword>gem_original_require\%{no_method_suffix}</keyword>
+      <keyword>gem\%{no_method_suffix}</keyword>
       <keyword>frozen\?</keyword>
       <keyword>freeze\%{no_method_suffix}</keyword>
       <keyword>format\%{no_method_suffix}</keyword>
       <keyword>fork\%{no_method_suffix}</keyword>
       <keyword>fail\%{no_method_suffix}</keyword>
+      <keyword>extended\%{no_method_suffix}</keyword>
+      <keyword>extend_object\%{no_method_suffix}</keyword>
       <keyword>extend\%{no_method_suffix}</keyword>
       <keyword>exit\%{no_method_suffix}</keyword>
       <keyword>exit!</keyword>
@@ -262,6 +287,7 @@
       <keyword>dup\%{no_method_suffix}</keyword>
       <keyword>display\%{no_method_suffix}</keyword>
       <keyword>define_singleton_method\%{no_method_suffix}</keyword>
+      <keyword>define_method\%{no_method_suffix}</keyword>
       <keyword>constants\%{no_method_suffix}</keyword>
       <keyword>const_set\%{no_method_suffix}</keyword>
       <keyword>const_missing\%{no_method_suffix}</keyword>
@@ -281,9 +307,15 @@
       <keyword>binding\%{no_method_suffix}</keyword>
       <keyword>autoload\?</keyword>
       <keyword>autoload\%{no_method_suffix}</keyword>
+      <keyword>attr_writer\%{no_method_suffix}</keyword>
+      <keyword>attr_reader\%{no_method_suffix}</keyword>
+      <keyword>attr_accessor\%{no_method_suffix}</keyword>
+      <keyword>attr\%{no_method_suffix}</keyword>
       <keyword>at_exit\%{no_method_suffix}</keyword>
+      <keyword>append_features\%{no_method_suffix}</keyword>
       <keyword>ancestors\%{no_method_suffix}</keyword>
       <keyword>allocate\%{no_method_suffix}</keyword>
+      <keyword>alias_method\%{no_method_suffix}</keyword>
       <keyword>abort\%{no_method_suffix}</keyword>
       <keyword>__send__\%{no_method_suffix}</keyword>
       <keyword>__method__\%{no_method_suffix}</keyword>
@@ -406,7 +438,6 @@
       <keyword>ARGV</keyword>
       <keyword>ARGF</keyword>
     </context>
-
 
     <define-regex id="special-variables-1-char">[;@!~&amp;`'+=,/\\_&gt;&lt;.*?$:"0-9]</define-regex>
     <define-regex id="special-variables-2-chars">-[FK0iIvwWdpla]</define-regex>
