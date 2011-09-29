@@ -3,4 +3,4 @@ DATA
 SCRIPT_LINES__
 ]).map{ |e|
   "      <keyword>#{e}</keyword>"
-}.uniq
+}.uniq.sort.reverse

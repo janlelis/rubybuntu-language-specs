@@ -298,108 +298,113 @@
     </context>
 
     <context id="important-constants" style-ref="important-constant" extend-parent="false">
-      <keyword>Object</keyword>
-      <keyword>Module</keyword>
-      <keyword>Class</keyword>
-      <keyword>Kernel</keyword>
-      <keyword>NilClass</keyword>
-      <keyword>NIL</keyword>
-      <keyword>Data</keyword>
-      <keyword>TrueClass</keyword>
-      <keyword>TRUE</keyword>
-      <keyword>FalseClass</keyword>
-      <keyword>FALSE</keyword>
-      <keyword>Encoding</keyword>
-      <keyword>Comparable</keyword>
-      <keyword>Enumerable</keyword>
-      <keyword>String</keyword>
-      <keyword>Symbol</keyword>
-      <keyword>Exception</keyword>
-      <keyword>SystemExit</keyword>
-      <keyword>SignalException</keyword>
-      <keyword>Interrupt</keyword>
-      <keyword>StandardError</keyword>
-      <keyword>TypeError</keyword>
-      <keyword>ArgumentError</keyword>
-      <keyword>IndexError</keyword>
-      <keyword>KeyError</keyword>
-      <keyword>RangeError</keyword>
-      <keyword>ScriptError</keyword>
-      <keyword>SyntaxError</keyword>
-      <keyword>LoadError</keyword>
-      <keyword>NotImplementedError</keyword>
-      <keyword>NameError</keyword>
-      <keyword>NoMethodError</keyword>
-      <keyword>RuntimeError</keyword>
-      <keyword>SecurityError</keyword>
-      <keyword>NoMemoryError</keyword>
-      <keyword>EncodingError</keyword>
-      <keyword>SystemCallError</keyword>
-      <keyword>Errno</keyword>
+      <prefix>(?&lt;!\%{alnum}::)</prefix><!-- fails on spaces or non alnum -->
       <keyword>ZeroDivisionError</keyword>
-      <keyword>FloatDomainError</keyword>
-      <keyword>Numeric</keyword>
-      <keyword>Integer</keyword>
-      <keyword>Fixnum</keyword>
-      <keyword>Float</keyword>
-      <keyword>Bignum</keyword>
-      <keyword>Array</keyword>
-      <keyword>Hash</keyword>
-      <keyword>ENV</keyword>
+      <keyword>UnboundMethod</keyword>
+      <keyword>TypeError</keyword>
+      <keyword>TrueClass</keyword>
+      <keyword>Time</keyword>
+      <keyword>ThreadGroup</keyword>
+      <keyword>ThreadError</keyword>
+      <keyword>Thread</keyword>
+      <keyword>TRUE</keyword>
+      <keyword>TOPLEVEL_BINDING</keyword>
+      <keyword>SystemStackError</keyword>
+      <keyword>SystemExit</keyword>
+      <keyword>SystemCallError</keyword>
+      <keyword>SyntaxError</keyword>
+      <keyword>Symbol</keyword>
       <keyword>Struct</keyword>
+      <keyword>String</keyword>
+      <keyword>StopIteration</keyword>
+      <keyword>StandardError</keyword>
+      <keyword>SignalException</keyword>
+      <keyword>Signal</keyword>
+      <keyword>SecurityError</keyword>
+      <keyword>ScriptError</keyword>
+      <keyword>STDOUT</keyword>
+      <keyword>STDIN</keyword>
+      <keyword>STDERR</keyword>
+      <keyword>SCRIPT_LINES__</keyword>
+      <keyword>RuntimeError</keyword>
+      <keyword>RubyVM</keyword>
       <keyword>RegexpError</keyword>
       <keyword>Regexp</keyword>
-      <keyword>MatchData</keyword>
-      <keyword>Marshal</keyword>
-      <keyword>Range</keyword>
-      <keyword>IOError</keyword>
-      <keyword>EOFError</keyword>
-      <keyword>IO</keyword>
-      <keyword>STDIN</keyword>
-      <keyword>STDOUT</keyword>
-      <keyword>STDERR</keyword>
-      <keyword>ARGF</keyword>
-      <keyword>FileTest</keyword>
-      <keyword>File</keyword>
-      <keyword>Dir</keyword>
-      <keyword>Time</keyword>
-      <keyword>Random</keyword>
-      <keyword>Signal</keyword>
-      <keyword>Process</keyword>
-      <keyword>Proc</keyword>
-      <keyword>LocalJumpError</keyword>
-      <keyword>SystemStackError</keyword>
-      <keyword>Method</keyword>
-      <keyword>UnboundMethod</keyword>
-      <keyword>Binding</keyword>
-      <keyword>Math</keyword>
-      <keyword>GC</keyword>
-      <keyword>ObjectSpace</keyword>
-      <keyword>Enumerator</keyword>
-      <keyword>StopIteration</keyword>
-      <keyword>RubyVM</keyword>
-      <keyword>Thread</keyword>
-      <keyword>TOPLEVEL_BINDING</keyword>
-      <keyword>ThreadGroup</keyword>
-      <keyword>Mutex</keyword>
-      <keyword>ThreadError</keyword>
-      <keyword>Fiber</keyword>
-      <keyword>FiberError</keyword>
+      <keyword>RbConfig</keyword>
       <keyword>Rational</keyword>
-      <keyword>Complex</keyword>
+      <keyword>RangeError</keyword>
+      <keyword>Range</keyword>
+      <keyword>Random</keyword>
       <keyword>RUBY_VERSION</keyword>
+      <keyword>RUBY_REVISION</keyword>
       <keyword>RUBY_RELEASE_DATE</keyword>
       <keyword>RUBY_PLATFORM</keyword>
       <keyword>RUBY_PATCHLEVEL</keyword>
-      <keyword>RUBY_REVISION</keyword>
+      <keyword>RUBY_ENGINE</keyword>
       <keyword>RUBY_DESCRIPTION</keyword>
       <keyword>RUBY_COPYRIGHT</keyword>
-      <keyword>RUBY_ENGINE</keyword>
-      <keyword>ARGV</keyword>
+      <keyword>Process</keyword>
+      <keyword>Proc</keyword>
+      <keyword>ObjectSpace</keyword>
+      <keyword>Object</keyword>
+      <keyword>Numeric</keyword>
+      <keyword>NotImplementedError</keyword>
+      <keyword>NoMethodError</keyword>
+      <keyword>NoMemoryError</keyword>
+      <keyword>NilClass</keyword>
+      <keyword>NameError</keyword>
+      <keyword>NIL</keyword>
+      <keyword>Mutex</keyword>
+      <keyword>Module</keyword>
+      <keyword>Method</keyword>
+      <keyword>Math</keyword>
+      <keyword>MatchData</keyword>
+      <keyword>Marshal</keyword>
+      <keyword>LocalJumpError</keyword>
+      <keyword>LoadError</keyword>
+      <keyword>KeyError</keyword>
+      <keyword>Kernel</keyword>
+      <keyword>Interrupt</keyword>
+      <keyword>Integer</keyword>
+      <keyword>IndexError</keyword>
+      <keyword>IOError</keyword>
+      <keyword>IO</keyword>
+      <keyword>Hash</keyword>
       <keyword>Gem</keyword>
-      <keyword>BasicObject</keyword>
+      <keyword>GC</keyword>
+      <keyword>FloatDomainError</keyword>
+      <keyword>Float</keyword>
+      <keyword>Fixnum</keyword>
+      <keyword>FileTest</keyword>
+      <keyword>File</keyword>
+      <keyword>FiberError</keyword>
+      <keyword>Fiber</keyword>
+      <keyword>FalseClass</keyword>
+      <keyword>FALSE</keyword>
+      <keyword>Exception</keyword>
+      <keyword>Errno</keyword>
+      <keyword>Enumerator</keyword>
+      <keyword>Enumerable</keyword>
+      <keyword>EncodingError</keyword>
+      <keyword>Encoding</keyword>
+      <keyword>EOFError</keyword>
+      <keyword>ENV</keyword>
+      <keyword>Dir</keyword>
+      <keyword>Deprecate</keyword>
+      <keyword>Data</keyword>
       <keyword>DATA</keyword>
-      <keyword>SCRIPT_LINES__</keyword>
+      <keyword>Config</keyword>
+      <keyword>Complex</keyword>
+      <keyword>Comparable</keyword>
+      <keyword>Class</keyword>
+      <keyword>CROSS_COMPILING</keyword>
+      <keyword>Binding</keyword>
+      <keyword>Bignum</keyword>
+      <keyword>BasicObject</keyword>
+      <keyword>Array</keyword>
+      <keyword>ArgumentError</keyword>
+      <keyword>ARGV</keyword>
+      <keyword>ARGF</keyword>
     </context>
 
 
