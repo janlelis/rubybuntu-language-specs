@@ -1312,6 +1312,10 @@
       <match>(=&gt;|,)</match>
     </context>
 
+    <context id="lambdas" style-ref="syntax-char">
+      <match>-&gt;</match>
+    </context>
+
     <context id="data" style-ref="string">
       <start>^__END__$</start>
       <include>
@@ -1431,6 +1435,7 @@
         <context ref="errors"/>
 
         <context ref="collection-chars"/>
+        <context ref="lambdas"/>
         <context ref="operators"/>
         <context ref="syntax-chars"/>
 
