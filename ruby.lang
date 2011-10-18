@@ -1313,7 +1313,7 @@
     </context>
 
     <context id="data" style-ref="string">
-      <start>^__END__</start>
+      <start>^__END__$</start>
       <include>
         <context where="start" sub-pattern="0" style-ref="string-delimiter"/>
       </include>
