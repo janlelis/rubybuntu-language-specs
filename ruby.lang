@@ -117,40 +117,14 @@
     <define-regex id="alnum">[^&amp;&gt;&lt;!?"'`@$%/()=\\{\[\]}*+~#|;,:.\-\^\s]</define-regex>
     <define-regex id="no_method_prefix">(?&lt;![\w\.\:])</define-regex>
     <define-regex id="no_method_suffix">(?!(\%{alnum}|[?!]))</define-regex>
+    <define-regex id="keywords" extended="true"><!-- TODO also change at array+hash stuff -->
+      BEGIN | END | alias | begin | break | case | class | do | else | elsif |
+      end | ensure | for | if | in | module | next | redo | rescue | retry |
+      return | super | then | undef | unless | until | when | while | yield
+    </define-regex>
 
     <context id="keywords" style-ref="keyword">
-      <prefix>\%{no_method_prefix}</prefix>
-      <suffix>\%{no_method_suffix}</suffix>
-      <!-- only put here if not already used at another place -->
-      <keyword>BEGIN</keyword>
-      <keyword>END</keyword>
-      <keyword>alias</keyword>
-      <keyword>begin</keyword>
-      <keyword>break</keyword>
-      <keyword>case</keyword>
-      <keyword>class</keyword>
-      <keyword>do</keyword>
-      <keyword>else</keyword>
-      <keyword>elsif</keyword>
-      <keyword>end</keyword>
-      <keyword>ensure</keyword>
-      <keyword>for</keyword>
-      <keyword>if</keyword>
-      <keyword>in</keyword>
-      <keyword>module</keyword>
-      <keyword>next</keyword>
-      <keyword>redo</keyword>
-      <keyword>rescue</keyword>
-      <keyword>retry</keyword>
-      <keyword>return</keyword>
-      <keyword>super</keyword>
-      <keyword>then</keyword>
-      <keyword>undef</keyword>
-      <keyword>unless</keyword>
-      <keyword>until</keyword>
-      <keyword>when</keyword>
-      <keyword>while</keyword>
-      <keyword>yield</keyword>
+      <match>\%{no_method_prefix}\%{keywords}\%{no_method_suffix}</match>
     </context>
 
     <context id="important-methods" style-ref="important-method">
@@ -960,7 +934,7 @@
         <context where="end" sub-pattern="0" style-ref="string-delimiter"/>
       </include>
     </context>
-    
+
     <context id="heredoc-backtick-quoted-string" style-ref="system">
       <start>\%{start-heredoc}(`(\w+)`)</start>
       <end>^\%{4@start}$</end>
@@ -973,7 +947,7 @@
         <context where="end" sub-pattern="0" style-ref="system-delimiter"/>
       </include>
     </context>
-    
+
     <context id="heredoc-single-quoted-indented-string" style-ref="string">
       <start>\%{start-heredoc}(-'(\w+)')</start>
       <end>^\s*\%{4@start}$</end>
@@ -997,7 +971,7 @@
         <context where="end" sub-pattern="0" style-ref="string-delimiter"/>
       </include>
     </context>
-    
+
     <context id="heredoc-backtick-quoted-indented-string" style-ref="system">
       <start>\%{start-heredoc}(-`(\w+)`)</start>
       <end>^\s*\%{4@start}$</end>
@@ -1009,7 +983,7 @@
         <context where="end" sub-pattern="0" style-ref="system-delimiter"/>
       </include>
     </context>
-    
+
     <define-regex id="regex-options">([mixo]*[neus]?[mixo]*)</define-regex>
 
     <context id="regex" style-ref="regex">
@@ -1146,7 +1120,7 @@
         <context where="end"   sub-pattern="0" style-ref="symbol-delimiter"/>
       </include>
     </context>
-    
+
         <!-- %s{Hello world} -->
     <context id="single-quoted-symbol-curly" style-ref="symbol">
       <start>%s\{</start>
@@ -1189,7 +1163,7 @@
         <context where="end" sub-pattern="0" style-ref="symbol-delimiter"/>
       </include>
     </context>
-    
+
     <!-- %s-Hello world- %s+Hello world+ %s*Hello world* and so on... -->
     <context id="single-quoted-symbol-generic" style-ref="symbol">
       <start>%s([[:print:]])(?&lt;![[:alnum:]])</start>
@@ -1253,7 +1227,15 @@
           <start extended="true">
             (?: (?&lt;= \%{alnum}[!?] )
             |   (?&lt;= \%{alnum} | [})\]] )
-            ) \s*(\[)
+            )
+            
+            (?&lt;! \%{no_method_prefix} 
+              BEGIN | END | alias | begin | break | case | class | do | else | elsif |
+              end | ensure | for | if | in | module | next | redo | rescue | retry |
+              return | super | then | undef | unless | until | when | while | yield
+            )
+            
+            \s* (\[)
           </start>
           <end>\]</end>
           <include>
@@ -1262,11 +1244,19 @@
             <context ref="ruby:*"/>
           </include>
         </context>
-        <context id="curly-brackets"><!--(?&lt;= [)\w\]] )    -->
+        <context id="curly-brackets"><!--(?&lt;= [)\w\]] )    --><!-- TODO why does keyword ref not work? -->
           <start extended="true">
             (?: (?&lt;= -> | \%{alnum}[!?] )
-            |   (?&lt;= \%{alnum} | [)\]] )
-            ) \s*(\{)
+            |   (?&lt;= \%{alnum} | [)\]]  )
+            )
+            
+            (?&lt;! \%{no_method_prefix} 
+              BEGIN | END | alias | begin | break | case | class | do | else | elsif |
+              end | ensure | for | if | in | module | next | redo | rescue | retry |
+              return | super | then | undef | unless | until | when | while | yield
+            )
+            
+            \s* (\{)
           </start>
           <end>\}</end>
           <include>
@@ -1278,10 +1268,16 @@
       </include>
     </context>
 
-    <context id="hash" extend-parent="false">
+    <context id="hash">
       <start extended="true">
-        (?&lt;! -> | \%{alnum}[!?] )
-        (?&lt;! \%{alnum} | [)\]] )
+        (?: (?&lt;= \%{no_method_prefix} 
+              BEGIN | END | alias | begin | break | case | class | do | else | elsif |
+              end | ensure | for | if | in | module | next | redo | rescue | retry |
+              return | super | then | undef | unless | until | when | while | yield
+            )
+        | (?&lt;! -> | \%{alnum}[!?] )
+          (?&lt;! \%{alnum} | [)\]]  )
+        )
         (\{)
       </start>
       <end>\}</end>
@@ -1294,8 +1290,14 @@
 
     <context id="array">
       <start extended="true">
-        (?&lt;! \%{alnum}[!?] )
-        (?&lt;! \%{alnum} | [})\]] )
+        (?: (?&lt;= \%{no_method_prefix} 
+              BEGIN | END | alias | begin | break | case | class | do | else | elsif |
+              end | ensure | for | if | in | module | next | redo | rescue | retry |
+              return | super | then | undef | unless | until | when | while | yield
+            )
+        | (?&lt;! \%{alnum}[!?] )
+          (?&lt;! \%{alnum} | [})\]] )
+        )
         (\[)
       </start>
       <end>\]</end>
@@ -1440,4 +1442,3 @@
     </context>
  </definitions>
 </language>
-
