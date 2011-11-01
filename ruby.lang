@@ -117,14 +117,45 @@
     <define-regex id="alnum">[^&amp;&gt;&lt;!?"'`@$%/()=\\{\[\]}*+~#|;,:.\-\^\s]</define-regex>
     <define-regex id="no_method_prefix">(?&lt;![\w\.\:])</define-regex>
     <define-regex id="no_method_suffix">(?!(\%{alnum}|[?!]))</define-regex>
+    
     <define-regex id="keywords" extended="true"><!-- TODO also change at array+hash stuff -->
       BEGIN | END | alias | begin | break | case | class | do | else | elsif |
       end | ensure | for | if | in | module | next | redo | rescue | retry |
       return | super | then | undef | unless | until | when | while | yield
     </define-regex>
 
-    <context id="keywords" style-ref="keyword">
-      <match>\%{no_method_prefix}\%{keywords}\%{no_method_suffix}</match>
+    <context id="keywords" style-ref="keyword"> <!-- TODO refactor out code dups -->
+      <prefix>\%{no_method_prefix}</prefix>
+      <suffix>\%{no_method_suffix}</suffix>
+      <keyword>BEGIN</keyword>
+      <keyword>END</keyword>
+      <keyword>alias</keyword>
+      <keyword>begin</keyword>
+      <keyword>break</keyword>
+      <keyword>case</keyword>
+      <keyword>class</keyword>
+      <keyword>do</keyword>
+      <keyword>else</keyword>
+      <keyword>elsif</keyword>
+      <keyword>end</keyword>
+      <keyword>ensure</keyword>
+      <keyword>for</keyword>
+      <keyword>if</keyword>
+      <keyword>in</keyword>
+      <keyword>module</keyword>
+      <keyword>next</keyword>
+      <keyword>redo</keyword>
+      <keyword>rescue</keyword>
+      <keyword>retry</keyword>
+      <keyword>return</keyword>
+      <keyword>super</keyword>
+      <keyword>then</keyword>
+      <keyword>undef</keyword>
+      <keyword>unless</keyword>
+      <keyword>until</keyword>
+      <keyword>when</keyword>
+      <keyword>while</keyword>
+      <keyword>yield</keyword>
     </context>
 
     <context id="important-methods" style-ref="important-method">
